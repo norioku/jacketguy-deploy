@@ -13,8 +13,6 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :post_code
       t.string :address
       t.string :phone_number
-      t.string :password
-      t.datetime :deleted_at, null: false,  default: -> { 'CURRENT_TIMESTAMP' }
 
       # ## Recoverable
       # t.string   :reset_password_token
