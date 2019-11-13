@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+
+
+
   get 'admins/index'
   get 'admins/create'
   get 'admins/new'
-=======
-  devise_for :end_users
->>>>>>> 19b62b25f28a88639a847c81bbe3c973cce20f51
+
+  # get 'users/:id' => 'users#index', as: "users"
+  get 'users/:id' => 'users#show', as: "user"
+  devise_for :end_users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
