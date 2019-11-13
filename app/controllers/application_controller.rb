@@ -3,7 +3,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    user_path(current_end_user) # ログイン後に遷移するpathを設定
+	  case resource
+	  when Admin
+	    admin_path(current_admin)
+	  when EndUser
+	    user_path(current_end_user)
+	  end
   end
 
     protected
