@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
     # productsコントローラ
       get "products/search" => "products#search"
-      resources :products, only:[:index, :show]
+      resources :products, only:[:show]
       
 
     # user_inquiriesコントローラ
