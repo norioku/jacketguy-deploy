@@ -6,6 +6,12 @@ class AdminsController < ApplicationController
   def create
   end
 
+  def new
+  end
+
+  def test
+  end
+
   # def new
   # end
 end
