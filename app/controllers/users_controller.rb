@@ -9,5 +9,8 @@ class UsersController < ApplicationController
   	# @user = current_end_user
   end
 
+  def complete
+  end
+
 
 end
