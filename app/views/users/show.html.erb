@@ -1,1 +1,15 @@
-<h2>Hello <%= @user.last_name %>! </h2>
+<h1>User show</h1>
+<div id="tab-contents" class="clearfix">
+    <div id="tab1" class="tab">
+    	<p>partial検討中</p>
+      <%= render 'shared/user_addresses' %>
+    </div>
+
+    <div id="tab2" class="tab">
+      <%= render 'shared/user_favorites' %>
+    </div>
+
+    <div id="tab3" class="tab">
+      <%= render 'shared/user_order_histories' %>
+    </div>
+</div>
