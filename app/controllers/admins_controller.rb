@@ -9,9 +9,4 @@ class AdminsController < ApplicationController
   def new
   end
 
-  def test
-  end
-
-  # def new
-  # end
 end
