@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # get 'admins/:id' => 'admins#index', as: 'admin'
   get 'admins/create'
   get 'admins/new'
-  get 'admins/index' =>'admins#index'
+  # get 'admins/index' =>'admins#index'
+  get 'admin/:id' =>'admins#index', as: 'admins'
   get 'users/:id' => "users#show", as: 'user'
 
   devise_for :end_users, controllers: {
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
-  registrations: 'users/registrations'
+  registrations: 'admins/registrations'
   # registrations: 'admins/registrations'
 }
 

@@ -3,10 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-	  case resource
-	  when Admin
-	    admins_index_path
 
+	  case resource
+
+	  when Admin
+	    admins_path(current_admin)
 	  when EndUser
 	    user_path(current_end_user)
 	  end
