@@ -61,7 +61,6 @@ Rails.application.routes.draw do
       get "users/:id" => "users#show", as: "user"
       get "users/:id/edit" => "users#edit",as: "users_edit"
       get "users/:id/close" => "users#close"
-
       patch "users/:id" => "users#update"
       put "users/:id" => "users#update"
       delete "users/:id" => "users#destroy"
