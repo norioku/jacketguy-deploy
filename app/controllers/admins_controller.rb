@@ -6,7 +6,6 @@ class AdminsController < ApplicationController
   def create
   end
 
-HEAD
   def new
   end
 
@@ -15,5 +14,4 @@ HEAD
 
   # def new
   # end
-origin/update
 end

@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'admins/index'
-  get 'admins/create'
-  get 'admins/new'
-  get 'admins/test'
-  devise_for :end_users
-
-
-  get 'admins/:id' => 'admins#index', as: 'admin'
-
   # get 'admins/:id' => 'admins#index', as: 'admin'
   get 'admins/create'
   get 'admins/new'
