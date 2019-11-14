@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "products#index"
+
   # admin
 
     # adminコントローラ
@@ -13,9 +15,9 @@ Rails.application.routes.draw do
       delete "admins/users/:id" => "admin_endusers#destroy"
 
     # admin_productsコントローラ
+      get "admins/products/new" => "admin_products#new"
       get "admins/products" => "admin_products#index"
       get "admins/products/:id" => "admin_products#show", as: "admins_product"
-      get "admins/products/new" => "admin_products#new"
       post "admins/products" => "admin_products#create"
       get "admins/products/:id/edit" => "admin_products#edit", as: "admins_products_edit"
       patch "admins/products/:id" => "admin_products#update"
@@ -55,10 +57,10 @@ Rails.application.routes.draw do
   # end_users
 
     # usersコントローラ
+      get "users/close" => "users#complete"
       get "users/:id" => "users#show", as: "user"
       get "users/:id/edit" => "users#edit",as: "users_edit"
-      get "users/:id/close" => "users#close", as: "users_close"
-      get "user/close" => "users#complete"
+      get "users/:id/close" => "users#close"
       patch "users/:id" => "users#update"
       put "users/:id" => "users#update"
       delete "users/:id" => "users#destroy"
@@ -67,8 +69,8 @@ Rails.application.routes.draw do
       resources :user_reviews, only:[:index]
 
     # productsコントローラ
-      resources :products, only:[:index, :show]
       get "products/search" => "products#search"
+      resources :products, only:[:show]
 
     # user_inquiriesコントローラ
       resources :user_inquiries, only:[:new, :create]
