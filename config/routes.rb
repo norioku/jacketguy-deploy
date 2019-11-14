@@ -15,8 +15,8 @@ Rails.application.routes.draw do
       delete "admins/users/:id" => "admin_endusers#destroy"
 
     # admin_productsコントローラ
-      get "admins/products" => "admin_products#index"
       get "admins/products/new" => "admin_products#new"
+      get "admins/products" => "admin_products#index"
       get "admins/products/:id" => "admin_products#show", as: "admins_product"
       post "admins/products" => "admin_products#create"
       get "admins/products/:id/edit" => "admin_products#edit", as: "admins_products_edit"
@@ -72,7 +72,6 @@ Rails.application.routes.draw do
     # productsコントローラ
       get "products/search" => "products#search"
       resources :products, only:[:show]
-
 
     # user_inquiriesコントローラ
       resources :user_inquiries, only:[:new, :create]
