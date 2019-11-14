@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
 
-  # get 'admins/:id' => 'admins#index', as: 'admin'
-  get 'admins/create'
-  get 'admins/new'
-  # get 'admins/index' =>'admins#index'
+
   get 'admin/:id' =>'admins#index', as: 'admins'
   get 'users/:id' => "users#show", as: 'user'
+
+
+  get 'admins/index'
+  get 'admins/create'
+  get 'admins/new'
 
   devise_for :end_users, controllers: {
   sessions:      'users/sessions',
