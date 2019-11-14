@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "products#index"
+
   # admin
 
     # adminコントローラ
@@ -55,10 +57,11 @@ Rails.application.routes.draw do
   # end_users
 
     # usersコントローラ
+      get "users/close" => "users#complete"
       get "users/:id" => "users#show", as: "user"
       get "users/:id/edit" => "users#edit",as: "users_edit"
-      get "users/:id/close" => "users#close", as: "users_close"
-      get "users/close" => "users#complete"
+      get "users/:id/close" => "users#close"
+
       patch "users/:id" => "users#update"
       put "users/:id" => "users#update"
       delete "users/:id" => "users#destroy"
@@ -68,8 +71,7 @@ Rails.application.routes.draw do
 
     # productsコントローラ
       get "products/search" => "products#search"
-      resources :products, only:[:index, :show]
-      
+      resources :products, only:[:show]
 
     # user_inquiriesコントローラ
       resources :user_inquiries, only:[:new, :create]
