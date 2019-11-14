@@ -85,4 +85,5 @@ gem 'rubocop', '~> 0.76.0', require: false
 # ##Gem for internationalized enum
 gem 'enumerize'
 
+gem "paranoia", "~> 2.2"
 
