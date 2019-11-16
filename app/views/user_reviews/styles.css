@@ -1,0 +1,35 @@
+.row {
+
+}
+
+.product-box {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  text-align: center;
+  border: solid 1px black;
+  width: 70%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.page-title {
+  height: 50px;
+  width: 15%;
+  font-size: 30px;
+  border: 1px solid black;
+  margin-left: 24.9px;
+}
+
+.product-img {
+
+}
+
+.product-favorites {
+
+}
+
+.product-reviews {
+
+}
