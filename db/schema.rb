@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_164852) do
+ActiveRecord::Schema.define(version: 2019_11_16_063037) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.string "email", default: "", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_kana_name"
+    t.string "first_kana_name"
+    t.string "post_code"
+    t.string "address"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +36,35 @@ ActiveRecord::Schema.define(version: 2019_11_13_164852) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "arrival_records", force: :cascade do |t|
+    t.integer "product_id"
+    t.datetime "arrival_product_at"
+    t.integer "arrival_product"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "end_user_id"
+    t.integer "order_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "disc_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -38,6 +81,92 @@ ActiveRecord::Schema.define(version: 2019_11_13_164852) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_end_users_on_deleted_at"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "end_user_name"
+    t.string "subject"
+    t.text "content"
+    t.text "reply"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_histories", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.string "email", default: "", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_kana_name"
+    t.string "first_kana_name"
+    t.string "post_code"
+    t.string "address"
+    t.string "phone_number"
+    t.integer "product_total_price"
+    t.integer "shipping_fee"
+    t.integer "shipping_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_histories", force: :cascade do |t|
+    t.integer "order_history_id"
+    t.integer "product_id"
+    t.integer "order_quantity"
+    t.integer "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "label_id"
+    t.integer "genre_id"
+    t.string "title"
+    t.string "product_image_id"
+    t.integer "price"
+    t.date "release_date"
+    t.string "sale_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_products_on_deleted_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "product_id"
+    t.text "review_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.integer "disc_id"
+    t.string "name"
+    t.integer "song_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
