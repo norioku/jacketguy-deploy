@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       get "products/search" => "products#search"
       resources :products, only:[:show]
 
+
     # user_inquiriesコントローラ
       resources :user_inquiries, only:[:new, :create]
       get "user_inquiries/complete" => "user_inquiries#complete"

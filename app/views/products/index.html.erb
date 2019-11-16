@@ -1,104 +1,42 @@
-	<div>
-		<h1>あなたのCDデビュー、お手伝いします</h1>
+<div>
+	<h1>あなたのCDデビュー、お手伝いします</h1>
+</div>
+<div class="main">
+	<div class="sidenav" style="float: right;">
+		<p>ジャンル</p>
+		<ul>
+			<a href="#">J-pop</a>
+			<a href="#">J-rock</a>
+			<a href="#">J-metal</a>
+			<a href="#">classic</a>
+			<a href="#">国歌</a>
+		</ul>
 	</div>
-	<div class="main">
-		<div class="sidenav" style="float: right;">
-			<p>ジャンル</p>
-			<ul>
-				<a href="#">J-pop</a>
-				<a href="#">J-rock</a>
-				<a href="#">J-metal</a>
-				<a href="#">classic</a>
-				<a href="#">国歌</a>
-			</ul>
+	<div class="ranking">
+		<div>
+			<h2>月間いいね！ランキング</h2>
+			<span><%=  %>集計</span>
+			<span><%=  %>件中　<=%  %>件表示</span>
 		</div>
-		<div class="ranking">
-			<div>
-				<h2>月間いいね！ランキング</h2>
-				<span>※<%=  %>集計</span>
-				<span><%=  %>件中　<=%  %>件表示</span>
-			</div>
-			<div class="ranking-colu">
-				<ul style="">
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
+		<div class="ranking-colu">
+			<ul style="">
+				<li>
+					<% @all_ranks.each.with_index(1) do |rank,i| %>
+						<span class="rank">
+							<%= "No.#{i}" %>
+						</span>
+						<div class="jacket-image">
+							<%= rank.attachment_field :image %>
 						</div>
-					</li>
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
 						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
+							<%= link_to "#{rank.title}",product_path(@product) %>
+							<%= link_to "#{rank.artists.name}",products_search %>
+							<%= rank.price %>
 						</div>
-					</li>
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<p class="rank">
-							No.1
-						</p>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-				</ul>
-				<a href="#">もっと見る</a>
-			</div>	
-		</div>		
-	</div>	
+					<% end %>
+				</li>
+			</ul>
+			<a href="#">もっと見る</a>
+		</div>	
+	</div>		
+</div>	

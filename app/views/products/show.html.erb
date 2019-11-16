@@ -1,12 +1,13 @@
-<div class="main">
-		<div class="prduct-details">
+<div class="main conteiner">
+		<div class="prduct-details row">
 			<h2>商品詳細</h2>
-			<div class="product-details-section1">
+			<div class="col-lg-2"></div>
+			<div class="product-details-section1 col-lg-3">
 				<img src="">
 				<div class="heart"></div>
 				<a href="#">レビューを見る</a>	
 			</div>
-			<div class="product-details-section2">
+			<div class="product-details-section2 col-lg-3">
 				<h2 class="product-name">商品名</h2>
 				<a href="#">アーティスト</a>
 				<a href="#">ジャンル</a>
@@ -20,7 +21,7 @@
 					</ol>
 				</div>	
 			</div>
-			<div class="product-details-section3">
+			<div class="product-details-section3 col-lg-3">
 				<div>10000円(税込)</div>
 				<p>在庫あり</p>
 				<p>数量：１</p>
@@ -29,22 +30,12 @@
 		</div>
 		<div class="review-columun">
 			<h2>商品レビュー</h2>
+			<% @all_reviews.each do |review| %>
 			<div class="review">
-				<p>投稿者</p>
-				<a href="#"><p>レビュー内容</p></a>
+				<%= review.end_user.first_name %>
+				<%= review.review_content %>
 			</div>
-			<div class="review">
-				<p>投稿者</p>
-				<a href="#"><p>レビュー内容</p></a>
-			</div>
-			<div class="review">
-				<p>投稿者</p>
-				<a href="#"><p>レビュー内容</p></a>
-			</div>
-			<div class="review">
-				<p>投稿者</p>
-				<a href="#"><p>レビュー内容</p></a>
-			</div>
+			<% end %>
 		</div>
 		<div class="review-post">
 			<h2>レビュー投稿</h2>
