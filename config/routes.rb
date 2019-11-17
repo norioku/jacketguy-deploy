@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     # admin_inquiriesコントローラ
       get "admins/inquiries" => "admin_inquiries#index"
       get "admins/inquiries/:id" => "admin_inquiries#show", as: "admins_inquiry"
-      post "admins/inquiries/:id" => "admin_inquiries#create"
+      # post "admins/inquiries/:id" => "admin_inquiries#create"
+      patch "admins/inquiries/:id" => "admin_inquiries#create"
 
     # admin_reviewsコントローラ
       get "admins/reviews/:id/edit" => "admin_reviews#edit", as: "admins_review_edit"
