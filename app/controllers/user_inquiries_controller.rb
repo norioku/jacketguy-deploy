@@ -1,13 +1,13 @@
 class UserInquiriesController < ApplicationController
 
 def new
-	@inquiries = Inquiries.new
-	@user = current_user
+	@inquiry = Inquiry.new
+	@user = current_end_user
 end
 
 def create
-	@inquiries = Inquiries.new(inquiries_params)
-	@inquiries.save
+	@inquiry = Inquiry.new(inquiry_params)
+	@inquiry.save
 	redirect_to user_inquiries_complete
 end
 
@@ -15,4 +15,5 @@ def complete
 end
 
 end
+
 
