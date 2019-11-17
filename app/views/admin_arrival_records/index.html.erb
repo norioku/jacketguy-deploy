@@ -1,4 +1,4 @@
-<div style="text-align:center">
+
 <h1>入荷履歴一覧</h1>
 		<table class="table">
 		  <thead>
@@ -9,37 +9,18 @@
 		      <th scope="col">入荷個数</th>
 		    </tr>
 		  </thead>
-		  <tbody>
+
+		<% @arrival_records.each do |arrival_record| %>
 		    <tr>
-		      <td>20331/02/24134/12:12</td>
-		      <td>1</td>
-			  <td>たくちゃんとこうちゃん</td>
-		      <td>289839</td>
-		    </tr>
+		      <td><span><%= arrival_record.arrival_product_at %></span></td>
+		      <td><span><%= arrival_record.product_id %></span></td>
+		      <td><span><%= arrival_record.product.title %></span></td>
+		      <td><span><%= arrival_record.arrival_product %></span></td>
+		    </td>
+		  <% end %>
+        </table>
 
-		    <tr>
-		      <td>20331/02/24134/12:12</td>
-		      <td>1</td>
-			  <td>たくちゃんとこうちゃん</td>
-		      <td>289839</td>
-		    </tr>
 
-		     <tr>
-		      <td>20331/02/24134/12:12</td>
-		      <td>1</td>
-			  <td>たくちゃんとこうちゃん</td>
-		      <td>289839</td>
-		    </tr>
-
-		    <tr>
-		      <td>20331/02/24134/12:12</td>
-		      <td>1</td>
-			  <td>たくちゃんとこうちゃん</td>
-		      <td>289839</td>
-		    </tr>
-
-		  </tbody>
-		</table>
 
   </div>
 </div>
