@@ -2,34 +2,60 @@
 
 }
 
+/*左ボックス*/
+
 .product-box {
+  border: solid 5px purple;
+  width: 70%;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.product-menu {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-content: flex-start;
-  /*text-align: center;*/
-  border: solid 1px black;
-  width: 70%;
-  height: 400px;
-  margin: 0 auto;
+  flex-flow: 0 ;
+  flex: 0 1 10px;
 }
 
 .page-title {
-  height: 50px;
-  width: 15%;
-  font-size: 30px;
   border: 1px solid black;
-  margin-left: 24.9px;
+  font-size: 30px;
+  text-align: center;
+  background: limegreen;
+  width: 20%;
 }
 
 .product-img {
-
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
-.product-favorites {
-
+.product-favorites, .product-reviews {
+  font-size: 20px;
+  margin-bottom: 20px;
+  width: 20%;
 }
 
-.product-reviews {
+.page-title, .product-img, .product-favorites, .product-reviews {
+  height: 70px;
+  margin-left: 24.9px;
+}
 
+.product-favorites, .product-reviews {
+  text-decoration: none;
+}
+
+/*中央ボックス*/
+
+.product-detail {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: flex-start;
+  width: 30%;
+  flex: 0 1 10px;
 }

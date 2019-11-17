@@ -63,7 +63,7 @@ Rails.application.routes.draw do
       get "users/:id/close" => "users#close",as: "user_close"
       patch "users/:id" => "users#update"
       put "users/:id" => "users#update"
-      delete "users/:id" => "users#destroy"
+      delete "users/:id" => "users#destroy",as: "destroy_user"
 
     # user_reviewsコントローラ
       resources :user_reviews, only:[:index]
