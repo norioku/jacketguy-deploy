@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   def index
+  	@user = current_admin
   end
 
   def new
@@ -8,6 +9,5 @@ class AdminsController < ApplicationController
   def create
   end
 
- 
 
 end

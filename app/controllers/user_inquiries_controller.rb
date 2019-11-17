@@ -3,7 +3,6 @@ class UserInquiriesController < ApplicationController
 def new
 	@inquiry = Inquiry.new
 	@user = current_end_user
-  @user = EndUser.find(params[:id])
 end
 
 def create
@@ -22,4 +21,5 @@ def inquiries_params
 end
 
 end
+
 
