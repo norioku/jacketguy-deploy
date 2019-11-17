@@ -8,8 +8,12 @@ end
 def create
 	@inquiry = Inquiry.new(inquiries_params)
   @user = EndUser.find(params[:id])
-	@inquiry.save
+	if @inquiry.save
 	redirect_to user_inquiries_complete_path(@user)
+else
+	flash[:notice] = "ぶち殺すぞ！ごみめら…!"
+	render action: :new
+end
 end
 
 def complete
