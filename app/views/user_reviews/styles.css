@@ -7,7 +7,7 @@
   flex-flow: column;
   justify-content: flex-start;
   align-content: flex-start;
-  text-align: center;
+  /*text-align: center;*/
   border: solid 1px black;
   width: 70%;
   height: 400px;

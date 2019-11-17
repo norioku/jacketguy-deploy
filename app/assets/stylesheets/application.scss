@@ -51,6 +51,13 @@ header {
   align-items: center;
 }
 
+.admin-title {
+  width: 70%;
+  height: 80px;
+  float: right;
+  text-align: center;
+}
+
 
 .logo-link, .nav-link {
   text-decoration: none;
@@ -91,7 +98,7 @@ header {
 }
 
 .fa-shopping-cart {
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .search-area {
