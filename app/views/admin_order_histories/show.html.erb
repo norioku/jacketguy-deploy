@@ -1,7 +1,7 @@
 <div class="col-lg-8">
 		<h1>受注履歴詳細</h1>
 		<table class="table table-bordered table-striped">
-			<h1>受注ID:&nbsp;<%= @order_history.id %>の詳細</h1>
+			<h1>受注ID:&emsp;<%= @order_history.id %>の詳細</h1>
 			<thead>
 		    <tr>
 		      <th>ユーザID</th>
@@ -15,7 +15,7 @@
 		  <tbody>
 		     <tr>
 		      <td><%= @user.id %></td>
-		      <td><%= @order_history.last_name %>&nbsp;<%= @order_history.first_name %></td>
+		      <td><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
 			  	<td><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
 		      <td><%= @order_history.address %></td>
 		      <td><%= @order_history.email %></td>
