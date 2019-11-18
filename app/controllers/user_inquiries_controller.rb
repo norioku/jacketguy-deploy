@@ -10,9 +10,15 @@ end
 
 def create
 	@inquiry = Inquiry.new(inquiries_params)
+	@inquiry.end_user_name = current_end_user.first_name+" "+current_end_user.last_name
+	@inquiry.email = current_end_user.email
   @user = EndUser.find(params[:id])
-	@inquiry.save
+	if @inquiry.save
 	redirect_to user_inquiries_complete_path(@user)
+else
+	flash[:notice] = "ぶち殺すぞ！ごみめら…!"
+	render action: :new
+end
 end
 
 def complete
@@ -24,5 +30,6 @@ def inquiries_params
 end
 
 end
+
 
 

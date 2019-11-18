@@ -1,23 +1,35 @@
 <div style="text-align:center">
 
-<h2>〇〇様からのお問い合わせ内容</h2>
-		<h3>カテゴリ</h3>
-		<th>身に覚えのない請求書</th>
+<h2>お問い合わせ詳細</h2>
+<table>
+<thead>
+    <tr>
+      <th>ユーザ名</th>
+      <th>メールアドレス</th>
+      <th>カテゴリ</th>
+      <th>内容</th>
+      <th>返信</th>
+    </tr>
+  </thead>
 
-		<h3>件名</h3>
-		<th>貴様殺すぞ</th>
+ <tbody>
+	<tr>
+		<td><%= @inquiry.end_user_name %></td>
+		<td><%= @inquiry.email %></td>
+		<td><%= @inquiry.subject %></td>
+		<td><%= @inquiry.content %></td>
+	</tr>
+ </tbody>
+</table>
+	<%  if @inquiry.reply.nil? %>
+	<%= form_for(@inquiry, url: {controller:"admin_inquiries",action:"create"})  do |f| %>
+            <tr>
+              <td><%= f.text_field :reply %></td>
+    		  <%= f.submit '入力内容を送信' %>
+            </tr>
+    <% end %>
+    <% else %>
 
-		<h3>お問い合わせの内容</h3>
-		<th>ぶん殴るぶん殴るぶん殴るぶん殴るぶん殴る</th>
+     <td><%= @inquiry.reply %></td>
 
-		<h3>回答を入力</h3>
-			<p><textarea cols="60" rows="9"></textarea>
-		</p>
-
-		<p>回答内容をご確認のうえ、「入力内容を送信」ボタンをクリックしてください。</>
-
-		<p id="form_submit"><input type="button" id="form_submit_button" value="入力内容を送信" /></p>
-
-		<p>一覧に戻る</p>
-	</div>
-</div>
+    <% end %>
