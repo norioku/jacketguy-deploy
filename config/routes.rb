@@ -74,8 +74,10 @@ Rails.application.routes.draw do
 
 
     # user_inquiriesコントローラ
-      resources :user_inquiries, only:[:new, :create]
-      get "user_inquiries/complete" => "user_inquiries#complete"
+      # resources :user_inquiries, only:[:new, :create]
+      get "user/:id/complete" => "user_inquiries#complete", as: "user_inquiries_complete"
+      get "user/:id/inquiries/new" => "user_inquiries#new", as: "new_user_inquiry"
+      post "user/:id/inquiries" => "user_inquiries#create", as: "user_inquiries"
 
     # user_cartsコントローラ
       get "users/:id/carts/edit" => "user_carts#edit", as: "user_carts_edit"
