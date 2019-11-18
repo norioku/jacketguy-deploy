@@ -5,7 +5,9 @@ def index
 	 							.order('count(product_id) desc')
 	 							.limit(6) .pluck(:product_id))
 
+
 	 # @product = Product.find(params[:id])
+
 
 end
 
