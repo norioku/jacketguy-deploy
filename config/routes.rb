@@ -38,13 +38,13 @@ Rails.application.routes.draw do
     # admin_order_historiesコントローラ
       get "admins/order_histories" => "admin_order_histories#index"
       get "admins/order_histories/:id" => "admin_order_histories#show", as: "admins_order_history"
-      patch "admins/order_histories/:id" => "admin_order_histories#update"
+      patch "admins/order_histories/:id" => "admin_order_histories#update", as: "admins_order_history_update"
       put "admins/order_histories/:id" => "admin_order_histories#update"
 
     # admin_arrival_recordsコントローラ
       get "admins/arrival_records" => "admin_arrival_records#index"
-      get "admins/arrival_records/new" => "admin_arrival_records#new"
-      post "admins/arrival_records" => "admin_arrival_records#create"
+      get "admins/:id/arrival_records/new" => "admin_arrival_records#new", as: "admins_arrival_records_new"
+      post "admins/:id/arrival_records" => "admin_arrival_records#create", as: "admins_arrival_records_create"
 
     # admin devise
       devise_for :admins, controllers: {
