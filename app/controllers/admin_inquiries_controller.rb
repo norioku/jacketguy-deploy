@@ -11,6 +11,7 @@ class AdminInquiriesController < ApplicationController
 	def create
 		@inquiry = Inquiry.find(params[:id])
 		if @inquiry.update(inquiry_params)
+			InquiryMailer.send_mail(@inquiry).deliver_now
 			redirect_to admins_inquiry_path(@inquiry)
 		else
 			render :show
@@ -18,10 +19,10 @@ class AdminInquiriesController < ApplicationController
 		# 　SampleMailer.send_when_create(@user).deliver
 	end
 
-		private
+	private
 
 	def inquiry_params
-		params.require(:inquiry).permit(:end_user_name, :subject, :content, :reply)
+		params.require(:inquiry).permit(:email, :end_user_name, :subject, :content, :reply)
 	end
 
 end
