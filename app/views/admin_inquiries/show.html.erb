@@ -24,7 +24,7 @@
 	<%  if @inquiry.reply.nil? %>
 	<%= form_for(@inquiry, url: {controller:"admin_inquiries",action:"create"})  do |f| %>
             <tr>
-              <td><%= f.text_field :reply %></td>
+              <td><%= f.text_area :reply, :size=>"100x15" %></td>
     		  <%= f.submit '入力内容を送信' %>
             </tr>
     <% end %>

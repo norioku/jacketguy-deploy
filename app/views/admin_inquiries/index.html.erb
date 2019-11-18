@@ -2,20 +2,23 @@
 <table>
     <thead>
      <tr>
+      <th>お問い合わせ日時</th>
       <th>ユーザ名</th>
       <th>メールアドレス</th>
       <th>カテゴリ</th>
-      <th></th>
+      <th>回答のステータス</th>
      </tr>
     </thead>
 
     <tbody>
      <% @inquiries.each do |inquiry| %>
-        <tr>
-         <td><%= inquiry.end_user_name %></td>
-		 <td><%= inquiry.email %></td>
-		 <td><%= inquiry.subject %></td>
-		 <td><%= link_to "詳細",  admins_inquiry_path(inquiry.id) %></td>
+      <tr>
+        <td><%= inquiry.created_at %></td>
+        <td><%= inquiry.end_user_name %></td>
+		    <td><%= inquiry.email %></td>
+		    <td><%= inquiry.subject %></td>
+        <td><%= inquiry.status %></td>
+		    <td><%= link_to "詳細",  admins_inquiry_path(inquiry.id) %></td>
         </tr>
      <% end %>
             </tbody>
