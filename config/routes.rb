@@ -74,8 +74,7 @@ Rails.application.routes.draw do
 
 
     # user_inquiriesコントローラ
-      # resources :user_inquiries, only:[:new, :create]
-      get "user/:id/complete" => "user_inquiries#complete", as: "user_inquiries_complete"
+      get "user/:id/inquiries/complete" => "user_inquiries#complete", as: "user_inquiries_complete"
       get "user/:id/inquiries/new" => "user_inquiries#new", as: "new_user_inquiry"
       post "user/:id/inquiries" => "user_inquiries#create", as: "user_inquiries"
 
@@ -86,7 +85,7 @@ Rails.application.routes.draw do
       delete "users/:id/carts" => "user_carts#destroy"
 
     # user_purchasesコントローラ
-      get "users/:id/purchase" => "user_purchases#new", as: "user_purchases_new"
+      get "users/:id/purchase/new" => "user_purchases#new", as: "user_purchases_new"
       post "users/:id/purchase" => "user_purchases#create"
       get "users/purchase/complete" => "user_purchases#complete"
 
