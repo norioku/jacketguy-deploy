@@ -14,9 +14,11 @@ end
 def show
 	 @product = Product.find(params[:id])
 	 @all_reviews = @product.reviews
+   @user = current_end_user
 end
 
 def search
+  @user = current_end_user
 
 end
 

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = EndUser.find(params[:id])
   end
 
   def update
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def complete
+    @user = current_end_user
   end
 
 end
