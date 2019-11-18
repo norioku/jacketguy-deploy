@@ -1,5 +1,5 @@
 <div style="text-align:center">
-<h1>Addresses</h1>
+		<h1>幻影旅団🕷</h1>
 		<table class="table">
 		  <thead>
 		    <tr>
@@ -8,28 +8,19 @@
 		      <th scope="col">Email</th>
 		    </tr>
 		  </thead>
+
 		  <tbody>
+		  <% @users.each do |user| %>
 		    <tr>
-		      <td>1</td>
-			  <td>拓三</td>
-		      <td>udshvua@com</td>
+		      <td><span><%= user.id %></span></td>
+		      <td><span><%=link_to user.first_name+user.last_name, admins_user_path(user)%></span></td>
+		      <td><span><%= user.email %></span></td>
 		    </tr>
-
-		    <tr>
-		      <td>2</td>
-			  <td>拓三</td>
-			  <td>udshvua@com</td>
-		    </tr>
-		    <tr>
-
-		      <td>3</td>
-			  <td>拓三</td>
-			  <td>udshvua@com</td>
-		    </tr>
-
+		  <% end %>
 		  </tbody>
 		</table>
 
   </div>
 </div>
+
 

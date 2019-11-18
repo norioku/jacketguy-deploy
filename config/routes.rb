@@ -39,13 +39,13 @@ Rails.application.routes.draw do
     # admin_order_historiesコントローラ
       get "admins/order_histories" => "admin_order_histories#index"
       get "admins/order_histories/:id" => "admin_order_histories#show", as: "admins_order_history"
-      patch "admins/order_histories/:id" => "admin_order_histories#update"
+      patch "admins/order_histories/:id" => "admin_order_histories#update", as: "admins_order_history_update"
       put "admins/order_histories/:id" => "admin_order_histories#update"
 
     # admin_arrival_recordsコントローラ
       get "admins/arrival_records" => "admin_arrival_records#index"
-      get "admins/arrival_records/new" => "admin_arrival_records#new"
-      post "admins/arrival_records" => "admin_arrival_records#create"
+      get "admins/:id/arrival_records/new" => "admin_arrival_records#new", as: "admins_arrival_records_new"
+      post "admins/:id/arrival_records" => "admin_arrival_records#create", as: "admins_arrival_records_create"
 
     # admin devise
       devise_for :admins, controllers: {
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
       get "users/:id/close" => "users#close",as: "user_close"
       patch "users/:id" => "users#update"
       put "users/:id" => "users#update"
-      delete "users/:id" => "users#destroy"
+      delete "users/:id" => "users#destroy",as: "destroy_user"
 
     # user_reviewsコントローラ
       resources :user_reviews, only:[:index]
@@ -75,19 +75,18 @@ Rails.application.routes.draw do
 
 
     # user_inquiriesコントローラ
-      # resources :user_inquiries, only:[:new, :create]
-      get "user/:id/complete" => "user_inquiries#complete", as: "user_inquiries_complete"
+      get "user/:id/inquiries/complete" => "user_inquiries#complete", as: "user_inquiries_complete"
       get "user/:id/inquiries/new" => "user_inquiries#new", as: "new_user_inquiry"
       post "user/:id/inquiries" => "user_inquiries#create", as: "user_inquiries"
 
     # user_cartsコントローラ
       get "users/:id/carts/edit" => "user_carts#edit", as: "user_carts_edit"
-      patch "users/:id/carts" => "user_carts#update"
+      patch "users/:id/carts" => "user_carts#update",  as: "user_carts_update"
       put "users/:id/carts" => "user_carts#update"
       delete "users/:id/carts" => "user_carts#destroy"
 
     # user_purchasesコントローラ
-      get "users/:id/purchase" => "user_purchases#new", as: "user_purchases_new"
+      get "users/:id/purchase/new" => "user_purchases#new", as: "user_purchases_new"
       post "users/:id/purchase" => "user_purchases#create"
       get "users/purchase/complete" => "user_purchases#complete"
 
