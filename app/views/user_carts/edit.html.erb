@@ -1,27 +1,18 @@
 <div>
 	<h1>買い物かご</h1>
-	<div class="carts">
-		<div class="cart">
-			<a href="#">商品タイトル</a>
-			<p>商品詳細テキスト</p>
-			<p>１１００円（税込）</p>
-			<form action="#" method="update">
-				<p>数量：
-				<select name="cnt">
-					<option value="1" selected>1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select></p>
-				<p><input type="submit" value="削除"></p>
-			</form>
-		</div>
-	</div>
-	<div class="buy">
-		<p>送料：５００円</p>
-		<p>合計金額：１１００円</p>
-		<a href="#">ご購入手続きへ</a>
-		<a href="#">商品一覧ページに戻る</a>
-	</div>
+
+		<% @carts.each do |cart| %>
+			<%= cart.product.title %>
+			<%= cart.product.artist.name %>
+			<%= cart.product.label.name %>
+			<%= cart.product.genre.name %>
+			<%= form_for(cart, url:user_carts_update_path(current_end_user) ) do |f| %>
+				<%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],
+				selected:cart.order_quantity %>
+			<% end %>
+			<br>
+		<% end %>
+
 </div>
+
+<!-- ref:https://pg-happy.jp/rails-form_for-selectbox.html -->
