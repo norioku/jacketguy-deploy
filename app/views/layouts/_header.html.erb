@@ -7,10 +7,9 @@
   <nav>
     <% if end_user_signed_in? %>
       <ul class = "nav-list">
-        <% unless current_page?(user_path) %>
-        #ユーザログイン状態だとエラーでます
+        <% unless current_page?(user_path(@user)) %>
           <li class = "nav-item">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to user_path(@user), class: "nav-link" do %>
               マイページ<i class="far fa-meh-rolling-eyes" aria-hidden="true"></i>
             <% end %>
           </li>
@@ -20,18 +19,16 @@
               ログアウト<i class="fas fa-sign-in-alt" aria-hidden="true"></i>
             <% end %>
           </li>
-        <% unless current_page?(new_user_inquiry_path) %>
-        #ユーザログイン状態だとエラーでます
+        <% unless current_page?(new_user_inquiry_path(@user)) %>
           <li class = "nav-item">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to new_user_inquiry_path(@user), class: "nav-link" do %>
               お問い合わせ<i class="fas fa-question-circle" aria-hidden="true"></i>
             <% end %>
           </li>
         <% end %>
-        <% unless current_page?(user_carts_edit_path) %>
-        #ユーザログイン状態だとエラーでます
+        <% unless current_page?(user_carts_edit_path(@user)) %>
           <li class = "nav-item">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to user_carts_edit_path(@user), class: "nav-link" do %>
               <i class="fas fa-shopping-cart" aria-hidden="true"></i>
             <% end %>
           </li>
@@ -84,10 +81,10 @@
 
 <div class = "form-group search-area">
   <input class = "form-control search-form" type = "search" placeholder = "曲名・歌手名で検索">
-  #< form_with(model: @product, scope: :get, url: products_search_path, local: true) do |f| %>
+  <!-- #< form_with(model: @product, scope: :get, url: products_search_path, local: true) do |f| %>
     #< f.text_field :search, class: "form-control" >
     #< f.submit "検索", class: "btn btn-primary">
-  #< end >
+  #< end > -->
   <input type="submit" name="btn_search" value="検索" class = "btn btn-primary">
 </div>
 

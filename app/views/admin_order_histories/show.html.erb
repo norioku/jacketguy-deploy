@@ -1,36 +1,57 @@
 <div class="col-lg-8">
-  <div style="text-align:center">
-<h1>受注履歴詳細</h1>
-		<table class="table">
-			<h1>受注ID:XXXXXXXXXの詳細</h1>
-		  <thead>
+		<h1>受注履歴詳細</h1>
+		<table class="table table-bordered table-striped">
+			<h1>受注ID:&emsp;<%= @order_history.id %>の詳細</h1>
+			<thead>
 		    <tr>
-		      <th scope="col">受注ID</th>
-		      <th scope="col">受注日時</th>
-		      <th scope="col">ユーザ</th>
-		      <th scope="col">合計金額</th>
-		      <th scope="col">発送状況</th>
+		      <th>ユーザID</th>
+		      <th>発送先名前</th>
+		      <th>購入時刻</th>
+		      <th>発送先住所</th>
+		      <th>メールアドレス</th>
+		      <th>発送ステータス</th>
 		    </tr>
 		  </thead>
-		  	<h1>受注された商品</h1>
 		  <tbody>
 		     <tr>
-		      <td>20331/02/24134/12:12</td>
-		      <td>1</td>
-			  <td>たくちゃんとこうちゃん</td>
-		      <td>289839</td>
-		    </tr>
-		　　<tr>
-		      <td>20331/02/24134/12:12</td>
-		      <td>1</td>
-			  <td>たくちゃんとこうちゃん</td>
-		      <td>289839</td>
+		      <td><%= @user.id %></td>
+		      <td><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
+			  	<td><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
+		      <td><%= @order_history.address %></td>
+		      <td><%= @order_history.email %></td>
+		      <td><%= @order_history.shipping_status %></td>
 		    </tr>
 		  </tbody>
 		</table>
-		<h1>商品小計</h1>
-		<h1>送料</h1>
-		<h1>合計金額</h1>
-		<h1>発送する</h1>
+
+		<h2>受注した商品</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+		    <tr>
+		      <th>商品ID</th>
+		      <th>商品名</th>
+		      <th>アーティスト</th>
+		      <th>税込み価格(円)</th>
+		      <th>受注個数</th>
+		      <th>小計</th>
+		    </tr>
+		   </thead>
+			 <tbody>
+			 	<% @products.each do |product| %>
+		     <tr>
+		      <td><%= product.id %></td>
+		      <td><%= product.title %></td>
+			  	<td><%= product.artist.name %></td>
+		      <td><%= product. %></td>
+		      <td><%= @order_history.shipping_status %></td>
+		      <td><%= @order_history.shipping_status %></td>
+		    </tr>
+		   <% end %>
+		   </tbody>
+		</table>
+		<h1>商品小計: <%= @order_history.product_total_price - @order_history.shipping_fee %></h1>
+		<h1>送料: <%= @order_history.shipping_fee %></h1>
+		<h1>合計金額: <%= @order_history.product_total_price %></h1>
+		<h1><%= link_to "発送する", admins_order_history_update_path, method: :patch, class: "btn btn-primary", date: {confirm: "本当に発送しましたか?" } %></h1>
 	</div>
 </div>

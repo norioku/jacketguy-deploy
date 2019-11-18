@@ -7,7 +7,7 @@ def index
 
 
 	 # @product = Product.find(params[:id])
-
+   @user = current_end_user
 
 end
 

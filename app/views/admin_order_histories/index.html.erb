@@ -1,61 +1,26 @@
 <div class="col-lg-8">
   <div style="text-align:center">
 <h1>受注履歴一覧</h1>
-		<table class="table">
+		<table class="table table-bordered table-striped">
 		  <thead>
 		    <tr>
-		      <th scope="col">受注ID</th>
-		      <th scope="col">受注日時</th>
-		      <th scope="col">ユーザ</th>
-		      <th scope="col">合計金額</th>
-		      <th scope="col">発送状況</th>
+		      <th>受注ID</th>
+		      <th>受注日時</th>
+		      <th>ユーザ</th>
+		      <th>合計金額</th>
+		      <th>発送状況</th>
 		    </tr>
 		  </thead>
 		  <tbody>
+		  	<% @order_histories.each do |order_history| %>
 		    <tr>
-		      <td>1</td>
-		      <td>20331/02/24134/12:12</td>
-			  <td>こうちゃん</td>
-		      <td>289839</td>
-		      <td>発送済</td>
+		      <td><%= link_to order_history.id, admins_order_history_path(order_history) %></td>
+		      <td><%= order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
+			  	<td><%= order_history.last_name %>&nbsp;<%= order_history.first_name %></td>
+		      <td><%= order_history.product_total_price %></td>
+		      <td><%= order_history.shipping_status %></td>
 		    </tr>
-		    <tr>
-		      <td>1</td>
-		      <td>20331/02/24134/12:12</td>
-			  <td>こうちゃん</td>
-		      <td>289839</td>
-		      <td>発送済</td>
-		    </tr>
-		     <tr>
-		      <td>1</td>
-		      <td>20331/02/24134/12:12</td>
-			  <td>こうちゃん</td>
-		      <td>289839</td>
-		      <td>発送済</td>
-		    </tr>
-		    <tr>
-		      <td>1</td>
-		      <td>20331/02/24134/12:12</td>
-			  <td>こうちゃん</td>
-		      <td>289839</td>
-		      <td>発送済</td>
-		    </tr>
-		     <tr>
-		      <td>1</td>
-		      <td>20331/02/24134/12:12</td>
-			  <td>こうちゃん</td>
-		      <td>289839</td>
-		      <td>発送済</td>
-		    </tr>
-		    <tr>
-		      <td>1</td>
-		      <td>20331/02/24134/12:12</td>
-			  <td>こうちゃん</td>
-		      <td>289839</td>
-		      <td>発送済</td>
-		    </tr>
-
-
+		    <% end %>
 		  </tbody>
 		</table>
 

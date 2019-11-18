@@ -15,6 +15,8 @@ class OrderHistory < ApplicationRecord
 
   has_many   :product_histories   ,dependent: :destroy
 
+  enum shipping_status:[:未発送, :発送済]
+
 end
 
 

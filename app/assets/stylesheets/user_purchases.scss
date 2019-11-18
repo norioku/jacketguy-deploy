@@ -1,3 +1,24 @@
 // Place all the styles related to the user_purchases controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thanks-box {
+  margin: 30px auto;
+  border: 2px solid slategray;
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)),
+}
+
+.thanks-text-en, .thanks-text-jp {
+  text-align: center;
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)),
+}
+
+.root-link {
+  margin: 0 auto;
+  text-align: center;
+  width: 40%;
+}
+
+.btn:hover {
+  opacity: 0.5;
+}

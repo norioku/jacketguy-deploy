@@ -18,4 +18,4 @@ class AdminEndusersController < ApplicationController
 	def destroy
 	end
 
-end
+end1
