@@ -1,46 +1,84 @@
-<table class="table">
-
+ 	<h1><%=@user.first_name %>&ensp;<%= @user.last_name%>の詳細</h1>
+ 	<table class="table">
 		  <tbody>
-
 		    <tr>
 		      <td>名前</td>
-		      <td>拓三</td>
+		      <td><span><%=@user.first_name %>&ensp;<%= @user.last_name%></span></td>
 		    </tr>
 
 		    <tr>
 		      <td>かな</td>
-		      <td>たくちゃん</td>
+		      <td><span><%=@user.first_kana_name%>&ensp;<%= @user.last_kana_name%></span></td>
 		    </tr>
 
 		    <tr>
 		      <td>郵便番号</td>
-		      <td>30290491</td>
+		      <td><span><%=@user.post_code%></span></td>
 		    </tr>
 
 		     <tr>
 		      <td>住所</td>
-		      <td>東京都杉並区八王子028-231</td>
+		      <td><span><%=@user.address%></span></td>
 		    </tr>
 
 		    <tr>
 		      <td>電話番号</td>
-		      <td>990-8053-2322</td>
+		      <td><span><%=@user.phone_number%></span></td>
 		    </tr>
 
 		    <tr>
 		      <td>アドレス</td>
-		      <td>jkjkkj@dfjsha.com</td>
+		      <td><span><%=@user.email%></span></td>
 		    </tr>
 		    <tr>
-
-		    <tr>
-		      <td>パスワード</td>
-		      <td>jkjkkjihdsga</td>
-		    </tr>
-		    <tr>
-
 		  </tbody>
 		</table>
 
-  </div>
-</div>
+		<h1><%=@user.first_name %>&ensp;<%= @user.last_name%>の購入履歴</h1>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">購入日</th>
+		      <th scope="col">タイトル</th>
+		      <th scope="col">枚数</th>
+		      <th scope="col">小計</th>
+		      <th scope="col">購入価格総計</th>
+		      <th scope="col">送付先</th>
+		      <th scope="col">ステータス</th>
+		    </tr>
+		  </thead>
+
+		<% @order_histories.each do |order_history| %>
+		    <tr>
+		      <td><span><%= order_history.created_at.strftime('%Y/%m/%d') %></span></td>
+		       <td>
+			  <% order_history.product_histories.each do |product_history| %>
+					 <span><%= product_history.product.title %></span><br>
+			  <% end %>
+			  </td>
+
+		      <td>
+			  <% order_history.product_histories.each do |product_history| %>
+					 <span><%= product_history.order_quantity %></span><br>
+			  <% end %>
+			  </td>
+
+			  <td>
+			  <% order_history.product_histories.each do |product_history| %>
+					<span><%= product_history.subtotal %></span><br>
+			  <% end %>
+		      <td>
+		      	<span><%= order_history.product_total_price %></span>
+		      </td>
+		      <td>
+		      	<span><%= order_history.address %></span>
+		      </td>
+		      <td>
+		      	<% if order_history.shipping_status == 1 %>発送済
+		      	<% else%>未発送
+		      	<% end %>
+		      </td>
+		    </tr>
+		  <% end %>
+        </table>
+

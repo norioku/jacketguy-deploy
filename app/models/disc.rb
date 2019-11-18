@@ -4,4 +4,6 @@ class Disc < ApplicationRecord
 	has_many :songs
 
 	belongs_to :product
+
+	accepts_nested_attributes_for :songs, allow_destroy: true
 end

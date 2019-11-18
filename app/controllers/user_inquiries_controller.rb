@@ -1,9 +1,12 @@
 class UserInquiriesController < ApplicationController
 
 def new
+
 	@inquiry = Inquiry.new
 	@user = current_end_user
+
 end
+
 
 def create
 	@inquiry = Inquiry.new(inquiries_params)
