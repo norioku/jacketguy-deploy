@@ -37,21 +37,23 @@
 		    </tr>
 		   </thead>
 			 <tbody>
-			 	<% @products.each do |product| %>
-		     <tr>
-		      <td><%= product.id %></td>
-		      <td><%= product.title %></td>
-			  	<td><%= product.artist.name %></td>
-		      <td><%= product. %></td>
-		      <td><%= @order_history.shipping_status %></td>
-		      <td><%= @order_history.shipping_status %></td>
-		    </tr>
-		   <% end %>
+			 	<% @order_histories.each do |order_history| %>
+					<% order_history.product_histories.each do |product_history| %>
+						<tr>
+							<td><%= product_history.product.id %></td>
+							<td><%= product_history.product.title %></td>
+							<td><%= product_history.product.title %></td>
+							<td><%= product_history.product.price %></td>
+							<td><%= product_history.order_quantity %></td>
+					  	<td><%= @product_history.product_total_price %></td>
+			    	</tr>
+			   <% end %>
+			<% end %>
 		   </tbody>
 		</table>
 		<h1>商品小計: <%= @order_history.product_total_price - @order_history.shipping_fee %></h1>
 		<h1>送料: <%= @order_history.shipping_fee %></h1>
 		<h1>合計金額: <%= @order_history.product_total_price %></h1>
-		<h1><%= link_to "発送する", admins_order_history_update_path, method: :patch, class: "btn btn-primary", date: {confirm: "本当に発送しましたか?" } %></h1>
+		<h1><%= link_to "発送する", admins_order_history_update_path, method: :patch, class: "btn btn-primary", date:{ confirm: "本当に発送しましたか?" } %></h1>
 	</div>
 </div>

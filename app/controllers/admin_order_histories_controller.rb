@@ -5,9 +5,18 @@ def index
 end
 
 def show
-  @order_history = OrderHistory.find(params[:id])
   @user = EndUser.find(params[:id])
-  @products = Product.all
+  @order_histories = OrderHistory.where(end_user_id: @user)
+  @order_history = OrderHistory.find(params[:id])
+  @product = Product.find(params[:id])
+
+  @product_histories = ProductHistory.where(product_id: @product)
+  # binding.pry
+  # @product_history.subtotal = @product_histories.order_quantity * @product.price
+  # @order_history.product_total_price = @product.price * @product_histories.order_quantity
+
+  # productのpriceとproduct_historyのorder_quantityを掛ける→product_historyのsubtotal
+  # productのsubtotalを商品の数分足して、さらにshipping_feeを足す→order_historyのproduct_total_price
 end
 
 def update

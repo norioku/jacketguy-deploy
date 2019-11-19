@@ -1,19 +1,19 @@
-<div class="col-xs-4" >
-	<h2>ユーザ情報</h2>
-	<h4>ユーザ名</h4><br>
+<div class="col-xs-3 user-box">
+	<h3 class = "user-title">ユーザ情報</h3>
+	<h5 class = "user-information-title">ユーザ名</h5>
 	<p><%= @user.last_name %>&emsp;<%= @user.first_name %></p><br>
-	<h4>EMAIL</h4><br>
+	<h5 class = "user-information-title">EMAIL</h5>
 	<p><%= @user.email %></p><br>
-	<h4>住所</h4><br>
+	<h5 class = "user-information-title">住所</h5>
 	<p><%= @user.address %></p><br>
-	<h4>電話番号</h4><br>
+	<h5 class = "user-information-title">電話番号</h5>
 	<p><%= @user.phone_number %></p><br>
 </div>
 
 
-<div class="col-xs-8">
-	<h2>ユーザ購入履歴</h2>
-	<h3>購入した商品</h3>
+<div class="col-xs-8 order-box">
+	<h2 class = "order-title">ユーザ購入履歴</h2>
+	<h3 class = "order-sub-title">購入した商品</h3>
 	<table class = "table table-bordered table-striped">
 		<thead>
 		 	<td>商品名</td>
@@ -26,14 +26,14 @@
 					<tr>
 						<td><%= product_history.product.title %></td>
 						<td><%= product_history.order_quantity %></td>
-				  	<td><%= product_history.subtotal %></td>
+				  	<td><%= product_history.product.price * product_history.order_quantity %></td>
 			    </tr>
 			   <% end %>
 			<% end %>
 	  </tbody>
 	</table>
 
-	<h3>Address</h3>
+	<h3 class = "order-sub-title">Address</h3>
 	<table class="table table-bordered table-striped">
 	  <tbody>
 	  	<tr>
