@@ -88,7 +88,7 @@ Rails.application.routes.draw do
 
     # user_purchasesコントローラ
       get "users/:id/purchase/new" => "user_purchases#new", as: "user_purchases_new"
-      post "users/:id/purchase" => "user_purchases#create"
+      post "users/:id/purchase" => "user_purchases#create", as: "user_purchases_create"
       get "users/purchase/complete" => "user_purchases#complete"
 
     # user_addressesコントローラ
@@ -96,7 +96,7 @@ Rails.application.routes.draw do
       get "users/:id/user_addresses/new" => "user_addresses#new", as: "user_addresses_new"
       post "users/:id/user_addresses/new" => "user_addresses#create"
       get "users/:id/user_addresses/edit" => "user_addresses#edit", as: "user_addresses_edit"
-      patch "users/:id/user_addresses" => "user_addresses#update"
+      patch "users/:id/user_addresses" => "user_addresses#update", as: "user_addresses_update"
       put "users/:id/user_addresses" => "user_addresses#update"
       delete "users/:id/user_addresses" => "user_addresses#destroy"
 
