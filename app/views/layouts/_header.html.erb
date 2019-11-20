@@ -28,7 +28,7 @@
             <% end %>
           </li>
         <% end %>
-        <% unless current_page?(user_carts_edit_path(@user)) %>
+        <% unless current_page?(user_carts_path(@user)) %>
           <li class = "nav-item">
             <%= link_to user_carts_path(@user), class: "nav-link" do %>
               <i class="fas fa-shopping-cart" aria-hidden="true"></i>
@@ -37,6 +37,7 @@
         <% end %>
       </ul>
     <% elsif admin_signed_in? %>
+      <h2 class = "admin-title">ようこそ管理人さん</h2>
       <ul class = "nav-list">
         <% unless current_page?(admin_path) %>
           <li class = "nav-item">
@@ -51,15 +52,6 @@
           <% end %>
         </li>
       </ul>
-   <% elsif admin_signed_in? %>
-        <h2 class = "admin-title">ようこそ菅直人さん</h2>
-          <ul class = "nav-list">
-            <li class = "nav-item">
-              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
-              ログアウト<i class="fas fa-user-plus"></i>
-              <% end %>
-            </li>
-          </ul>
     <% else %>
       <ul class = "nav-list">
         <% unless current_page?(new_end_user_registration_path) %>

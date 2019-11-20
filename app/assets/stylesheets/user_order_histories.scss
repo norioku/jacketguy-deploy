@@ -5,15 +5,13 @@
 .user-box {
   border: 2px solid slategray;
   border-radius: 10%;
-  margin: 50px 70px 0 0;
+  margin: 100px 70px 0 0;
   text-align: center;
   height: 500px;
   transition: transform .3s ease-in-out;
 }
 
-.user-box:hover {
-  transform: rotate(5deg);
-}
+
 
 .user-title {
   background: limegreen;
@@ -26,7 +24,7 @@
 }
 
 .order-box {
-  margin-top: 50px;
+  margin: 100px 0;
 }
 
 .order-title {
