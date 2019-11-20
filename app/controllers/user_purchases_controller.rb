@@ -1,7 +1,8 @@
 class UserPurchasesController < ApplicationController
 
 def new
-  @user = current_end_user
+  @user = EndUser.find(params[:id])
+  
 end
 
 def create
