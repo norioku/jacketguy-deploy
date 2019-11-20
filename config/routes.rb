@@ -64,7 +64,7 @@ Rails.application.routes.draw do
       get "users/:id/close" => "users#close",as: "user_close"
       patch "users/:id" => "users#update"
       put "users/:id" => "users#update"
-      delete "users/:id" => "users#destroy",as: "destroy_user"
+      delete "users/:id" => "users#destroy",as: "user_address_delete"
 
     # user_reviewsコントローラ
       get "product/:id/user_reviews" => "user_reviews#index", as: "product_reviews"
@@ -98,7 +98,7 @@ Rails.application.routes.draw do
       get "users/:id/user_addresses/edit" => "user_addresses#edit", as: "user_addresses_edit"
       patch "users/:id/user_addresses" => "user_addresses#update"
       put "users/:id/user_addresses" => "user_addresses#update"
-      delete "users/:id/user_addresses" => "user_addresses#destroy"
+      # delete "users/:id/user_addresses" => "user_addresses#destroy"
 
     # user_order_historiesコントローラ
       get "users/user_order_histories/:id" => "user_order_histories#show", as: "user_order_history"

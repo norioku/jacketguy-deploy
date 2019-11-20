@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   def show
-  	@user = EndUser.find(params[:id])
+    @user = current_end_user
+    @addresses = current_end_user.addresses
+    @favorites = current_end_user.favorites
+    @order_histories = current_end_user.order_histories
+
   	# @user = current_end_user
   end
 
@@ -13,9 +17,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = EndUser.find(params[:id])
-    @user.destroy
-    redirect_to users_close_path
+    @user = current_end_user
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to user_path(@user.id)
   end
 
   def close
