@@ -29,7 +29,7 @@
         <% end %>
         <% unless current_page?(user_carts_edit_path(@user)) %>
           <li class = "nav-item">
-            <%= link_to user_carts_edit_path(@user), class: "nav-link" do %>
+            <%= link_to user_carts_path(@user), class: "nav-link" do %>
               <i class="fas fa-shopping-cart" aria-hidden="true"></i>
             <% end %>
           </li>

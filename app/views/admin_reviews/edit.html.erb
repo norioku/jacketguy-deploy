@@ -2,15 +2,22 @@
   <h2 style = "border: 1px solid black">レビュー編集画面</h2>
 
   <div style = "border: 1px solid black">
-    <h3>商品ID:34</h3>
-    <h4>商品名:aaaaa</h4>
+    <h3>商品ID: <%= @product.product_id %></h3>
+    <h4>商品名: <%= @product.title %></h4>
 
-    <p>ユーザー名○○さん</p>
-    <p>ユーザID: wktk</p>
+    <p>ユーザー名: <%= @user.first_name %> <%= @user.last_name %></p>
+    <p>ユーザID: <%= @user.id %></p>
 
-    <textarea placeholder="とてもいいとてもいい"></textarea>
+    <%= form_with(model: @review, local: true) do |f| %>
 
-    <a href = "#">編集確定</a>
-    <a href = "#">レビュー削除</a>
+      <div class = "form-group">
+        <%= f.label :review_content %>
+        <%= f.text_area :review_content, class: "form-cotrol" %>
+      </div>
+
+    <% end %>
+
+    <p><%= link_to "編集を確定する", admins_review_update_path, method: :patch, class: "btn btn-primary", data: { confirm: "編集を確定してよろしいですか？" } %></p>
+    <p><%= link_to "レビューを隠ぺいする", admins_review_destroy_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に隠ぺいしますか？" } %></p>
   </div>
 </div>

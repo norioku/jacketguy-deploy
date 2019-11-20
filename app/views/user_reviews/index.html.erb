@@ -1,87 +1,80 @@
-<div class = "row">
-    <section class = "product-box">
-      <div class = "product-menu">
-        <h2 class = "page-title">商品詳細</h2>
-        <img src = "#" class = "product-img"><br>
-        <a href = "#" class = "product-favorites">
-          <i class="far fa-heart"></i>○いいね</a><br>
-        <a href = "#" class = "product-reviews">
-          <i class="far fa-file-alt"></i>〇〇件のレビュー</a><br>
+<div class = "row row-bg">
+  <section class = "product-box">
+    <div class = "product-menu">
+      <h2 class = "page-title">商品詳細</h2>
+      <div>
+        <%= image_tag 'wit.png', :size =>'200x200', class: "product-img" %>
       </div>
-
-      <div class = "product-detail">
-        <div>
-          <h2>XXX the BEST</h2>
-          <h3>アーティスト名:○○</h3>
-          <h3>レーベル名:○○</h3>
-
-          <h4>ジャンル</h4>
-          <h4>構成数</h4>
-          <h5>収録曲</h5>
-          <ul>
-            <ol>どんどんDQN</ol>
-            <ol>バンバンBQN</ol>
-            <ol>ランランルー</ol>
-          </ul>
-        </div>
+      <div class = "product-favorites">
+        <%= link_to user_favorites_create_path, method: :post do %>
+          <i class="far fa-heart"><%= @product.favorites.count %></i><span class = "favorite-text">いいね</span>
+        <% end %>
       </div>
-
-      <div style = "float: right;">
-        <strong><span style = "color: red;">1100円!!!</span>(税込)</strong>
-        <p>在庫あり</p>
-        <p>数量<select id="product" name="product">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-            </select></p>
-        <button type = "button">カートに追加する</button>
+      <div class = "product-reviews">
+        <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
       </div>
+    </div>
+
+    <div class = "product-detail">
+      <table class = "table table-bordered table-striped">
+        <tr>
+          <th>タイトル</th>
+          <td class = "product-title"><%= @product.title %></td>
+        </tr>
+        <tr>
+          <th>アーティスト名</th>
+          <td class = "product-title"><%= @product.artist.name %></td>
+        </tr>
+        <tr>
+          <th>レーベル名</th>
+          <td class = "product-title"><%= @product.label.name %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td class = "product-title"><%= @product.genre.name %></td>
+        </tr>
+        <tr>
+          <th>構成数</th>
+          <td class = "product-title"><%= @product.discs.count %></td>
+        </tr>
+        <tr>
+          <th>収録曲</th>
+          <td class = "product-title">
+            <% @product.discs.each do |disc| %>
+              <% disc.songs.each do |song| %>
+                <ol><%= song.name %></ol>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class = "purchase-area">
+      <h2>1100円!!!(税込)</h2>
+      <%= link_to "商品詳細に戻る", product_path(@product), class: "btn btn-success" %>
+    </div>
   </section>
+</div>
+
+<div class = "row row-bg">
+  <div class = "review-box">
+    <h2 class = "review-title">レビュー一覧</h2>
+    <table class = "table table-bordered table-striped review-table">
+      <thead>
+        <tr>
+          <td style = "font-weight: bold">ユーザ名</td>
+          <td style = "font-weight: bold">レビュー</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td class = "review-content"><%= review.end_user.first_name %></td>
+            <td class = "review-content"><%= review.review_content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
-  <div class = "row">
-    <section style = "text-align: center; border: solid 1px black; width: 1100px; height: 400px; margin: 30px auto;">
-
-      <div style = "flaot: left;">
-        <h2 style = "border: 1px solid black; margin-left: 5px; width: 200px;">商品レビュー</h2>
-      </div>
-
-      <div style = "float: left; display: inline-block">
-        <div style = "border: solid 1px black; width: 300px">
-          <p><%= @user.last_kana_name %></p><br>
-          <p><%= @review.review_content %></p>
-        </div>
-
-        <div style = "border: solid 1px black; width: 300px">
-          <p><%= @user.last_kana_name %></p><br>
-          <p><%= @review.review_content %></p>
-        </div>
-
-        <div style = "border: solid 1px black; width: 300px">
-          <p><%= @user.last_kana_name %></p><br>
-          <p><%= @review.review_content %></p>
-        </div>
-      </div>
-
-      <div style = "float: left;">
-        <div style = "border: solid 1px black; width: 300px">
-          <p><%= @user.last_kana_name %></p><br>
-          <p><%= @review.review_content %></p>
-        </div>
-
-        <div style = "border: solid 1px black; width: 300px">
-          <p><%= @user.last_kana_name %></p><br>
-          <p><%= @review.review_content %></p>
-        </div>
-
-        <div style = "border: solid 1px black; width: 300px">
-          <p><%= @user.last_kana_name %></p><br>
-          <p><%= @review.review_content %></p>
-        </div>
-      </div>
-
-      <%= paginate @review %>
-
-    </section>
 </div>
