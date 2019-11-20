@@ -1,7 +1,8 @@
-<div class="col-lg-8">
-		<h1>受注履歴詳細</h1>
+<div class="col-sm-12">
+	<section class = "adminorder-box">
+		<h1 class = "adminorder-title">受注履歴詳細</h1>
+		<h2 class = "adminorder-subtitle">受注ID:&emsp;<%= @order_history.id %>の詳細</h2>
 		<table class="table table-bordered table-striped">
-			<h1>受注ID:&emsp;<%= @order_history.id %>の詳細</h1>
 			<thead>
 		    <tr>
 		      <th>ユーザID</th>
@@ -14,7 +15,7 @@
 		  </thead>
 		  <tbody>
 		     <tr>
-		      <td><%= @user.id %></td>
+		      <td><%= link_to @order_history.end_user.id, admins_user_path(@order_history.end_user) %></td>
 		      <td><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
 			  	<td><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
 		      <td><%= @order_history.address %></td>
@@ -24,8 +25,8 @@
 		  </tbody>
 		</table>
 
-		<h2>受注した商品</h2>
-		<table class="table table-bordered table-striped">
+		<h2 class = "adminorder-subtitle">受注した商品</h2>
+		<table class="table table-bordered table-striped admin-order-ordered-table">
 			<thead>
 		    <tr>
 		      <th>商品ID</th>
@@ -42,18 +43,40 @@
 						<tr>
 							<td><%= product_history.product.id %></td>
 							<td><%= product_history.product.title %></td>
-							<td><%= product_history.product.title %></td>
+							<td><%= product_history.product.artist.name %></td>
 							<td><%= product_history.product.price %></td>
 							<td><%= product_history.order_quantity %></td>
-					  	<td><%= @product_history.product_total_price %></td>
+					  	<td><%= order_history.product_total_price %></td>
 			    	</tr>
 			   <% end %>
 			<% end %>
-		   </tbody>
+		  </tbody>
 		</table>
-		<h1>商品小計: <%= @order_history.product_total_price - @order_history.shipping_fee %></h1>
-		<h1>送料: <%= @order_history.shipping_fee %></h1>
-		<h1>合計金額: <%= @order_history.product_total_price %></h1>
-		<h1><%= link_to "発送する", admins_order_history_update_path, method: :patch, class: "btn btn-primary", date:{ confirm: "本当に発送しましたか?" } %></h1>
-	</div>
+		<section class = "adminorder-price-box">
+			<table class = "table table-bordered table-striped adminorder-price">
+				<tr>
+					<th>商品小計</th>
+					<td><%= @order_history.product_total_price - @order_history.shipping_fee %></td>
+				</tr>
+				<tr>
+					<th>送料</th>
+					<td><%= @order_history.shipping_fee %></td>
+				</tr>
+				<tr>
+					<th>合計金額</th>
+					<td><%= @order_history.product_total_price %></td>
+				</tr>
+			</table>
+		</section>
+
+		<section class = "adminorder-submit">
+			<%= form_with(model: @order_history, url: admins_order_history_update_path, local: true) do |f| %>
+
+				<%= f.hidden_field :shipping_status, :value => @order_history.shipping_status %>
+
+				<%= f.submit "発送する", class: "btn btn-primary btn-block adminorder-button", data: {confirm: "本当に発送しましたか?"} %>
+
+			<% end %>
+		</section>
+	</section>
 </div>

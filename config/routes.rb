@@ -79,7 +79,7 @@ Rails.application.routes.draw do
       post "user/:id/inquiries" => "user_inquiries#create", as: "user_inquiries"
 
     # user_cartsコントローラ
-      get "users/:id/carts/edit" => "user_carts#edit", as: "user_carts_edit"
+      get "users/:id/carts" => "user_carts#index", as: "user_carts"
       patch "users/:id/carts" => "user_carts#update"
       put "users/:id/carts" => "user_carts#update"
       delete "users/:id/carts" => "user_carts#destroy"
