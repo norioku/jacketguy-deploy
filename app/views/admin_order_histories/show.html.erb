@@ -46,7 +46,8 @@
 							<td><%= product_history.product.artist.name %></td>
 							<td><%= product_history.product.price %></td>
 							<td><%= product_history.order_quantity %></td>
-					  	<td><%= order_history.product_total_price %></td>
+							<% product_history.subtotal = product_history.product.price * product_history.order_quantity %>
+					  	<td><%= product_history.subtotal %></td>
 			    	</tr>
 			   <% end %>
 			<% end %>
