@@ -32,9 +32,9 @@ Rails.application.routes.draw do
 
     # admin_reviewsコントローラ
       get "admins/reviews/:id/edit" => "admin_reviews#edit", as: "admins_review_edit"
-      patch "admins/reviews/:id" => "admin_reviews#update"
+      patch "admins/reviews/:id" => "admin_reviews#update", as: "admins_review_update"
       put "admins/reviews/:id" => "admin_reviews#update"
-      delete "admins/reviews/:id" => "admin_reviews#destroy"
+      delete "admins/reviews/:id" => "admin_reviews#destroy", as: "admins_review_destroy"
 
     # admin_order_historiesコントローラ
       get "admins/order_histories" => "admin_order_histories#index"
@@ -67,7 +67,7 @@ Rails.application.routes.draw do
       delete "users/:id" => "users#destroy",as: "destroy_user"
 
     # user_reviewsコントローラ
-      resources :user_reviews, only:[:index]
+      get "product/:id/user_reviews" => "user_reviews#index", as: "product_reviews"
 
     # productsコントローラ
       get "products/search" => "products#search"
@@ -80,8 +80,10 @@ Rails.application.routes.draw do
       post "user/:id/inquiries" => "user_inquiries#create", as: "user_inquiries"
 
     # user_cartsコントローラ
+
+      get "users/:id/carts" => "user_carts#index", as: "user_carts"
       get "users/:id/carts/edit" => "user_carts#edit", as: "user_carts_edit"
-      patch "users/:id/carts" => "user_carts#update",  as: "user_carts_update"
+      patch "users/:id/carts" => "user_carts#update"
       put "users/:id/carts" => "user_carts#update"
       delete "users/:id/carts" => "user_carts#destroy"
 
@@ -104,8 +106,8 @@ Rails.application.routes.draw do
 
 
     # user_favoritesコントローラ
-      post "users/:id/favorites" => "user_favorites#create"
-      delete "users/:id/favorites" => "user_favorites#destroy"
+      post "users/:id/favorites" => "user_favorites#create", as: "user_favorites_create"
+      delete "users/:id/favorites" => "user_favorites#destroy", as: "user_favorites_destroy"
 
     #end_user devise
       devise_for :end_users, controllers: {

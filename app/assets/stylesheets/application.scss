@@ -83,11 +83,13 @@ header {
   margin-right: 30px;
   margin-bottom: 0px;
   cursor: pointer;
+  transition: transform .2s ease-in-out;
 }
 
 .nav-link:hover {
   opacity: 0.6;
   color: pink;
+  transform: rotateZ(10deg);
 }
 
 
@@ -181,18 +183,6 @@ footer {
   justify-content: flex-end;
 }
 
-/*レビュー一覧*/
-.product-box {
-  text-align: center;
-  border: solid 1px black;
-  width: 1000px; height: 400px;
-  margin: 0 auto;
-}
-
-.page-title {
-  border: 1px solid black;
-  margin-left: 5px;
-}
 
 /*ユーザ退会確認画面*/
 

@@ -2,3 +2,108 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.row-bg {
+  background: #60C4B0;
+}
+
+/*左ボックス*/
+
+.product-box {
+  margin: 100px auto;
+  border: 2px solid slategray;
+  border-radius: 2%;
+  height: 500px;
+  background: #eceef1;
+  width: 99%;
+}
+
+.product-menu {
+  display: inline-block;
+  width: 30%;
+  margin-left: 25px;
+}
+
+.page-title {
+  font-size: 30px;
+  text-align: center;
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.product-img {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.product-favorites, .product-reviews {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.fa-heart:hover {
+  color: red;
+}
+
+.favorite-text:hover {
+  text-decoration: none;
+}
+
+
+.product-favorites, .product-reviews {
+  text-decoration: none;
+}
+
+/*中央ボックス*/
+
+.product-detail {
+  width: 40%;
+  margin: 50px 0 0 0;
+  display: inline-block;
+}
+
+/*右ボックス*/
+
+.purchase-area {
+  display: inline-block;
+  width: 20%;
+  margin-left: 50px;
+}
+
+.product-title {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+/*レビュー*/
+
+.review-box {
+  margin: 0 0 100px 0;
+  width: 99%;
+  border: 2px solid slategray;
+  border-radius: 2%;
+  padding: 30px;
+  background: #CCD0D5;
+}
+
+.review-title {
+  font-size: 30px;
+  text-align: center;
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 23%;
+  margin: 0 0 20px 0;
+}
+
+.review-content {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+}

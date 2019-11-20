@@ -1,3 +1,60 @@
 // Place all the styles related to the admin_order_histories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*index*/
+
+.orderhistory-box {
+  margin: 80px 0 100px 0;
+}
+
+.orderhistory-title {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 23%;
+  text-align: center;
+}
+
+/*show*/
+.adminorder-box {
+  border: 2px solid slategray;
+  border-radius: 2%;
+  margin: 80px 0 100px 0;
+  padding: 50px;
+  background: #F4F4F2;
+}
+
+.adminorder-title {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 23%;
+  text-align: center;
+  margin: 0 0 50px 0;
+}
+
+.adminorder-subtitle {
+  background: linear-gradient(transparent 70%, #cdd632 70%);
+  margin: 20px 0;
+  width: 28%;
+  text-align: center;
+}
+
+.admin-order-ordered-table {
+  margin-bottom: 40px;
+}
+
+.adminorder-price-box {
+  margin: 50px auto;
+  
+  width: 50%;
+}
+
+.adminorder-price {
+}
+
+.adminorder-submit {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.adminorder-button {
+}
