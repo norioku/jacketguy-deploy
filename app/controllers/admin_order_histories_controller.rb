@@ -5,11 +5,18 @@ def index
 end
 
 def show
-  @user = EndUser.find(params[:id])
   @order_history = OrderHistory.find(params[:id])
-  @order_histories = OrderHistory.where(end_user_id: @user)
+  @order_histories = OrderHistory.where(end_user_id: @order_history.end_user)
 
-  @product_histories = ProductHistory.where(product_id: @product)
+  # @order_histories.each do |order_history|
+  #   order_history.product_histories.each do |product_history|
+  #     @product_history.subtotal = product_history.product.price * product_history.order_quantity
+  #   end
+  # end
+
+  # @product_history.subtotal.save
+
+
   # binding.pry
   # @product_history.subtotal = @product_histories.order_quantity * @product.price
   # @order_history.product_total_price = @product.price * @product_histories.order_quantity

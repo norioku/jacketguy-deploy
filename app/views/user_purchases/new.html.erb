@@ -1,73 +1,74 @@
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-8 userpurchase-main">
 
-  	<% @user.addresses.each do |address| %>
-			<h2>お届け先住所</h2>
+  	<h2 class = "userpurchase-title">お届け先住所</h2>
 
-			<h3>住所</h3>
-			<th><%= address.address %></th>
+  	<div class = "userpurchase-select">
+  		<% @user.addresses.each do |address| %>
+	  		<div class = "userpurchase-selectbox">
+	  			<table class = "table table-bordered table-striped userpurchase-table">
+	  				<tr>
+							<th>住所</th>
+							<td><%= address.address %></td>
+						</tr>
+						<tr>
+							<th>郵便番号</th>
+							<td><%= address.post_code %></td>
+						</tr>
+						<tr>
+							<th>電話番号</th>
+							<td><%= address.phone_number %></td>
+						</tr>
+						<tr>
+							<th>氏名</th>
+							<td><%= address.first_name %>&ensp;<%= address.last_name %></td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td><%= address.email %></td>
+						</tr>
+					</table>
 
-			<p>郵便番号</p>
-			<th>444-5555</th>
-
-			<p>電話番号</p>
-			<th>000-0000-4545</th>
-
-			<p>氏名</p>
-			<th>もっきー</th>
-
-			<p>メールアドレス</p>
-			<th>ashfu@ajcionsnaci</th>
-		<% end %>
-
-		<p>選択中</p>
-		<p>編集</p>
-
-
-		<div>
-		<h3>住所</h3>
-		<th>河川敷</th>
-		<p>郵便番号</p>
-		<th>231-4231</th>
-		<p>電話番号</p>
-		<th>000-9990-4545</th>
-		<p>氏名</p>
-		<th>いっしー</th>
-		<p>メールアドレス</p>
-		<th>nfoq@fnlenco</th>
-
-
-		<p>選択中</p>
-		<p>編集</p>
+					<div>
+						<%= form_with(model: address, url: user_addresses_update_path, local: true) do |f| %>
+  						<%= f.radio_button :address, :id%>
+						<% end %>
+						<p><%= link_to "編集", user_addresses_edit_path(@user), class: "btn btn-success" %></p>
+					</div>
+				</div>
+			<% end %>
 		</div>
 
-		<p>他のお届け先を追加</p>
+		<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
 	</div>
 
 
-	<div class = "col-sm-4">
-		<h2>支払い方法</h2>
-		<select id="product" name="product">
-			<option value="銀行振込">銀行振込</option>
-			<option value="クレジットカード">クレジットカード</option>
-			<option value="代引き">代引き</option>
-			<option value="指一本">指一本</option>
-		</select>
+	<div class = "col-sm-4 userpurchase-box">
+		<div class = "userpurchase-payment">
+			<h2>支払い方法</h2>
+			<select id="product" name="product">
+				<option value="銀行振込">銀行振込</option>
+				<option value="クレジットカード">クレジットカード</option>
+				<option value="代引き">代引き</option>
+			</select>
+		</div>
 
-		<div>
+		<div class = "userpurchase-fee">
+			
 			<h2>注文内容</h2>
-			<p>商品の小計：1千万円</p>
-			<p>配送料：1億9千万円</p>
-			<p>ご請求額:2億円</p>
-			<p>注文を確定する</p>
+			<p>商品の小計：</p>
+			<p>配送料：</p>
+			<p>ご請求額:</p>
 		</div>
+
 	</div>
 
-	<div class="col-sm-8">
-		<h2>空駆ける天馬</h2>
-		<h3>合唱コンの定番ソング</h3>
-		<p>数量：１</p>
-		<h2>小計：1千万円</h2>
+	<div class="col-sm-8 userpurchase-song">
+		<% @user.carts.each do |cart| %>
+			<h2><%= cart.product.title %></h2>
+			<p>数量：<%= cart.order_quantity %></p>
+			<h2>小計：<%= cart.product.price * cart.order_quantity %></h2>
+		<% end %>
 	</div>
 
 
