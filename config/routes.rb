@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     # admin_inquiriesコントローラ
       get "admins/inquiries" => "admin_inquiries#index"
       get "admins/inquiries/:id" => "admin_inquiries#show", as: "admins_inquiry"
-      post "admins/inquiries/:id" => "admin_inquiries#create"
+      # post "admins/inquiries/:id" => "admin_inquiries#create"
+      patch "admins/inquiries/:id" => "admin_inquiries#create"
 
     # admin_reviewsコントローラ
       get "admins/reviews/:id/edit" => "admin_reviews#edit", as: "admins_review_edit"
@@ -79,7 +80,9 @@ Rails.application.routes.draw do
       post "user/:id/inquiries" => "user_inquiries#create", as: "user_inquiries"
 
     # user_cartsコントローラ
+
       get "users/:id/carts" => "user_carts#index", as: "user_carts"
+      get "users/:id/carts/edit" => "user_carts#edit", as: "user_carts_edit"
       patch "users/:id/carts" => "user_carts#update"
       put "users/:id/carts" => "user_carts#update"
       delete "users/:id/carts" => "user_carts#destroy"
