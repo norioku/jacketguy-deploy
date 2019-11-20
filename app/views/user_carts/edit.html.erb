@@ -1,17 +1,16 @@
 <div>
 	<h1>買い物かご</h1>
 
-		<% @carts.each do |cart| %>
-			<%= cart.product.title %>
-			<%= cart.product.artist.name %>
-			<%= cart.product.label.name %>
-			<%= cart.product.genre.name %>
-			<%= form_for(cart, url:user_carts_update_path(current_end_user) ) do |f| %>
-				<%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],
-				selected:cart.order_quantity %>
+			<%= @cart.product.title %>
+			<%= @cart.product.artist.name %>
+			<%= @cart.product.label.name %>
+			<%= @cart.product.genre.name %>
+			<%= form_for @cart, url:user_carts_update_path(@cart) do |f| %>
+				<%= f.select :order_quantity, [@cart.order_quantity,"1","2","3","4","5"],
+				selected:@cart.order_quantity %>
+			 <%= f.submit "数を変更する" %>
 			<% end %>
 			<br>
-		<% end %>
 
 </div>
 

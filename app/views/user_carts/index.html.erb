@@ -1,0 +1,12 @@
+<div>
+	<h1>買い物かご</h1>
+		<% current_end_user.carts.each do |cart| %>
+			<%= cart.product.title %>
+			<%= cart.product.artist.name %>
+			<%= cart.product.label.name %>
+			<%= cart.product.genre.name %>
+			<%= cart.order_quantity %>
+			<td><span><%= link_to "個数を変更する", user_carts_edit_path(cart.id), :style=>"color:#666;"%></span></td>
+			<br>
+		<% end %>
+</div>
