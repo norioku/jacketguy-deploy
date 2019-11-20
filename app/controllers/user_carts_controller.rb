@@ -4,11 +4,6 @@ class UserCartsController < ApplicationController
 	  @user = current_end_user
 	end
 
-	def edit
-	  @user = current_end_user
-	  @cart = Cart.find(params[:id])
-	end
-
 	def update
       @cart = Cart.find(params[:id])
 	  @cart.update(cart_params)
@@ -16,6 +11,9 @@ class UserCartsController < ApplicationController
 	end
 
 	def destroy
+	  @cart = Cart.find(params[:id])
+	  @cart.destroy
+	  redirect_to user_carts_path
 
 	end
 

@@ -82,10 +82,9 @@ Rails.application.routes.draw do
     # user_cartsコントローラ
 
       get "carts" => "user_carts#index", as: "user_carts"
-      get "carts/:id/edit" => "user_carts#edit", as: "user_carts_edit"
       patch "carts/:id" => "user_carts#update",as: "user_carts_update"
       put "carts/:id" => "user_carts#update"
-      delete "carts/:id" => "user_carts#destroy"
+      delete "carts/:id" => "user_carts#destroy",as: "user_carts_delete"
 
     # user_purchasesコントローラ
       get "users/:id/purchase/new" => "user_purchases#new", as: "user_purchases_new"
