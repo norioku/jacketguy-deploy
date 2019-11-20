@@ -1,63 +1,83 @@
-<div class="main">
-		<div class="prduct-details">
-			<h2>商品詳細</h2>
-			<div class="product-details-section1">
-				<p>商品ID：1345</p>
-				<img src="">
-				<div class="heart"></div>
-				<a href="#">レビューを見る</a>	
-			</div>
-			<div class="product-details-section2">
-				<h2 class="product-name">商品名</h2>
-				<a href="#">アーティスト</a>
-				<a href="#">ジャンル</a>
-				<p>構成数：</p>
-				<div class="song-name-list">
-					<p>収録曲</p>
-					<ol>
-						<li>name1</li>
-						<li>name2</li>
-						<li>name3</li>
-					</ol>
-				</div>	
-			</div>
-			<div class="product-details-section3">
-				<div>10000円(税込)</div>
-				<p>在庫数：125</p>
-				<a href="#">入荷する</a>
-				<a href="#">編集する</a>
-			</div>	
-		</div>
-		<div class="review-columun">
-			<h2>商品レビュー</h2>
-			<div class="review">
-				<p>投稿者</p>
-				<p>レビュー内容</p>
-				<a href="#">編集する</a>	
-			</div>
-			<div class="review">
-				<p>投稿者</p>
-				<p>レビュー内容</p>
-				<a href="#">編集する</a>	
-			</div>
-			<div class="review">
-				<p>投稿者</p>
-				<p>レビュー内容</p>
-				<a href="#">編集する</a>	
-			</div>
-			<div class="review">
-				<p>投稿者</p>
-				<p>レビュー内容</p>
-				<a href="#">編集する</a>	
-			</div>
-		</div>
-		<div class="review-post">
-			<h2>レビュー投稿</h2>
-			<form action="#" method="POST">
-				<p>レビュー内容<br>
-				<p>２００文字以内</p>
-				<textarea cols="30" rows="5"></textarea></p>
-				<p><input type="submit" value="投稿する"></p>
-			</form>
-		</div>
-	</div>
+<div class = "row row-bg">
+  <section class = "product-box">
+    <div class = "product-menu">
+      <h2 class = "page-title">商品詳細</h2>
+      <div>
+       <%= attachment_image_tag @product, :product_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      </div>
+      <div class = "product-favorites">
+        <%= link_to user_favorites_create_path, method: :post do %>
+          <i class="far fa-heart"><%= @product.favorites.count %></i><span class = "favorite-text">いいね</span>
+        <% end %>
+      </div>
+      <div class = "product-reviews">
+        <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
+      </div>
+    </div>
+
+    <div class = "product-detail">
+      <table class = "table table-bordered table-striped">
+        <tr>
+          <th>タイトル</th>
+          <td class = "product-title"><%= @product.title %></td>
+        </tr>
+        <tr>
+          <th>アーティスト名</th>
+          <td class = "product-title"><%= @product.artist.name %></td>
+        </tr>
+        <tr>
+          <th>レーベル名</th>
+          <td class = "product-title"><%= @product.label.name %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td class = "product-title"><%= @product.genre.name %></td>
+        </tr>
+        <tr>
+          <th>構成数</th>
+          <td class = "product-title"><%= @product.discs.count %></td>
+        </tr>
+        <tr>
+          <th>収録曲</th>
+          <td class = "product-title">
+            <% @product.discs.each do |disc| %>
+              <% disc.songs.each do |song| %>
+                <ol><%= song.name %></ol>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class = "purchase-area">
+      <h2><%= @product.sale_status %></h2>
+      <h2>在庫数：<%= @stocks %></h2>
+      <h2><%= @product.price %>円（税込）</h2>
+      <%= link_to "入荷する", admins_arrival_records_new_path, class: "btn btn-success" %>
+      <%= link_to "編集する", admins_products_edit_path(@product), class: "btn btn-success" %>
+    </div>
+  </section>
+</div>
+
+<div class = "row row-bg">
+  <div class = "review-box">
+    <h2 class = "review-title">レビュー一覧</h2>
+    <table class = "table table-bordered table-striped review-table">
+      <thead>
+        <tr>
+          <td style = "font-weight: bold">ユーザ名</td>
+          <td style = "font-weight: bold">レビュー</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td class = "review-content"><%= review.end_user.first_name %></td>
+            <td class = "review-content"><%= review.review_content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

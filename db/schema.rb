@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_112247) do
+ActiveRecord::Schema.define(version: 2019_11_20_090717) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id"
@@ -147,10 +147,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_112247) do
     t.string "product_image_id"
     t.integer "price"
     t.date "release_date"
-    t.string "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.integer "sale_status", limit: 1, default: 0, null: false
     t.index ["deleted_at"], name: "index_products_on_deleted_at"
   end
 

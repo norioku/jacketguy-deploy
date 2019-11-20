@@ -1,17 +1,52 @@
-<h1>商品編集</h1>
-<form action="#" method="POST">
-	<p>アーティスト<input type="text"></p>
-	<p>シングル・アルバム名<input type="text"></p>
-	<p>ジャケット画像<input type="text"></p>
-	<p>価格（税込）<input type="text"></p>
-	<p>発売日<input type="date"></p>
-	<p>レーベル<input type="text"></p>
-	<p>ジャンル<input type="text"></p>
-	<p>ステータス
-		<select name="#">
-		<option value="販売中">販売中</option>
-		<option value="販売停止中">販売停止中</option>
-		</select>
-	</p>
-	<input type="submit" value="内容を更新">
-</form>
+<h1>登録商品編集</h1>
+<%= form_for @admin_product, url:admins_products_update_path do |f| %>
+	<h4>商品名</h4>
+	<%= f.text_field :title %>
+	<h4>アーティスト</h4>
+	  <%= @admin_product.artist.name %>
+	  <%= fields_for @artist do |i| %>
+		<%= i.text_field :name, list: 'artist' %>
+		<datalist id="artist">
+			<% Artist.all.each do |artist| %>
+			<option value="<%= artist.name %>"></option>
+			<% end %>
+		</datalist>
+	  <% end %>
+	<h4>レーベル</h4>
+	  <%= @admin_product.label.name %>
+	  <%= fields_for @label do |i| %>
+		<%= i.text_field :name, list: 'label' %>
+		<datalist id="label">
+			<% Label.all.each do |label| %>
+			<option value="<%= label.name %>"></option>
+			<% end %>
+		</datalist>
+	  <% end %>
+	<h4>ジャンル</h4>
+	  <%= @admin_product.genre.name %>
+	  <%= fields_for @genre do |i| %>
+		<%= i.text_field :name, list: 'genre' %>
+		<datalist id="genre">
+			<% Genre.all.each do |genre| %>
+			<option value="<%= genre.name %>"></option>
+			<% end %>
+		</datalist>
+	  <% end %>
+	<h4>ジャケット画像</h4>
+	<%= attachment_image_tag @admin_product, :product_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+	<%= f.attachment_field :product_image %>
+	<h4>価格(税込)</h4>
+	<%= f.text_field :price %>
+	<h4>発売日</h4>
+	<%= f.date_field :release_date %>
+	<h4>収録曲</h4>
+	  <%= f.fields_for :discs do |disc| %>
+	    <%=render "disc_fields",:f => disc%>
+	  <% end %>
+	  <div class="links">
+		<%= link_to_add_association "ディスクを追加", f, :discs %>
+	  </div>
+	<h4>販売ステータス</h4>
+	<%= f.select :sale_status, Product.sale_statuses.keys.map {|k| [k, k]} %>
+	<%=  f.submit "編集内容を保存する" %>
+<% end %>	
