@@ -1,49 +1,29 @@
 <h2>送り先の追加</h2>
-<%= form_for(@user_addresses) do |f| %>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name ,autocomplete: "last_name" %>
-  </div>
+<%= form_for(@user_address, url: user_address_create_path) do |f| %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name ,autocomplete: "first_name" %>
-  </div>
+    <h4>受取人の名前</h4>
+     <%= f.text_field :first_name %>
 
-  <div class="field">
-    <%= f.label :last_kana_name %><br />
-    <%= f.text_field :last_kana_name ,autocomplete: "last_kana_name" %>
-  </div>
+    <%= f.text_field :last_name %>
 
-  <div class="field">
-    <%= f.label :first_kana_name %><br />
-    <%= f.text_field :first_kana_name ,autocomplete: "first_kana_name" %>
-  </div>
+    <h4></h4>
+    <%= f.text_field :first_kana_name %>
 
-  <div class="field">
-    <%= f.label :post_code %><br />
-    <%= f.text_field :post_code ,autocomplete: "post_code" %>
-  </div>
+    <%= f.text_field :last_kana_name %>
 
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address ,autocomplete: "address" %>
-  </div>
+    <h4>郵便番号</h4>
+    <%= f.text_field :post_code %>
 
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number ,autocomplete: "phone_number" %>
-  </div>
+    <h4>住所</h4>
+    <%= f.text_field :address, :size=>"80" %>
 
-	<div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <h4>電話番号</h4>
+    <%= f.text_field :phone_number %>
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
+    <h4>メールアドレス</h4>
+    <%= f.text_field :email, :size=>"80" %></br>
 
-<%= render "devise/shared/links" %>
+    <%= f.submit '新規登録' %></br>
+
+  <% end %>
