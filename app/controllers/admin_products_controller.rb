@@ -6,8 +6,9 @@ end
 def show
 	@product = Product.find(params[:id])
 	@reviews = Review.where(product_id: @product)
-	@stocks = @product.arrival_records.all.sum(:arrival_product)
-	
+	@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
+	@history_stocks = @product.product_histories.all.sum(:order_quantity)
+	@stocks = @arrival_stocks - @history_stocks
 end
 
 def new
@@ -46,15 +47,20 @@ end
 
 def edit
 	@admin_product = Product.find(params[:id])
-
+	@artist = @admin_product.artist
+    @label = @admin_product.label
+    @genre = @admin_product.genre
 end
 
 def update
 	admin_product = Product.find(params[:id])
+	artist = admin_product.artist
+    label = admin_product.label
+    genre = admin_product.genre
 
-    admin_product.update(artist_params)
-    admin_product.update(label_params)
-    admin_product.update(genre_params)
+    artist.update(artist_params)
+    label.update(label_params)
+    genre.update(genre_params)
 	admin_product.update(product_params)
 
 	redirect_to admins_product_path(admin_product.id)

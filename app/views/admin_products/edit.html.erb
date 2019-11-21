@@ -3,7 +3,6 @@
 	<h4>商品名</h4>
 	<%= f.text_field :title %>
 	<h4>アーティスト</h4>
-	  <%= @admin_product.artist.name %>
 	  <%= fields_for @artist do |i| %>
 		<%= i.text_field :name, list: 'artist' %>
 		<datalist id="artist">
@@ -13,7 +12,6 @@
 		</datalist>
 	  <% end %>
 	<h4>レーベル</h4>
-	  <%= @admin_product.label.name %>
 	  <%= fields_for @label do |i| %>
 		<%= i.text_field :name, list: 'label' %>
 		<datalist id="label">
@@ -23,7 +21,6 @@
 		</datalist>
 	  <% end %>
 	<h4>ジャンル</h4>
-	  <%= @admin_product.genre.name %>
 	  <%= fields_for @genre do |i| %>
 		<%= i.text_field :name, list: 'genre' %>
 		<datalist id="genre">
