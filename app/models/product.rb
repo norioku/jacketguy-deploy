@@ -1,9 +1,13 @@
 class Product < ApplicationRecord
 
   validates :title            ,presence: true
-  # validates :product_image_id ,presence: true
   validates :price            ,presence: true
   validates :release_date     ,presence: true
+
+  enum sale_status:{
+    販売停止中: 0,
+    販売中: 1
+ }
 
   belongs_to :artist
   belongs_to :label
