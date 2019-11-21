@@ -1,23 +1,42 @@
 <div class = "row">
-  <h2 style = "border: 1px solid black">レビュー編集画面</h2>
+  <h2 class = "adminreview-title">レビュー編集画面</h2>
 
-  <div style = "border: 1px solid black">
-    <h3>商品ID: <%= @product.product_id %></h3>
-    <h4>商品名: <%= @product.title %></h4>
+  <div  class = "adminreview-box">
+    <div class = "adminreview-left">
+      <table class = "table table-striped table-bordered">
+        <tr>
+          <th>商品ID</th>
+          <td class = "adminreview-table-content"><%= @review.product.id %></td>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <td class = "adminreview-table-content"><%= @review.product.title %></td>
+        </tr>
+        <tr>
+          <th>ユーザー名</th>
+          <td class = "adminreview-table-content"><%= @review.end_user.first_name %> <%= @review.end_user.last_name %></td>
+        </tr>
+        <tr>
+          <th>ユーザID</th>
+          <td class = "adminreview-table-content"><%= @review.end_user.id %></td>
+        </tr>
+      </table>
+    </div>
 
-    <p>ユーザー名: <%= @user.first_name %> <%= @user.last_name %></p>
-    <p>ユーザID: <%= @user.id %></p>
+    <div class = "adminreview-form">
+      <%= form_with(model: @review, url: admins_review_update_path, local: true) do |f| %>
 
-    <%= form_with(model: @review, local: true) do |f| %>
+        <div class = "form-group adminreview-formgroup">
+          <%= f.label :review_content, "レビュー内容", class: "adminreview-formlabel" %>
+          <%= f.text_area :review_content, class: "form-cotrol adminreview-formcontrol" %>
+        </div>
 
-      <div class = "form-group">
-        <%= f.label :review_content %>
-        <%= f.text_area :review_content, class: "form-cotrol" %>
-      </div>
+        <%= f.submit "編集を確定する", class: "btn btn-success adminreview-success", data: { confirm: "編集を確定してよろしいですか？" } %>
 
-    <% end %>
+        <%= link_to "レビューを隠ぺいする", admins_review_destroy_path, method: :delete, class: "btn btn-danger adminreview-destory", data: { confirm: "本当に隠ぺいしますか？" } %>
 
-    <p><%= link_to "編集を確定する", admins_review_update_path, method: :patch, class: "btn btn-primary", data: { confirm: "編集を確定してよろしいですか？" } %></p>
-    <p><%= link_to "レビューを隠ぺいする", admins_review_destroy_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に隠ぺいしますか？" } %></p>
+      <% end %>
+
+    </div>
   </div>
 </div>

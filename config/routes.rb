@@ -81,15 +81,14 @@ Rails.application.routes.draw do
 
     # user_cartsコントローラ
 
-      get "users/:id/carts" => "user_carts#index", as: "user_carts"
-      get "users/:id/carts/edit" => "user_carts#edit", as: "user_carts_edit"
-      patch "users/:id/carts" => "user_carts#update"
-      put "users/:id/carts" => "user_carts#update"
-      delete "users/:id/carts" => "user_carts#destroy"
+      get "carts" => "user_carts#index", as: "user_carts"
+      patch "carts/:id" => "user_carts#update",as: "user_carts_update"
+      put "carts/:id" => "user_carts#update"
+      delete "carts/:id" => "user_carts#destroy",as: "user_carts_delete"
 
     # user_purchasesコントローラ
       get "users/:id/purchase/new" => "user_purchases#new", as: "user_purchases_new"
-      post "users/:id/purchase" => "user_purchases#create"
+      post "users/:id/purchase" => "user_purchases#create", as: "user_purchases_create"
       get "users/purchase/complete" => "user_purchases#complete"
 
     # user_addressesコントローラ
@@ -97,7 +96,7 @@ Rails.application.routes.draw do
       get "users/:id/user_addresses/new" => "user_addresses#new", as: "user_addresses_new"
       post "users/:id/user_addresses/new" => "user_addresses#create"
       get "users/:id/user_addresses/edit" => "user_addresses#edit", as: "user_addresses_edit"
-      patch "users/:id/user_addresses" => "user_addresses#update"
+      patch "users/:id/user_addresses" => "user_addresses#update", as: "user_addresses_update"
       put "users/:id/user_addresses" => "user_addresses#update"
       delete "users/:id/user_addresses" => "user_addresses#destroy"
 

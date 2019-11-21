@@ -7,7 +7,7 @@ class OrderHistory < ApplicationRecord
   validates :post_code            ,presence: true
   validates :address              ,presence: true
   validates :phone_number         ,presence: true
-  validates :product_total_price  ,presence: true
+
   validates :shipping_fee         ,presence: true
   validates :shipping_status      ,presence: true
 

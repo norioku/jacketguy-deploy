@@ -38,6 +38,7 @@
 		    </tr>
 		   </thead>
 			 <tbody>
+			 	<% all_amount = 0 %>
 			 	<% @order_histories.each do |order_history| %>
 					<% order_history.product_histories.each do |product_history| %>
 						<tr>
@@ -46,7 +47,10 @@
 							<td><%= product_history.product.artist.name %></td>
 							<td><%= product_history.product.price %></td>
 							<td><%= product_history.order_quantity %></td>
-					  	<td><%= order_history.product_total_price %></td>
+							<% product_history.subtotal = product_history.product.price * product_history.order_quantity %>
+							<% all_amount += product_history.subtotal %>
+							<% product_history.save %>
+					  	<td><%= product_history.subtotal %></td>
 			    	</tr>
 			   <% end %>
 			<% end %>
@@ -56,7 +60,11 @@
 			<table class = "table table-bordered table-striped adminorder-price">
 				<tr>
 					<th>商品小計</th>
-					<td><%= @order_history.product_total_price - @order_history.shipping_fee %></td>
+					<td>
+						<br />
+						<%= all_amount.to_s %>
+
+					</td>
 				</tr>
 				<tr>
 					<th>送料</th>
@@ -72,7 +80,7 @@
 		<section class = "adminorder-submit">
 			<%= form_with(model: @order_history, url: admins_order_history_update_path, local: true) do |f| %>
 
-				<%= f.hidden_field :shipping_status, :value => @order_history.shipping_status %>
+				<%= f.hidden_field :shipping_status, :value => "発送済" %>
 
 				<%= f.submit "発送する", class: "btn btn-primary btn-block adminorder-button", data: {confirm: "本当に発送しましたか?"} %>
 
