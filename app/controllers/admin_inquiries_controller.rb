@@ -28,3 +28,4 @@ class AdminInquiriesController < ApplicationController
 
 end
 
+
