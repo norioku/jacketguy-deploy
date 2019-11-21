@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       get "admins/users" => "admin_endusers#index"
       get "admins/users/:id" => "admin_endusers#show", as: "admins_user"
       get "admins/users/:id/edit" => "admin_endusers#edit", as: "admins_users_edit"
-      post "admins/users/:id" => "admin_endusers#create"
-      delete "admins/users/:id" => "admin_endusers#destroy"
+      patch "admins/users/:id" => "admin_endusers#update", as: "admins_users_update"
+      delete "admins/users/:id" => "admin_endusers#destroy", as:"admins_users_destroy"
 
     # admin_productsコントローラ
       get "admins/products/new" => "admin_products#new"
@@ -62,9 +62,9 @@ Rails.application.routes.draw do
       get "users/:id" => "users#show", as: "user"
       get "users/:id/edit" => "users#edit",as: "users_edit"
       get "users/:id/close" => "users#close",as: "user_close"
-      patch "users/:id" => "users#update"
+      patch "users/:id" => "users#update",as:"user_update"
       put "users/:id" => "users#update"
-      delete "users/:id" => "users#destroy",as: "user_address_delete"
+      delete "users/:id" => "users#destroy",as: "destroy_user"
 
     # user_reviewsコントローラ
       get "product/:id/user_reviews" => "user_reviews#index", as: "product_reviews"
@@ -94,11 +94,11 @@ Rails.application.routes.draw do
     # user_addressesコントローラ
       get "users/:id/user_addresses" => "user_addresses#show", as: "user_address"
       get "users/:id/user_addresses/new" => "user_addresses#new", as: "user_addresses_new"
-      post "users/:id/user_addresses/new" => "user_addresses#create"
+      post "users/:id/user_addresses/new" => "user_addresses#create", as:"user_address_create"
       get "users/:id/user_addresses/edit" => "user_addresses#edit", as: "user_addresses_edit"
       patch "users/:id/user_addresses" => "user_addresses#update", as: "user_addresses_update"
       put "users/:id/user_addresses" => "user_addresses#update"
-      # delete "users/:id/user_addresses" => "user_addresses#destroy"
+      delete "users/:id/user_addresses" => "user_addresses#destroy",as: "user_address_destroy"
 
     # user_order_historiesコントローラ
       get "users/user_order_histories/:id" => "user_order_histories#show", as: "user_order_history"
@@ -114,6 +114,7 @@ Rails.application.routes.draw do
       passwords:     'users/passwords',
       registrations: 'users/registrations'
     }
+
 
 
 

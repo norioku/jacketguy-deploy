@@ -29,7 +29,8 @@
 						    <tr>
 						    <td><%= address.id %></td>
 						     <td><%= address.address %> </td>
-						     <td class="option">&ensp;<%= link_to 'Destroy',user_address_delete_path(address.id), class: "btn-sm btn-danger", method: :delete %></td>
+						     <td class="option">&ensp;<%= link_to '住所を削除',user_address_destroy_path(address.id), class: "btn-sm btn-danger", method: :delete %></td>
+
 						    </tr>
 						    <br>
 						    <% end %>
