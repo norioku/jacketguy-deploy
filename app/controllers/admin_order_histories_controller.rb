@@ -6,7 +6,7 @@ end
 
 def show
   @order_history = OrderHistory.find(params[:id])
-  @order_histories = OrderHistory.where(end_user_id: @order_history.end_user)
+  @product_histories = ProductHistory.where(order_history_id: @order_history)
 
   # @order_histories.each do |order_history|
   #   order_history.product_histories.each do |product_history|
