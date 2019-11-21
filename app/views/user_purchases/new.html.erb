@@ -35,14 +35,26 @@
 					</div>
 				</div>
 			<% end %>
+
+			<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
 		</div>
 
-		<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
+		<div class="col-sm-8 userpurchase-song">
+			<% total_price = 0 %>
+				<% @user.carts.each do |cart| %>
+					<h2><%= cart.product.title %></h2>
+					<p>数量：<%= cart.order_quantity %></p>
+					<h2>小計：<%= cart.product.price * cart.order_quantity %></h2>
+				
+				<% total_price += cart.product.price * cart.order_quantity %>
+				<% end %>
+
+		</div>
 	</div>
 
 	<div class = "col-sm-4 userpurchase-box">
 		<div class = "userpurchase-payment">
-			<h2>支払い方法</h2>
+			<h2 class = "userpurchase-ordertitle">支払い方法</h2>
 			<select id="product" name="product">
 				<option value="銀行振込">銀行振込</option>
 				<option value="クレジットカード">クレジットカード</option>
@@ -50,27 +62,24 @@
 			</select>
 		</div>
 
-		<div class = "userpurchase-fee">
+		<div class = "userpurchase-feebox">
 
-			<h2>注文内容</h2>
-			<p>商品の小計：<!-- < @product_history.subtotal > --></p>
-			<p>配送料：<%= @product_history.shipping_fee %></p>
-			<p>ご請求額: <!-- < @order_history.product_total_price > --></p>
+			<h2 class = "userpurchase-ordertitle">注文内容</h2>
+
+			<div class = "userpurchase-fee">
+					<p>商品の小計：<%= total_price - @order_history.shipping_fee %></p>
+					<p>配送料：<%= @order_history.shipping_fee %></p>
+					<p>ご請求: <%= total_price %></p>
+
+
+				<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
+
+			<% end %>
+			</div>
 		</div>
-		<%= f.submit "購入を確定", class: "btn btn-primary" %>
-		<% end %>
 	</div>
 
-	<div class="col-sm-8 userpurchase-song">
-		<% total_price = 0 %>
-		<% @user.carts.each do |cart| %>
-			<h2><%= cart.product.title %></h2>
-			<p>数量：<%= cart.order_quantity %></p>
-			<h2>小計：<%= cart.product.price * cart.order_quantity %></h2>
-			<% total_price += cart.product.price * cart.order_quantity %>
-		<% end %>
-		<h1>合計：<%= total_price %></h1>
-	</div>
+
 
 
 </div>

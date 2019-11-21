@@ -28,7 +28,6 @@
 /*new*/
 
 .userpurchase-main {
-  background: #F5F1E9;
   margin: 70px 0;
 }
 
@@ -40,6 +39,9 @@
 }
 
 .userpurchase-select {
+  background: #F5F1E9;
+  margin-bottom: 50px;
+  padding: 50px;
 }
 
 .userpurchase-selectbox {
@@ -57,11 +59,21 @@
   margin-bottom: 70px;
 }
 
+.userpurchase-ordertitle {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width:50%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .userpurchase-fee {
   background: #B7B7B7;
+  padding: 30px;
+  border-radius: 2%;
 }
 
 .userpurchase-song {
   background: #E6E5E1;
   margin-bottom: 100px;
+  width: 100%;
 }
