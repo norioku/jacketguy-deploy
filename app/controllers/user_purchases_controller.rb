@@ -18,6 +18,8 @@ def create
     @product_history.save
   end
 
+  @product_history = @order_history.where()
+
   if @user.save
     @user.carts.destroy
     redirect_to users_purchase_complete_path

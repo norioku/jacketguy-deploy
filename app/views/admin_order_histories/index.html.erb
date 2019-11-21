@@ -1,7 +1,7 @@
 <div class="col-sm-12">
   <div class = "orderhistory-box">
 		<h2 class = "orderhistory-title">受注履歴一覧</h2>
-		<table class="table table-bordered table-striped">
+		<table class="table table-bordered table-striped orderhistroy-table">
 		  <thead>
 		    <tr>
 		      <th>受注ID</th>
@@ -14,11 +14,11 @@
 		  <tbody>
 		  	<% @order_histories.each do |order_history| %>
 		    <tr>
-		      <td><%= link_to order_history.id, admins_order_history_path(order_history) %></td>
-		      <td><%= order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
-			  	<td><%= order_history.last_name %>&nbsp;<%= order_history.first_name %></td>
-		      <td><%= order_history.product_total_price %></td>
-		      <td><%= order_history.shipping_status %></td>
+		      <td class = "orderhistory-table-data1"><%= link_to order_history.id, admins_order_history_path(order_history), class: "table-data1-a" %></td>
+		      <td class = "orderhistory-table-data1"><%= order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
+			  	<td class = "orderhistory-table-data2"><%= order_history.last_name %>&nbsp;<%= order_history.first_name %></td>
+		      <td class = "orderhistory-table-data2"><!--<order_historyのproduct_total_price入れる>--></td>
+		      <td class = "orderhistory-table-data2"><%= order_history.shipping_status %></td>
 		    </tr>
 		    <% end %>
 		  </tbody>

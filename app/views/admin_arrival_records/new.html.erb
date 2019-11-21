@@ -1,30 +1,40 @@
-<div>
-  <h1 style = "border: 1px solid black">入荷商品入力フォーム</h1>
+<div class = "row">
+  <div class = "col-sm-12  adminarrival-box">
+    <h1 class = "adminarrival-title">入荷商品入力フォーム</h1>
 
-  <div style = "border: 1px solid black">
-    <h3>商品ID:<%= @product.id %></h3>
-    <h3>商品タイトル:<%= @product.title %></h3>
-  </div>
+    <div class = "adminarrival-product">
+      <table class = "table table-bordered table-striped arrivalrecord-table">
+        <tr>
+          <th>商品ID</th>
+          <td class = "orderhistory-table-data1"><%= @product.id %></td>
+        </tr>
+        <tr>
+          <th>商品タイトル</th>
+          <td class = "orderhistory-table-data2"><%= @product.title %></td>
+        </tr>
+      </table>
+    </div>
 
-  <div>
-    <%= form_with(model: @admin_arrival, url: admins_arrival_records_create_path, local: true) do |f| %>
+    <div class = "adminarrival-formarea">
+      <%= form_with(model: @admin_arrival, url: admins_arrival_records_create_path, local: true) do |f| %>
 
-      <%= f.hidden_field :product_id, :value => @product.id %>
+        <%= f.hidden_field :product_id, :value => @product.id %>
 
-      <div class = "form-group">
-        <%= f.label :arrival_product %>
-        <%= f.number_field :arrival_product, class: "form-control" %>
-      </div>
+        <div class = "form-group adminarrival-form-box">
+          <%= f.label :arrival_product, "入荷個数" %>
+          <%= f.number_field :arrival_product, class: "form-control adminarrival-form" %>
+        </div>
 
-      <div class = "form-group">
-        <%= f.label :arrival_product_at %>
-        <%= f.datetime_field :arrival_product_at, class: "form-control" %>
-      </div>
+        <div class = "form-group adminarrival-form-box">
+          <%= f.label :arrival_product_at, "入荷日時" %>
+          <%= f.datetime_field :arrival_product_at, class: "form-control adminarrival-form" %>
+        </div>
 
-      <%= f.submit "登録する", class: "btn btn-primary" %>
+        <%= f.submit "登録する", class: "btn btn-primary btn-block" %>
 
-    <% end %>
+      <% end %>
 
+    </div>
   </div>
 
 </div>

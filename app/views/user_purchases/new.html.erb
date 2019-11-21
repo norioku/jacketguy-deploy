@@ -31,7 +31,7 @@
 
 					<div>
 						<%= form_with(model: address, url: user_addresses_update_path, local: true) do |f| %>
-  						<%= f.radio_button :address, :id%>
+  						<%= f.radio_button :address, :id %>
 						<% end %>
 						<p><%= link_to "編集", user_addresses_edit_path(@user), class: "btn btn-success" %></p>
 					</div>
@@ -56,9 +56,9 @@
 		<div class = "userpurchase-fee">
 			
 			<h2>注文内容</h2>
-			<p>商品の小計：</p>
-			<p>配送料：</p>
-			<p>ご請求額:</p>
+			<p>商品の小計：<%= @product_history.subtotal %></p>
+			<p>配送料：<%= @product_history.shipping_fee %></p>
+			<p>ご請求額: <%= @order_history.product_total_price %></p>
 		</div>
 
 	</div>
