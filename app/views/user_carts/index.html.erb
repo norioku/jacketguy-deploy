@@ -1,35 +1,43 @@
-<div>
+
 	<h1>買い物かご</h1>
-
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">タイトル</th>
-		      <th scope="col">アーティスト</th>
-		      <th scope="col">レーベル</th>
-		      <th scope="col">ジャンル</th>
-		      <th scope="col">枚数</th>
-		    </tr>
-		  </thead>
-
+	<div class="col-xs-9" >
+		<section class = "purchase-products-box">
 			<% current_end_user.carts.each do |cart| %>
-		    <tr>
-		      <td><span><%= cart.product.title %></span></td>
-		      <td><span><%= cart.product.artist.name %></span></td>
-		      <td><span><%= cart.product.label.name %></span></td>
-		      <td><span><%= cart.product.genre.name %></span></td>
-		      <td><span><%= cart.order_quantity %></span></td>
+			<div class = "purchase-product">
 
+			  <%= image_tag 'wit.png', :size =>'60x60', class: "purchase-product-img" %>
+
+		      <div class="purchase-product-info">
+			      <div>
+			      	<%= cart.product.title %>
+			      </div>
+			      <div>
+			      <%= cart.product.artist.name %>
+			      <%= cart.product.label.name %>
+			      <%= cart.product.genre.name %>
+			      <h3><%= cart.product.price %>円(税込)</h3>
+			      </div>
+		      </div>
+
+		      <div class = "purchase-product-option">
 		      <%= form_for(cart, url: user_carts_update_path(cart), method: :patch) do |f| %>
 		      <%= f.hidden_field :id, :value => cart.id %> <!-- attendancesテーブルのidを渡す -->
-		      <td> <%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],
-				selected:cart.order_quantity %>
-			  <%= f.submit "購入枚数を変更する" %>
+		      <%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],
+				selected:cart.order_quantity %>枚
+			  <%= f.submit "枚数変更" %>
 			  <% end %>
-			  </td>
+		      <%= link_to 'Destroy',user_carts_delete_path(cart.id), class: "btn-sm btn-danger", method: :delete %>
+		      </div>
 
-		      <td class="option"><%= link_to 'Destroy',user_carts_delete_path(cart.id), class: "btn-sm btn-danger", method: :delete %></td>
-		    </td>
+		  	</div>
 		  	<% end %>
-        </table>
-</div>
+
+		</section>
+	</div>
+
+	<div class="col-xs-3" >
+		<section class = "purchase-box">
+
+
+		</section>
+	</div>
