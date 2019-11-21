@@ -42,7 +42,7 @@
           <td class = "product-title">
             <% @product.discs.each do |disc| %>
               <% disc.songs.each do |song| %>
-                <ol><%= song.name %></ol>
+                <ol><%= song.song_num %>:<%= song.name %></ol>
               <% end %>
             <% end %>
           </td>
