@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get "admins/products/:id" => "admin_products#show", as: "admins_product"
       post "admins/products" => "admin_products#create"
       get "admins/products/:id/edit" => "admin_products#edit", as: "admins_products_edit"
-      patch "admins/products/:id" => "admin_products#update"
+      patch "admins/products/:id" => "admin_products#update",as: "admins_products_update"
       put "admins/products/:id" => "admin_products#update"
       delete "admins/products/:id" => "admin_products#destroy"
 

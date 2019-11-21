@@ -1,9 +1,15 @@
 class AdminProductsController < ApplicationController
 
 def index
+	@products = Product.all
 end
 
 def show
+	@product = Product.find(params[:id])
+	@reviews = Review.where(product_id: @product)
+	@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
+	@history_stocks = @product.product_histories.all.sum(:order_quantity)
+	@stocks = @arrival_stocks - @history_stocks
 end
 
 def new
@@ -30,22 +36,35 @@ def create
 		genre.save
 	end
 
-
-
 	admin_product = Product.new(product_params)
 	admin_product.artist_id = Artist.find_by(name:artist.name).id
 	admin_product.label_id = Label.find_by(name:label.name).id
 	admin_product.genre_id =  Genre.find_by(name:genre.name).id
+
 	admin_product.save
 
-
-	redirect_to admins_arrival_records_new_path
+	redirect_to admins_arrival_records_new_path(admin_product.id)
 end
 
 def edit
+	@admin_product = Product.find(params[:id])
+	@artist = @admin_product.artist
+    @label = @admin_product.label
+    @genre = @admin_product.genre
 end
 
 def update
+	admin_product = Product.find(params[:id])
+	artist = admin_product.artist
+    label = admin_product.label
+    genre = admin_product.genre
+
+    artist.update(artist_params)
+    label.update(label_params)
+    genre.update(genre_params)
+	admin_product.update(product_params)
+
+	redirect_to admins_product_path(admin_product.id)
 end
 
 def destroy
@@ -53,7 +72,9 @@ end
 
 private
 def product_params
-	params.require(:product).permit(:title,:price,:release_date,:product_image,disc_attributes: [:id, :disc_num, :_destroy, :created_at, :updated_at, song_attributes: [:id, :song_num, :name, :_destroy, :created_at, :updated_at]])
+	params.require(:product).permit(:title,:price,:release_date,:product_image, :sale_status,
+	  discs_attributes: [:id, :disc_num, :_destroy, :created_at, :updated_at,
+	  songs_attributes: [:id, :song_num, :name, :_destroy, :created_at, :updated_at]])
 end
 
 def artist_params

@@ -1,36 +1,40 @@
 <h1>登録商品一覧</h1>
-<div>
-	<table>
-		<thead>
-			<tr>
-				<th>登録日時</th>
-				<th>商品ID</th>
-				<th>商品画像</th>
-				<th>商品タイトル</th>
-				<th>アーティスト</th>
-				<th>ジャンル</th>
-				<th>レーベル</th>
-				<th>価格（税込）</th>
-				<th>ステータス</th>
-				<th>在庫数</th>
-			</tr>
-			<tbody>
-				<tr>
-					<td>2019/10/10</td>
-					<td>1231</td>
-					<td></td>
-					<td>uiuiuiui</td>
-					<td>takuzou</td>
-					<td>metal</td>
-					<td>sony</td>
-					<td>11000</td>
-					<td>販売中</td>
-					<td>23</td>
-				</tr>
-			</tbody>
-		</thead>
-	</table>
-	<a href="#">1</a>
-	<a href="#">2</a>
-	<a href="#">3</a>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">登録日時</th>
+		      <th scope="col">商品ID</th>
+		      <th scope="col">商品タイトル</th>
+		      <th scope="col">商品画像</th>
+		      <th scope="col">アーティスト</th>
+		      <th scope="col">レーベル</th>
+		      <th scope="col">ジャンル</th>
+		      <th scope="col">価格（税込）</th>
+		      <th scope="col">ステータス</th>
+		      <th scope="col">在庫数</th>
+		    </tr>
+		  </thead>
+
+		<% @products.each do |product| %>
+		    <tr>
+		      <td><span><%= product.created_at %></span></td>
+		      <td><span><%= product.id %></span></td>
+		      <td><span><%= product.title %></span></td>
+		      <td><span><%= attachment_image_tag product, :product_image,
+		       fallback: "no_image.jpg", size: "50x50" %></span></td>
+		      <td><span><%= product.artist.name %></span></td>
+		      <td><span><%= product.label.name %></span></td>
+		      <td><span><%= product.genre.name %></span></td>
+		      <td><span><%= product.price %></span></td>
+		      <td><span><%= product.sale_status %></span></td>
+		      <% arrival_stocks = product.arrival_records.all.sum(:arrival_product) %>
+		      <% history_stocks = product.product_histories.all.sum(:order_quantity) %>
+		      <td><span><%= stock = arrival_stocks - history_stocks %></span></td>
+		    </td>
+		  <% end %>
+        </table>
+
+
+
+  </div>
 </div>
