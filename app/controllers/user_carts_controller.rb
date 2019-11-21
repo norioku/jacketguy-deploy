@@ -1,20 +1,26 @@
 class UserCartsController < ApplicationController
-	
-	def edit
-	  @user = EndUser.find(params[:id])
-	  @carts = Cart.where(end_user_id:@user)
+
+	def index
+	  @user = current_end_user
 	end
 
 	def update
-      @carts = Cart.where(end_user_id:@user)
-	  if @carts.update(inquiry_params)
-	  	 redirect_to admins_inquiry_path(@inquiry)
-	  else
-	  	render
-	  end
+      @cart = Cart.find(params[:id])
+	  @cart.update(cart_params)
+	  redirect_to user_carts_path
 	end
 
 	def destroy
+	  @cart = Cart.find(params[:id])
+	  @cart.destroy
+	  redirect_to user_carts_path
+
+	end
+
+	  private
+
+	def cart_params
+  		params.require(:cart).permit(:order_quantity)
 	end
 end
 

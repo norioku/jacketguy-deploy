@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_112247) do
+ActiveRecord::Schema.define(version: 2019_11_21_054000) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id"
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 2019_11_18_112247) do
     t.string "address"
     t.string "phone_number"
     t.integer "product_total_price"
-    t.integer "shipping_fee"
-    t.integer "shipping_status"
+    t.integer "shipping_fee", default: 500
+    t.integer "shipping_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -147,10 +147,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_112247) do
     t.string "product_image_id"
     t.integer "price"
     t.date "release_date"
-    t.string "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.integer "sale_status", limit: 1, default: 0, null: false
     t.index ["deleted_at"], name: "index_products_on_deleted_at"
   end
 
@@ -171,5 +171,3 @@ ActiveRecord::Schema.define(version: 2019_11_18_112247) do
   end
 
 end
-
-

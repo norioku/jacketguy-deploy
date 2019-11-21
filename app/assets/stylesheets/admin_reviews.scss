@@ -1,3 +1,61 @@
 // Place all the styles related to the admin_reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.adminreview-title {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 25%;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.adminreview-box {
+  border: 2px solid slategray;
+  border-radius: 2%;
+  margin-bottom: 100px;
+  height: 320px;
+  background: #F1F0EE;
+}
+
+.adminreview-left {
+  width: 30%;
+  display: inline-block;
+  margin: 50px;
+}
+
+.adminreview-table-content {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.adminreview-form {
+  display: inline-block;
+  width: 50%;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.adminreview-formgroup {
+  /*margin-bottom: 30px;*/
+}
+
+.adminreview-formcontrol {
+  width: 100%;
+  height: 150px;
+  border-radius: 2%;
+}
+
+.adminreview-formlabel {
+  font-size: 20px;
+}
+
+.adminreview-success {
+  margin-left: 100px;
+}
+
+.adminreview-destory {
+  display: inline-block;
+  text-align: right;
+  margin: 0 0 40px 30px;
+}
