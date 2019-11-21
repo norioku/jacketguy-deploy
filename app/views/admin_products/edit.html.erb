@@ -30,7 +30,7 @@
 		</datalist>
 	  <% end %>
 	<h4>ジャケット画像</h4>
-	<%= attachment_image_tag @admin_product, :product_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+	<%= attachment_image_tag @admin_product, :product_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
 	<%= f.attachment_field :product_image %>
 	<h4>価格(税込)</h4>
 	<%= f.text_field :price %>
