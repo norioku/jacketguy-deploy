@@ -3,12 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-box {
-  border: 2px solid slategray;
-  border-radius: 10%;
+  border-radius: 5%;
   margin: 100px 70px 0 0;
   text-align: center;
-  height: 500px;
-  transition: transform .3s ease-in-out;
+  background: #E3DECC;
+  padding-bottom: 30px;
+}
+
+.user-information-contetnt {
+  font-size: 20px;
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.user-information-button {
+
 }
 
 
@@ -21,20 +29,39 @@
 
 .user-information-title {
   background: skyblue;
+  border-radius: 5%;
+  font-size: 16px;
 }
 
 .order-box {
   margin: 100px 0;
+  background: #E6E5E1;
+  border-radius: 5%;
+  padding: 30px;
 }
 
 .order-title {
   background: limegreen;
   text-align: center;
   width: 50%;
+  margin-bottom: 50px;
+  border-radius: 5%;
 }
 
 .order-sub-title {
   background: skyblue;
   text-align: center;
   width: 50%;
+  margin: 30px;
+  border-radius: 5%;
+}
+
+.order-table-head {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.order-table-data {
+  font-size: 16px;
+  font-family: 'Kosugi Maru', sans-serif;
 }

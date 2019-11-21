@@ -2,7 +2,7 @@
   <div class="col-sm-8 userpurchase-main">
 
   	<h2 class = "userpurchase-title">お届け先住所</h2>
-
+<%= form_with(model: OrderHistory, url: user_purchases_create_path, local: true) do |f| %>
   	<div class = "userpurchase-select">
   		<% @user.addresses.each do |address| %>
 	  		<div class = "userpurchase-selectbox">
@@ -30,9 +30,7 @@
 					</table>
 
 					<div>
-						<%= form_with(model: address, url: user_addresses_update_path, local: true) do |f| %>
-  						<%= f.radio_button :address, :id%>
-						<% end %>
+  						<%= f.radio_button :address_id, address.id %>
 						<p><%= link_to "編集", user_addresses_edit_path(@user), class: "btn btn-success" %></p>
 					</div>
 				</div>
@@ -41,7 +39,6 @@
 
 		<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
 	</div>
-
 
 	<div class = "col-sm-4 userpurchase-box">
 		<div class = "userpurchase-payment">
@@ -54,21 +51,25 @@
 		</div>
 
 		<div class = "userpurchase-fee">
-			
-			<h2>注文内容</h2>
-			<p>商品の小計：</p>
-			<p>配送料：</p>
-			<p>ご請求額:</p>
-		</div>
 
+			<h2>注文内容</h2>
+			<p>商品の小計：<!-- < @product_history.subtotal > --></p>
+			<p>配送料：<%= @product_history.shipping_fee %></p>
+			<p>ご請求額: <!-- < @order_history.product_total_price > --></p>
+		</div>
+		<%= f.submit "購入を確定", class: "btn btn-primary" %>
+		<% end %>
 	</div>
 
 	<div class="col-sm-8 userpurchase-song">
+		<% total_price = 0 %>
 		<% @user.carts.each do |cart| %>
 			<h2><%= cart.product.title %></h2>
 			<p>数量：<%= cart.order_quantity %></p>
 			<h2>小計：<%= cart.product.price * cart.order_quantity %></h2>
+			<% total_price += cart.product.price * cart.order_quantity %>
 		<% end %>
+		<h1>合計：<%= total_price %></h1>
 	</div>
 
 
