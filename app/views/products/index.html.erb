@@ -31,8 +31,10 @@
 
 						</div>
 						<div>
+
 							<%= link_to "#{rank.title}",product_path(rank.id) %>
-							<%= link_to "#{rank.artist.name}",products_search_path %>
+							<%= rank.artist.name %>
+
 							<%= rank.price %>
 						</div>
 					<% end %>
