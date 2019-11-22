@@ -9,10 +9,6 @@ class ProductsController < ApplicationController
   	 # @product = Product.find(params[:id])
      @user = current_end_user
 
-     @search_params = product_search_params
-     @product = Product.search(@search_params).includes(:product)
-
-
   end
 
   def show
@@ -24,6 +20,12 @@ class ProductsController < ApplicationController
      @history_stocks = @product.product_histories.all.sum(:order_quantity)
      @stocks = @arrival_stocks - @history_stocks
   end
+
+  def search
+    @search_params = product_search_params
+    @product = Product.search(@search_params)
+  end
+
 
 end
 

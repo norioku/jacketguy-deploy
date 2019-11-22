@@ -11,7 +11,8 @@ end
 def create
 
   @user = EndUser.find(params[:id])
-  @address = Address.find(params[:order_history][:address_id].to_i)
+  @address = Address.find(params[:order_history][:address_id].to_i) unless params[:order_history][:address_id].to_i = 0
+  @user_id = @user.find(params[:order_history][:end_user_id].to_i) unless params[:order_history][:end_user_id].to_i = 0
 
   @order_history = OrderHistory.new
 
@@ -66,7 +67,7 @@ end
 private
 
   def order_history_params
-    params.require(:order_history).permit(:address_id, :product_total_price)
+    params.require(:order_history).permit(:end_user_id, :address_id, :product_total_price)
   end
 
 
