@@ -18,7 +18,7 @@
 		<% @products.each do |product| %>
 		    <tr>
 		      <td><span><%= product.created_at %></span></td>
-		      <td><span><%= product.id %></span></td>
+		      <td><span><%= link_to"#{product.id}", admins_product_path(product.id) %></span></td>
 		      <td><span><%= product.title %></span></td>
 		      <td><span><%= attachment_image_tag product, :product_image,
 		       fallback: "no_image.jpg", size: "50x50" %></span></td>

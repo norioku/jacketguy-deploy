@@ -3,7 +3,7 @@
     <div class = "product-menu">
       <h2 class = "page-title">商品詳細</h2>
       <div>
-       <%= attachment_image_tag @product, :product_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+       <%= attachment_image_tag @product, :product_image, size: "300x300", format: 'jpeg', fallback: "no_image.jpg" %>
       </div>
       <div class = "product-favorites">
         <%= link_to user_favorites_create_path, method: :post do %>
@@ -17,6 +17,10 @@
 
     <div class = "product-detail">
       <table class = "table table-bordered table-striped">
+        <tr>
+          <th>商品ID</th>
+          <td class = "product-title"><%= @product.id %></td>
+        </tr>
         <tr>
           <th>タイトル</th>
           <td class = "product-title"><%= @product.title %></td>
@@ -41,8 +45,9 @@
           <th>収録曲</th>
           <td class = "product-title">
             <% @product.discs.each do |disc| %>
+                <ol>ディスク.<%= disc.disc_num %></ol>
               <% disc.songs.each do |song| %>
-                <ol><%= song.name %></ol>
+                <ol><%= song.song_num %>.<%= song.name %></ol>
               <% end %>
             <% end %>
           </td>

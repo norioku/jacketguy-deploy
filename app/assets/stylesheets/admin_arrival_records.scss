@@ -1,3 +1,51 @@
 // Place all the styles related to the admin_arrival_records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.adminarrival-box {
+  margin: 50px 0 100px 0;
+  padding: 50px 50px 100px 50px;
+  background: #E3DECC;
+  border-radius: 2%;
+}
+
+.adminarrival-title {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 35%;
+  text-align: center;
+  margin: 0 0 70px 70px;
+}
+
+.arrivalrecord-table {
+  background: #C8C8C8;
+}
+
+.adminarrival-product {
+  width: 35%;
+  font-size: 20px;
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.orderhistory-table-data1 {
+  font-family: 'Calistoga', cursive;
+  font-size: 18px;
+}
+
+.orderhistory-table-data2 {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 18px;
+}
+
+.adminarrival-formarea {
+  width: 40%;
+  float: right;
+  margin-right: 100px;
+}
+
+.adminarrival-form-box {
+}
+
+.adminarrival-form {
+  margin-bottom: 30px;
+}
