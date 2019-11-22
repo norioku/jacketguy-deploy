@@ -1,82 +1,43 @@
 <div class="main">
-		<div class="sidenav" style="float: right;">
-			<p>ジャンル</p>
-			<ul>
-				<a href="#">J-pop</a>
-				<a href="#">J-rock</a>
-				<a href="#">J-metal</a>
-				<a href="#">classic</a>
-				<a href="#">国歌</a>
-			</ul>
+	<div class="sidenav" style="float: right;">
+		<p>ジャンル</p>
+		<ul>
+			<a href="#">J-pop</a>
+			<a href="#">J-rock</a>
+			<a href="#">J-metal</a>
+			<a href="#">classic</a>
+			<a href="#">国歌</a>
+		</ul>
+	</div>
+	<div>
+		<div>
+			<h2>検索結果</h2>
+			<span>※<%=  %>件の検索結果</span>
+			<span><%=  %>件中　<=%  %>件表示</span>
 		</div>
-		<div class="ranking">
-			<div>
-				<h2>検索結果</h2>
-				<span>※<%=  %>件の検索結果</span>
-				<span><%=  %>件中　<=%  %>件表示</span>
-			</div>
-			<div class="ranking-colu">
-				<ul style="">
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-					<li>
-						<img src="">
-						<div>
-							<a href="#">商品名</a>
-							<a href="#">アーティスト</a>
-							<p>１０００円</p>
-						</div>
-					</li>
-				</ul>
-				<a href="#">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-			</div>	
-		</div>		
+		<div>
+			<h2>最新作</h2>
+		<div class="new-colu">
+			<ul>
+					<% @products.each do |product| %>
+						<li>
+							<h4><%= product.release_date %>発売</h4>
+							<div class="jacket-image">
+								<%= attachment_image_tag product, :product_image,fallback: "no_image.jpg", size: "100x100" %>
+							</div>
+							<div>
+								<h4>タイトル:<%= link_to product.title, product_path(product.id) %><br></h4>
+								<h4>レーベル:<%= product.label.name %><br></h4>
+								<h4>アーティスト:<%= product.artist.name %><br></h4>
+								<h4>ジャンル:<%= product.genre.name %><br></h4>
+								<h4>価格:<%= product.price %>円(税込)<br></h4>
+							</div>
+						</li>
+					<% end %>
+			</ul>
+			<a href="#">もっと見る</a>
+		</div>	
+	</div>			
+		</div>
 	</div>	
+</div>		

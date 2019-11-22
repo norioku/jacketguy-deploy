@@ -5,9 +5,8 @@ def index
 	 							.order('count(product_id) desc')
 	 							.limit(6) .pluck(:product_id))
 
-
-	 # @product = Product.find(params[:id])
    @user = current_end_user
+   @products = Product.order(release_date: :desc)
 
 end
 
