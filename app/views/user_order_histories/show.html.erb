@@ -1,15 +1,15 @@
 <div class="col-xs-3 user-box">
 	<h3 class = "user-title">ユーザ情報</h3>
 	<h5 class = "user-information-title">ユーザ名</h5>
-	<p><%= @order_history.end_user.last_name %>&emsp;<%= @order_history.end_user.first_name %></p><br>
+	<p class = "user-information-contetnt"><%= @order_history.end_user.last_name %>&emsp;<%= @order_history.end_user.first_name %></p><br>
 	<h5 class = "user-information-title">EMAIL</h5>
-	<p><%= @order_history.end_user.email %></p><br>
+	<p class = "user-information-contetnt"><%= @order_history.end_user.email %></p><br>
 	<h5 class = "user-information-title">住所</h5>
-	<p><%= @order_history.end_user.address %></p><br>
+	<p class = "user-information-contetnt"><%= @order_history.end_user.address %></p><br>
 	<h5 class = "user-information-title">電話番号</h5>
-	<p><%=@order_history.end_user.phone_number %></p><br>
+	<p class = "user-information-contetnt"><%=@order_history.end_user.phone_number %></p><br>
 
-	<p><%= link_to "編集する", users_edit_path(@order_history.end_user), class: "btn btn-primary" %></p>
+	<p class = "user-information-button"><%= link_to "編集する", users_edit_path(@order_history.end_user), class: "btn btn-primary" %></p>
 </div>
 
 
@@ -39,36 +39,36 @@
 	<table class="table table-bordered table-striped">
 	  <tbody>
 	  	<tr>
-	      <td>購入ID</td>
+	      <th class = "order-table-head">購入ID</th>
 	      <td><%= @order_history.id %></td>
 	    </tr>
 	    <tr>
-	      <td>購入者</td>
-	      <td><%= @user.last_name %>&emsp;<%= @user.first_name %></td>
+	      <th class = "order-table-head">購入者</th>
+	      <td class = "order-table-data"><%= @order_history.end_user.last_name %>&emsp;<%= @order_history.end_user.first_name %></td>
 	    </tr>
 	    <tr>
-	      <td>受取人</td>
-	      <td><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
+	      <th class = "order-table-head">受取人</th>
+	      <td class = "order-table-data"><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
 	    </tr>
 	    <tr>
-	      <td>発送先住所</td>
-	      <td><%= @order_history.address %></td>
+	      <th class = "order-table-head">発送先住所</th>
+	      <td class = "order-table-data"><%= @order_history.address %></td>
 	    </tr>
 	    <tr>
-	      <td>郵便番号</td>
-	      <td><%= @order_history.post_code %></td>
+	      <th class = "order-table-head">郵便番号</th>
+	      <td class = "order-table-data"><%= @order_history.post_code %></td>
 	    </tr>
 	    <tr>
-	      <td>電話番号</td>
-	      <td><%= @order_history.phone_number %></td>
+	      <th class = "order-table-head">電話番号</th>
+	      <td class = "order-table-data"><%= @order_history.phone_number %></td>
 	    </tr>
 	    <tr>
-	      <td>EMAIL</td>
-	      <td><%= @order_history.email %></td>
+	      <th class = "order-table-head">EMAIL</th>
+	      <td class = "order-table-data"><%= @order_history.email %></td>
 	    </tr>
 	    <tr>
-	      <td>購入日時</td>
-	      <td><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
+	      <th class = "order-table-head">購入日時</th>
+	      <td class = "order-table-data"><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
 	    </tr>
 	  </tbody>
 	</table>

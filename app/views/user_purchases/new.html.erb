@@ -2,10 +2,35 @@
   <div class="col-sm-8 userpurchase-main">
 
   	<h2 class = "userpurchase-title">お届け先住所</h2>
-
+		<%= form_with(model: OrderHistory, url: user_purchases_create_path, local: true) do |f| %>
   	<div class = "userpurchase-select">
+  		<div class = "userpurchase-selectbox">
+  				<table class = "table table-bordered table-striped">
+  					<tr>
+							<th>住所</th>
+							<td><%= @user.address %></td>
+						</tr>
+						<tr>
+							<th>郵便番号</th>
+							<td><%= @user.post_code %></td>
+						</tr>
+						<tr>
+							<th>電話番号</th>
+							<td><%= @user.phone_number %></td>
+						</tr>
+						<tr>
+							<th>氏名</th>
+							<td><%= @user.first_name %>&ensp;<%= @user.last_name %></td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td><%= @user.email %></td>
+						</tr>
+					</table>
+  					<%= f.radio_button :address_id, @user.id, {:checked => true} %>
+  			</div>
   		<% @user.addresses.each do |address| %>
-	  		<div class = "userpurchase-selectbox">
+  			<div class = "userpurchase-selectbox">
 	  			<table class = "table table-bordered table-striped userpurchase-table">
 	  				<tr>
 							<th>住所</th>
@@ -29,23 +54,31 @@
 						</tr>
 					</table>
 
-					<div>
-						<%= form_with(model: address, url: user_addresses_update_path, local: true) do |f| %>
-  						<%= f.radio_button :address, :id%>
-						<% end %>
-						<p><%= link_to "編集", user_addresses_edit_path(@user), class: "btn btn-success" %></p>
-					</div>
+  				<%= f.radio_button :address_id, address.id %>
+					<p><%= link_to "編集", user_addresses_edit_path(@user), class: "btn btn-success" %></p>
 				</div>
 			<% end %>
+
+			<div class = "userpurchase-addbutton">
+				<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
+			</div>
 		</div>
 
-		<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
-	</div>
+		<div class="userpurchase-song">
+			<% total_price = 0 %>
+				<% @user.carts.each do |cart| %>
+					<p class = "userpurchase-song-title"><%= cart.product.title %></p>
+					<p class = "userpurchase-song-quantity">数量：<%= cart.order_quantity %></p>
+					<p class = "userpurchase-song-price">小計：<%= cart.product.price * cart.order_quantity %></p>
+				<% total_price += cart.product.price * cart.order_quantity %>
+				<% end %>
 
+		</div>
+	</div>
 
 	<div class = "col-sm-4 userpurchase-box">
 		<div class = "userpurchase-payment">
-			<h2>支払い方法</h2>
+			<h2 class = "userpurchase-ordertitle">支払い方法</h2>
 			<select id="product" name="product">
 				<option value="銀行振込">銀行振込</option>
 				<option value="クレジットカード">クレジットカード</option>
@@ -53,23 +86,24 @@
 			</select>
 		</div>
 
-		<div class = "userpurchase-fee">
-			
-			<h2>注文内容</h2>
-			<p>商品の小計：</p>
-			<p>配送料：</p>
-			<p>ご請求額:</p>
+		<div class = "userpurchase-feebox">
+
+			<h2 class = "userpurchase-ordertitle">注文内容</h2>
+
+			<div class = "userpurchase-fee">
+					<p>商品の小計：<%= total_price %></p>
+					<p>配送料：<%= @order_history.shipping_fee %></p>
+					<p>ご請求: <%= total_price + @order_history.shipping_fee %></p>
+					<%= f.hidden_field :product_total_price, :value => total_price %>
+
+				<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
+
+			<% end %>
+			</div>
 		</div>
-
 	</div>
 
-	<div class="col-sm-8 userpurchase-song">
-		<% @user.carts.each do |cart| %>
-			<h2><%= cart.product.title %></h2>
-			<p>数量：<%= cart.order_quantity %></p>
-			<h2>小計：<%= cart.product.price * cart.order_quantity %></h2>
-		<% end %>
-	</div>
+
 
 
 </div>

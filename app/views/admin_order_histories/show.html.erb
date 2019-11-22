@@ -15,12 +15,12 @@
 		  </thead>
 		  <tbody>
 		     <tr>
-		      <td><%= link_to @order_history.end_user.id, admins_user_path(@order_history.end_user) %></td>
-		      <td><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
-			  	<td><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
-		      <td><%= @order_history.address %></td>
-		      <td><%= @order_history.email %></td>
-		      <td><%= @order_history.shipping_status %></td>
+		      <td class = "orderhistory-table-data1"><%= link_to @order_history.end_user.id, admins_user_path(@order_history.end_user) %></td>
+		      <td class = "orderhistory-table-data2"><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
+			  	<td class = "orderhistory-table-data1"><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
+		      <td class = "orderhistory-table-data2"><%= @order_history.address %></td>
+		      <td class = "orderhistory-table-data2"><%= @order_history.email %></td>
+		      <td class = "orderhistory-table-data2"><%= @order_history.shipping_status %></td>
 		    </tr>
 		  </tbody>
 		</table>
@@ -38,41 +38,35 @@
 		    </tr>
 		   </thead>
 			 <tbody>
-			 	<% all_amount = 0 %>
-			 	<% @order_histories.each do |order_history| %>
-					<% order_history.product_histories.each do |product_history| %>
+			 	<% @product_histories.each do |product_history| %>
 						<tr>
-							<td><%= product_history.product.id %></td>
-							<td><%= product_history.product.title %></td>
-							<td><%= product_history.product.artist.name %></td>
-							<td><%= product_history.product.price %></td>
-							<td><%= product_history.order_quantity %></td>
-							<% product_history.subtotal = product_history.product.price * product_history.order_quantity %>
-							<% all_amount += product_history.subtotal %>
-							<% product_history.save %>
-					  	<td><%= product_history.subtotal %></td>
+							<td class = "orderhistory-table-data1"><%= product_history.product.id %></td>
+							<td class = "orderhistory-table-data2"><%= product_history.product.title %></td>
+							<td class = "orderhistory-table-data2"><%= product_history.product.artist.name %></td>
+							<td class = "orderhistory-table-data1"><%= product_history.product.price %></td>
+							<td class = "orderhistory-table-data1"><%= product_history.order_quantity %></td>
+					  	<td class = "orderhistory-table-data1"><%= product_history.subtotal %></td>
 			    	</tr>
-			   <% end %>
-			<% end %>
+				<% end %>
 		  </tbody>
 		</table>
 		<section class = "adminorder-price-box">
 			<table class = "table table-bordered table-striped adminorder-price">
 				<tr>
 					<th>商品小計</th>
-					<td>
-						<br />
-						<%= all_amount.to_s %>
-
-					</td>
+					<td class = "orderhistory-table-data1"> <%= @order_history.product_total_price %></td>
 				</tr>
 				<tr>
 					<th>送料</th>
-					<td><%= @order_history.shipping_fee %></td>
+					<td class = "orderhistory-table-data1">
+						<%= @order_history.shipping_fee %>
+					</td>
 				</tr>
 				<tr>
 					<th>合計金額</th>
-					<td><%= @order_history.product_total_price %></td>
+					<td class = "orderhistory-table-data1">
+						<%= @order_history.product_total_price + @order_history.shipping_fee %>
+					</td>
 				</tr>
 			</table>
 		</section>
