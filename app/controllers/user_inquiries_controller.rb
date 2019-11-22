@@ -14,7 +14,6 @@ def create
 	@inquiry.email = current_end_user.email
   @user = EndUser.find(params[:id])
 	if @inquiry.save
-		InquiryMailer2.send2_mail(@inquiry).deliver_now
 	redirect_to user_inquiries_complete_path(@user)
 else
 	flash[:notice] = "お問い合わせ内容をご記入ください。"
