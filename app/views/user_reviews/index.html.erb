@@ -3,7 +3,7 @@
     <div class = "product-menu">
       <h2 class = "page-title">商品詳細</h2>
       <div>
-        <%= image_tag 'wit.png', :size =>'200x200', class: "product-img" %>
+        <%= attachment_image_tag @product, :product_image, size: "250x250", format: 'jpeg', fallback: "no_image.jpg" %>
       </div>
       <div class = "product-favorites">
         <%= link_to user_favorites_create_path, method: :post do %>

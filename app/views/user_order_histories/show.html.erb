@@ -23,14 +23,12 @@
 		 	<td>小計</td>
 		</thead>
 		<tbody>
-			<% @order_histories.each do |order_history| %>z
-				<% order_history.product_histories.each do |product_history| %>
+			<% @product_histories.each do |product_history| %>z
 					<tr>
 						<td><%= product_history.product.title %></td>
 						<td><%= product_history.order_quantity %></td>
 				  	<td><%= product_history.product.price * product_history.order_quantity %></td>
 			    </tr>
-			   <% end %>
 			<% end %>
 	  </tbody>
 	</table>
