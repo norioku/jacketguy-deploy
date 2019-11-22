@@ -12,19 +12,17 @@
 	<div>
 		<div>
 			<h2>検索結果</h2>
-			<span>※<%=  %>件の検索結果</span>
-			<span><%=  %>件中　<=%  %>件表示</span>
+			<span><%= @products.count %>件のタイトルがヒットしました</span>
 		</div>
 		<div>
-			<h2>最新作</h2>
-		<div class="new-colu">
-			<ul>
+			<div class="new-colu">
+				<ul>
 					<% @products.each do |product| %>
 						<li>
-							<h4><%= product.release_date %>発売</h4>
-							<div class="jacket-image">
-								<%= attachment_image_tag product, :product_image,fallback: "no_image.jpg", size: "100x100" %>
-							</div>
+						  <h4><%= product.release_date %>発売</h4>
+						  <div class="jacket-image">
+						  	<%= attachment_image_tag product, :product_image,fallback: "no_image.jpg", size: "100x100" %>
+						  </div>
 							<div>
 								<h4>タイトル:<%= link_to product.title, product_path(product.id) %><br></h4>
 								<h4>レーベル:<%= product.label.name %><br></h4>
@@ -34,10 +32,9 @@
 							</div>
 						</li>
 					<% end %>
-			</ul>
-			<a href="#">もっと見る</a>
-		</div>	
-	</div>			
-		</div>
-	</div>	
-</div>		
+				</ul>
+		　  </div>	
+	　　</div>			
+	</div>
+</div>	
+	
