@@ -1,49 +1,98 @@
-<div class="main conteiner">
-		<div class="prduct-details row">
-			<h2>商品詳細</h2>
-			<div class="col-lg-2"></div>
-			<div class="product-details-section1 col-lg-3">
-				<img src="">
-				<div class="heart"></div>
-				<a href="#">レビューを見る</a>	
-			</div>
-			<div class="product-details-section2 col-lg-3">
-				<h2 class="product-name">商品名</h2>
-				<a href="#">アーティスト</a>
-				<a href="#">ジャンル</a>
-				<p>構成数：</p>
-				<div class="song-name-list">
-					<p>収録曲</p>
-					<ol>
-						<li>name1</li>
-						<li>name2</li>
-						<li>name3</li>
-					</ol>
-				</div>	
-			</div>
-			<div class="product-details-section3 col-lg-3">
-				<div>10000円(税込)</div>
-				<p>在庫あり</p>
-				<p>数量：１</p>
-				<a href="#">カートに追加する</a>
-			</div>	
-		</div>
-		<div class="review-columun">
-			<h2>商品レビュー</h2>
-			<% @all_reviews.each do |review| %>
-			<div class="review">
-				<%= review.end_user.first_name %>
-				<%= review.review_content %>
-			</div>
-			<% end %>
-		</div>
-		<div class="review-post">
-			<h2>レビュー投稿</h2>
-			<form action="#" method="POST">
-				<p>レビュー内容<br>
-				<p>２００文字以内</p>
-				<textarea cols="30" rows="5"></textarea></p>
-				<p><input type="submit" value="投稿する"></p>
-			</form>
-		</div>
-	</div>
+<div class = "row row-bg">
+  <section class = "product-box">
+    <div class = "product-menu">
+      <h2 class = "page-title">商品詳細</h2>
+      <div>
+        <%= attachment_image_tag @product, :product_image, size: "300x300", format: 'jpeg', fallback: "no_image.jpg" %>
+      </div>
+      <div class = "product-favorites">
+        <%= link_to user_favorites_create_path, method: :post do %>
+          <i class="far fa-heart"><%= @product.favorites.count %></i><span class = "favorite-text">いいね</span>
+        <% end %>
+      </div>
+      <div class = "product-reviews">
+        <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
+      </div>
+    </div>
+
+    <div class = "product-detail">
+      <table class = "table table-bordered table-striped">
+        <tr>
+          <th>タイトル</th>
+          <td class = "product-title"><%= @product.title %></td>
+        </tr>
+        <tr>
+          <th>アーティスト名</th>
+          <td class = "product-title"><%= @product.artist.name %></td>
+        </tr>
+        <tr>
+          <th>レーベル名</th>
+          <td class = "product-title"><%= @product.label.name %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td class = "product-title"><%= @product.genre.name %></td>
+        </tr>
+        <tr>
+          <th>構成数</th>
+          <td class = "product-title"><%= @product.discs.count %></td>
+        </tr>
+        <tr>
+          <th>収録曲</th>
+          <td class = "product-title">
+            <% @product.discs.each do |disc| %>
+              <ol>ディスク.<%= disc.disc_num %></ol>
+              <% disc.songs.each do |song| %>
+                <ol><%= song.song_num %>.<%= song.name %></ol>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class = "purchase-area">
+      <% if @stocks <= 0 %>
+        <h2>SOLD OUT !!!!</h2>
+      <% elsif end_user_signed_in? && @product.sale_status  == "販売中"%>
+        <h2>在庫あり</h2>
+      <% elsif end_user_signed_in? && @product.sale_status  == "販売停止中"%>
+        <h2>入荷待ち</h2>
+      <% elsif admin_signed_in? %>
+        <h2><%= @product.sale_status %></h2>
+      <% end %>
+      <h2><%= @product.price %>円(税込)</h2>
+     
+      <%= link_to "カートに追加する", product_path(@product), class: "btn btn-success" %>
+    </div>
+  </section>
+</div>
+
+<div class = "row row-bg">
+  <div class = "review-box">
+    <h2 class = "review-title">レビュー一覧</h2>
+    <table class = "table table-bordered table-striped review-table">
+      <thead>
+        <tr>
+          <td style = "font-weight: bold">ユーザ名</td>
+          <td style = "font-weight: bold">レビュー</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td class = "review-content"><%= review.end_user.first_name %></td>
+            <td class = "review-content"><%= review.review_content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div>
+      <h2>レビュー投稿</h2>
+      <%= form_for @review, :url => { :controller => :user_reviews, :action => :create } do |f| %>
+      <%= f.text_area :review_content %>
+      <%= f.submit "投稿する" %>
+      <% end %>
+    </div>
+  </div>
+</div>
