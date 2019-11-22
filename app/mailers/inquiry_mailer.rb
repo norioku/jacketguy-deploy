@@ -9,3 +9,4 @@ def send_mail(inquiry)
     )
 end
 end
+
