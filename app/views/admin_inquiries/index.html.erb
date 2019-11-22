@@ -1,5 +1,5 @@
 <h2>お問い合わせ一覧</h2>
-<table>
+<table class="table table-striped">
     <thead>
      <tr>
       <th>お問い合わせ日時</th>
@@ -18,8 +18,9 @@
 		    <td><%= inquiry.email %></td>
 		    <td><%= inquiry.subject %></td>
         <td><%= inquiry.status %></td>
-		    <td><%= link_to "詳細",  admins_inquiry_path(inquiry.id) %></td>
+		    <td><%= link_to "詳細を見る",  admins_inquiry_path(inquiry.id) %></td>
         </tr>
      <% end %>
             </tbody>
             </table>
+

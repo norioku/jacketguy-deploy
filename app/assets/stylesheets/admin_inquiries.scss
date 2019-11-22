@@ -1,3 +1,40 @@
 // Place all the styles related to the admin_inquiries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.f-inquiry {
+	font-size: 22px;
+	display: flex;
+}
+
+.f-item {
+	font-size: 22px;
+	flex-diretion: row;
+}
+
+.f-inquiries {
+	font-size: 22px;
+	flex-diretion: row;
+	flex-wrap:wrap;
+}
+
+.f-item-a {
+	font-size: 22px;
+	flex-diretion: row;
+	font-weight: bold;
+}
+
+.a {
+	font-family: monospace;
+}
+
+.botan {
+	background-color: #337AB7;
+	border:none;
+	margin: 20px;
+	font-size: 20px;
+}
+
+.body {
+	margin:50px;
+}

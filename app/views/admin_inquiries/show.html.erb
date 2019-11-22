@@ -1,36 +1,66 @@
-<div style="text-align:center">
+<div class="body">
+<div class="center-block">
 
-<h2>お問い合わせ詳細</h2>
-<table>
-<thead>
-    <tr>
-      <th>ユーザ名</th>
-      <th>メールアドレス</th>
-      <th>カテゴリ</th>
-      <th>内容</th>
-      <th>返信</th>
-    </tr>
-  </thead>
+<h2 class="a">お問い合わせ詳細</h2>
 
- <tbody>
-	<tr>
-		<td><%= @inquiry.end_user_name %></td>
-		<td><%= @inquiry.email %></td>
-		<td><%= @inquiry.subject %></td>
-		<td><%= @inquiry.content %></td>
-	</tr>
- </tbody>
-</table>
+<div class="f-inquiry">
+<div class="f-item-a">
+<p>ユーザ名： </p>
+</div>
+<div class="f-item">
+<%= @inquiry.end_user_name %>
+</div>
+</div>
+
+<div class="f-inquiry">
+<div class="f-item-a">
+<p>メールアドレス： </p>
+</div>
+<div class="f-item">
+<%= @inquiry.email %>
+</div>
+</div>
+
+<div class="f-inquiry">
+<div class="f-item-a">
+<p>カテゴリ： </p>
+</div>
+<div class="f-item">
+<%= @inquiry.subject %>
+</div>
+</div>
+
+<div class="f-inquiry">
+<div class="f-item-a">
+<p>内容： </p>
+</div>
+<div class="f-item">
+<%= @inquiry.content %>
+</div>
+</div>
+
 	<%  if @inquiry.reply.nil? %>
 	<%= form_for(@inquiry, url: {controller:"admin_inquiries",action:"create"})  do |f| %>
-            <tr>
-              <td><%= f.text_area :reply, :size=>"100x15" %></td>
-    		  <%= f.submit '入力内容を送信' %>
-            </tr>
+  <%= f.hidden_field :status, :value => "返信済み" %>
+              <%= f.text_area :reply, :placeholder => "返信内容を入力", :size=>"145x15" %>
+
+  <button class="btn btn-primary btn-block">
+   <%= f.submit '入力内容を送信', class: "botan" %>
+  </button>
+
     <% end %>
     <% else %>
 
-     <td><%= @inquiry.reply %></td>
+      <div class="f-inquiry">
+      <div class="f-item-a">
+        <p>返信内容： </p>
+        </div>
+        <div class="f-item">
+          <%= @inquiry.reply %>
+      </div>
+      </div>
+
 
     <% end %>
-
+</div>
+</div>
