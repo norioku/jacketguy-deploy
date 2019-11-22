@@ -3,6 +3,7 @@ class Inquiry < ApplicationRecord
      #validates :subject, presence: true
      validates :content, presence: true
     #validates :reply, presence: true
-end
 
+    enum status:[:未返信, :返信済]
+end
 

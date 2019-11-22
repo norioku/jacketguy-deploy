@@ -1,3 +1,61 @@
 // Place all the styles related to the user_carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.purchase-products-box {
+  height:auto;
+  width: auto;
+}
+
+.purchase-products-box-inner{
+	height:auto;
+}
+
+.purchase-product {
+	height:100px;
+	margin: 10px;
+	display:flex;
+	justify-content:space-evenly;
+	border:solid 1px;
+}
+
+
+.purchase-product-image {
+    margin: 0;
+}
+
+.purchase-product-info{
+	width: 300px;
+	height:100px;
+	display: flex;
+	justify-content:space-evenly;
+}
+
+.purchase-product-name-list{
+	list-style-type: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+.purchase-product-option{
+	display: flex;
+    flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+    justify-content: center; /* 子要素をflexboxにより中央に配置する */
+}
+
+.total-price,.delete-button,.purchase-button{
+	text-align: center;
+}
+
+.purchase-product-price{
+	margin:0;
+  	text-align: center;
+  	line-height: 100px;
+}

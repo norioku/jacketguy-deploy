@@ -1,0 +1,37 @@
+// Place all the styles related to the user_order_histories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-box {
+  border: 2px solid slategray;
+  margin: 100px 70px 0 0;
+  text-align: center;
+  height: 500px;
+  transition: transform .3s ease-in-out;
+}
+
+.user-title {
+  background: limegreen;
+  border-radius: 5%;
+  margin-bottom: 50px;
+}
+
+.user-information-title {
+  background: skyblue;
+}
+
+.order-box {
+  margin: 100px 0;
+}
+
+.order-title {
+  background: limegreen;
+  text-align: center;
+  width: 50%;
+}
+
+.order-sub-title {
+  background: skyblue;
+  text-align: center;
+  width: 50%;
+}
