@@ -29,7 +29,16 @@ end
 def search
   @user = current_end_user
 
+  @search_params = product_search_params
+  @product = Product.search(@search_params).includes(:product)
+
 end
+
+private
+
+  def product_search_params
+    params.fetch(:search, {}).permit(:title)
+  end
 
 end
 

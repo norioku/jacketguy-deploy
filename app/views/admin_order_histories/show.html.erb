@@ -3,26 +3,30 @@
 		<h1 class = "adminorder-title">受注履歴詳細</h1>
 		<h2 class = "adminorder-subtitle">受注ID:&emsp;<%= @order_history.id %>の詳細</h2>
 		<table class="table table-bordered table-striped">
-			<thead>
-		    <tr>
-		      <th>ユーザID</th>
-		      <th>発送先名前</th>
-		      <th>購入時刻</th>
-		      <th>発送先住所</th>
-		      <th>メールアドレス</th>
-		      <th>発送ステータス</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		     <tr>
-		      <td class = "orderhistory-table-data1"><%= link_to @order_history.end_user.id, admins_user_path(@order_history.end_user) %></td>
-		      <td class = "orderhistory-table-data2"><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
-			  	<td class = "orderhistory-table-data1"><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
-		      <td class = "orderhistory-table-data2"><%= @order_history.address %></td>
-		      <td class = "orderhistory-table-data2"><%= @order_history.email %></td>
-		      <td class = "orderhistory-table-data2"><%= @order_history.shipping_status %></td>
-		    </tr>
-		  </tbody>
+	    <tr>
+	      <th>ユーザID</th>
+	      <td class = "orderhistory-table-data1"><%= link_to @order_history.end_user.id, admins_user_path(@order_history.end_user) %></td>
+	    </tr>
+	    <tr>
+	      <th>発送先名前</th>
+	      <td class = "orderhistory-table-data2"><%= @order_history.last_name %>&emsp;<%= @order_history.first_name %></td>
+	    </tr>
+	    <tr>
+	      <th>購入時刻</th>
+	      <td class = "orderhistory-table-data1"><%= @order_history.created_at.strftime("%y/%m/%d %H:%M") %></td>
+	    </tr>
+	    <tr>
+	      <th>発送先住所</th>
+	      <td class = "orderhistory-table-data2"><%= @order_history.address %></td>
+	    </tr>
+	    <tr>
+	      <th>メールアドレス</th>
+	      <td class = "orderhistory-table-data2"><%= @order_history.email %></td>
+	    </tr>
+	    <tr>
+	      <th>発送ステータス</th>
+	      <td class = "orderhistory-table-data2"><%= @order_history.shipping_status %></td>
+	    </tr>
 		</table>
 
 		<h2 class = "adminorder-subtitle">受注した商品</h2>
@@ -48,6 +52,7 @@
 					  	<td class = "orderhistory-table-data1"><%= product_history.subtotal %></td>
 			    	</tr>
 				<% end %>
+				<%= paginate @product_histories %>
 		  </tbody>
 		</table>
 		<section class = "adminorder-price-box">
