@@ -26,11 +26,13 @@
 							<%= "No.#{i}" %>
 						</span>
 						<div class="jacket-image">
-							<%= attachment_image_tag rank, :product_image, size: "100x00", format: 'jpeg', fallback: "no_image.jpg" %>
+
+							<%= attachment_image_tag rank, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+
 						</div>
 						<div>
-							<= link_to "#{rank.title}",product_path(rank.id) >
-							<%= link_to "#{rank.artist.name}",products_search %>
+							<%= link_to "#{rank.title}",product_path(rank.id) %>
+							<%= link_to "#{rank.artist.name}",products_search_path %>
 							<%= rank.price %>
 						</div>
 					<% end %>
