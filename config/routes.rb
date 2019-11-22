@@ -72,7 +72,7 @@ Rails.application.routes.draw do
 
     # productsコントローラ
       get "products/search" => "products#search"
-      resources :products, only:[:show]
+      resources :products, only:[:show,:create]
 
 
     # user_inquiriesコントローラ
@@ -86,6 +86,7 @@ Rails.application.routes.draw do
       patch "carts/:id" => "user_carts#update",as: "user_carts_update"
       put "carts/:id" => "user_carts#update"
       delete "carts/:id" => "user_carts#destroy",as: "user_carts_delete"
+      post "carts/:id" => "user_carts#create" ,as: "user_carts_create"
 
     # user_purchasesコントローラ
       get "users/:id/purchase/new" => "user_purchases#new", as: "user_purchases_new"
