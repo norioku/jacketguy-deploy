@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :search
 
   def after_sign_in_path_for(resource)
     case resource
@@ -15,6 +16,21 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def search
+  @user = current_end_user
+
+  @search_params = product_search_params
+  @product = Product.search(@search_params).includes(:product)
+
+end
+
+  private
+
+    def product_search_params
+      params.fetch(:search, {}).permit(:title)
+    end
+
 
   protected
 
