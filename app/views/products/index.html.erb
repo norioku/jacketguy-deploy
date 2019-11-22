@@ -26,7 +26,7 @@
 							<%= "No.#{i}" %>
 						</span>
 						<div class="jacket-image">
-							<%= rank.attachment_field :image %>
+							<%= attachment_image_tag rank, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
 						</div>
 						<div>
 							<= link_to "#{rank.title}",product_path(rank.id) >
