@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
     # user_reviewsコントローラ
       get "product/:id/user_reviews" => "user_reviews#index", as: "product_reviews"
+      post "products/:id" => "user_reviews#create"
 
     # productsコントローラ
       get "products/search" => "products#search"

@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 2019_11_21_070740) do
 
-
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id"
     t.string "email", default: "", null: false
