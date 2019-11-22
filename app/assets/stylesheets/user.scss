@@ -35,3 +35,83 @@
   text-align: center;
   width: 50%;
 }
+
+
+.mypage-content-box{
+  min-height:600px;
+}
+
+
+#sampleContentC{
+  displpay:flex;
+  height: auto;
+  width: auto;
+}
+
+#購入履歴タブ
+.order-history-box{
+  height: auto;
+  width:100%;
+  margin-bottom:5px;
+}
+
+.order-history-box-inner{
+  width: 100%;
+  height: auto;
+  margin:10px 0 10px 0;
+  border:groove 1px;
+  display:flex;
+}
+
+.date_and_address-box{
+  padding-left:50px;
+  height:20px;
+}
+.date_and_address{
+   text-align: left;
+}
+
+.product-image{
+  padding-top:5px;
+  text-align:right;
+  width:100px;
+}
+
+.product-info-content{
+  width: 80%;
+}
+
+.product-info-box{
+  height:60px;
+  display:flex;
+  justify-content:space-between;
+  border-top: dotted 1px;
+}
+
+.product-info-box-data{
+  line-height: 60px;
+  text-align:right;
+  padding-right:50PX;
+  width:400px;
+}
+
+.product-info-box-subtotal{
+  line-height: 60px;
+  text-align:right;
+  padding-right:50PX;
+  width:200px;
+}
+
+.product-status{
+  height:auto;
+  width: 300px;
+  border:solid 5px green;
+  text-align:center;
+  display: flex; /* 子要素をflexboxで揃える */
+  flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+}
+
+.product-status-box{
+  text-align:center;
+}
+
