@@ -110,6 +110,9 @@ Rails.application.routes.draw do
       post "users/:id/favorites" => "user_favorites#create", as: "user_favorites_create"
       delete "users/:id/favorites" => "user_favorites#destroy", as: "user_favorites_destroy"
 
+    # user_genresコントローラー
+      get "/genres/:id" => "user_genres#show", as: "user_genre"
+
     #end_user devise
       devise_for :end_users, controllers: {
       sessions:      'users/sessions',

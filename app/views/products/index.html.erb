@@ -5,11 +5,11 @@
 	<div class="sidenav" style="float: right;">
 		<p>ジャンル</p>
 		<ul>
-			<a href="#">J-pop</a>
-			<a href="#">J-rock</a>
-			<a href="#">J-metal</a>
-			<a href="#">classic</a>
-			<a href="#">国歌</a>
+			<% @genres.each do |genre| %>
+			<li>
+			  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>
+			</li>	
+			<% end %>
 		</ul>
 	</div>
 	<div class="ranking">
@@ -43,7 +43,7 @@
 		<h2>最新作</h2>
 		<div class="new-colu">
 			<ul>
-					<% @products.each do |product| %>
+					<% @new_products.each do |product| %>
 						<li>
 							<h4><%= product.release_date %>発売</h4>
 							<div class="jacket-image">
@@ -59,7 +59,6 @@
 						</li>
 					<% end %>
 			</ul>
-			<a href="#">もっと見る</a>
 		</div>	
 	</div>			
 </div>	
