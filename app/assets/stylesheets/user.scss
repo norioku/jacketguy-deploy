@@ -56,10 +56,11 @@
 }
 
 .order-history-box-inner{
-  width: 800px;
+  width: 100%;
   height: auto;
   margin:10px 0 10px 0;
   border:groove 1px;
+  display:flex;
 }
 
 .date_and_address-box{
@@ -73,7 +74,11 @@
 .product-image{
   padding-top:5px;
   text-align:right;
-  width:200px;
+  width:100px;
+}
+
+.product-info-content{
+  width: 80%;
 }
 
 .product-info-box{
@@ -95,5 +100,18 @@
   text-align:right;
   padding-right:50PX;
   width:200px;
+}
+
+.product-status{
+  height:auto;
+  width: 300px;
+  border:solid 5px green;
+  text-align:center;
+  display: flex; /* 子要素をflexboxで揃える */
+  flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+}
+
+.product-status-box{
+  text-align:center;
 }
 
