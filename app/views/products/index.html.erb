@@ -29,7 +29,7 @@
 							<%= rank.attachment_field :image %>
 						</div>
 						<div>
-							<%= link_to "#{rank.title}",product_path(@product) %>
+							<= link_to "#{rank.title}",product_path(rank.id) >
 							<%= link_to "#{rank.artists.name}",products_search %>
 							<%= rank.price %>
 						</div>
@@ -38,5 +38,28 @@
 			</ul>
 			<a href="#">もっと見る</a>
 		</div>	
-	</div>		
+	</div>	
+	<div class="new">
+		<h2>最新作</h2>
+		<div class="new-colu">
+			<ul>
+					<% @products.each do |product| %>
+						<li>
+							<h4><%= product.release_date %>発売</h4>
+							<div class="jacket-image">
+								<%= attachment_image_tag product, :product_image,fallback: "no_image.jpg", size: "100x100" %>
+							</div>
+							<div>
+								<h4>タイトル:<%= link_to product.title, product_path(product.id) %><br></h4>
+								<h4>レーベル:<%= product.label.name %><br></h4>
+								<h4>アーティスト:<%= product.artist.name %><br></h4>
+								<h4>ジャンル:<%= product.genre.name %><br></h4>
+								<h4>価格:<%= product.price %>円(税込)<br></h4>
+							</div>
+						</li>
+					<% end %>
+			</ul>
+			<a href="#">もっと見る</a>
+		</div>	
+	</div>			
 </div>	
