@@ -45,19 +45,6 @@ def create
     render :new
   end
 
-
-
-
-
-
-
-
-#   if .save
-#     @user.carts.destroy
-#     redirect_to users_purchase_complete_path
-#   else
-#     render :new
-#   end
 end
 
 def complete
@@ -73,19 +60,3 @@ private
 
 
 end
-# <%= form_with(model: [@product_history, @order_history], local:true) do |f| %>
-
-#       <%= @user.addresses.each do |address| %>
-#         <%= f.hidden_field :end_user_id, value => @user.id %>
-#         <%= f.hidden_field :email, value => address.email %>
-#         <%= f.hidden_field :last_name, value => address.last_name %>
-#         <%= f.hidden_field :last_kana_name, value => address.last_kana_name %>
-#         <%= f.hidden_field :first_name, value => address.first_name %>
-#         <%= f.hidden_field :first_kana_name, value => address.first_kana_name %>
-#         <%= f.hidden_field :post_code, value => address.post_code %>
-#         <%= f.hidden_field :address, value => address.address %>
-#         <%= f.hidden_field :phone_number, value => address.phone_number %>
-
-#       # <% end %>
-# <%= f.submit "注文を確定する" %>
-#     <% end %>
