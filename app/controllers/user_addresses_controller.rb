@@ -12,8 +12,8 @@ def create
   @user = current_end_user
 	@user_address = Address.new(user_address_params)
   @user_address.end_user_id = current_end_user.id
-   		@user_address.save
-     	redirect_to user_path(@user)
+	@user_address.save
+ 	redirect_to user_path(@user)
 end
 
  def edit
@@ -28,11 +28,11 @@ end
       redirect_to user_path(@user.id)
  end
 
-# def destroy
-# 	@user_addresses = User_addresses.find(params[:id])
-# 	if book.destroy
-# 	redirect_to user_path(@user.id)
-# end
+def destroy
+	@user_addresses = User_addresses.find(params[:id])
+	if book.destroy
+	redirect_to user_path(@user.id)
+end
 
 private
 
