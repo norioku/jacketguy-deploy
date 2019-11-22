@@ -23,7 +23,7 @@
 		 	<td>小計</td>
 		</thead>
 		<tbody>
-			<% @order_histories.each do |order_history| %>
+			<% @order_histories.each do |order_history| %>z
 				<% order_history.product_histories.each do |product_history| %>
 					<tr>
 						<td><%= product_history.product.title %></td>
@@ -72,6 +72,5 @@
 	    </tr>
 	  </tbody>
 	</table>
-
   </div>
-</div>
+
