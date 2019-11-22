@@ -29,7 +29,7 @@ class Product < ApplicationRecord
   scope :search, -> (search_params) do
     return if search_params.blank?
 
-    title_like(title_params[:title])
+    title_like(search_params[:title])
   end
 
    scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }

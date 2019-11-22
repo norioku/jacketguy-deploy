@@ -3,7 +3,7 @@
 <header>
   <h1 class = "logo">
     <%= link_to root_path, class: "logo-link" do %>
-      ジャケガイ
+      ジャケガイ!!
     <% end %>
   </h1>
   <nav>
@@ -76,7 +76,7 @@
 <div class = "form-group search-area">
   <%= form_with(scope: :search, url: products_search_path, method: :get, local: true) do |f| %>
 
-    <= f.text_field :title, value: @search_params[:title] >
+    <%= f.text_field :title, value: @search_params[:title], placeholder: "タイトルで検索"  %>
 
     <%= f.submit "検索", class: "btn btn-primary" %>
   <% end %>
