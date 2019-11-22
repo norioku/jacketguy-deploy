@@ -6,8 +6,9 @@ def index
 	 							.limit(6) .pluck(:product_id))
 
 
-	 # @product = Product.find(params[:id])
-   @user = current_end_user
+	 @user = current_end_user
+   @new_products = Product.order(release_date: :desc)
+   @genres = Genre.all
 
 end
 
