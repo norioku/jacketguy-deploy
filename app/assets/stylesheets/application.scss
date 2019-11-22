@@ -43,7 +43,7 @@ header {
 }
 
 .nav-list {
-  width: 70%;
+  width: 55%;
   height: 80px;
   float: right;
   display: flex;
@@ -52,10 +52,12 @@ header {
 }
 
 .admin-title {
-  width: 70%;
+  width: 15%;
   height: 80px;
-  float: right;
+  float: left;
   text-align: center;
+  color: #fff;
+  margin-top: 25px;
 }
 
 
@@ -89,7 +91,7 @@ header {
 .nav-link:hover {
   opacity: 0.6;
   color: pink;
-  transform: rotateZ(10deg);
+  transform: rotateZ(5deg);
 }
 
 
