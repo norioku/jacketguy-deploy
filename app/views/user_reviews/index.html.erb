@@ -74,6 +74,7 @@
             <td class = "review-content"><%= review.review_content %></td>
           </tr>
         <% end %>
+        <%= paginate @reviews %>
       </tbody>
     </table>
   </div>

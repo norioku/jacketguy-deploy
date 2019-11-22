@@ -91,12 +91,16 @@
 			<h2 class = "userpurchase-ordertitle">注文内容</h2>
 
 			<div class = "userpurchase-fee">
+				<% if @user.carts.exists? %>
 					<p>商品の小計：<%= total_price %></p>
 					<p>配送料：<%= @order_history.shipping_fee %></p>
 					<p>ご請求: <%= total_price + @order_history.shipping_fee %></p>
 					<%= f.hidden_field :product_total_price, :value => total_price %>
 
-				<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
+					<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
+				<% else %>
+					<p>カート内に商品がありません。</p>
+				<% end %>
 
 			<% end %>
 			</div>
