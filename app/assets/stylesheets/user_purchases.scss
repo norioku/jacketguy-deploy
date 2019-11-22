@@ -74,6 +74,11 @@
   border-radius: 2%;
 }
 
+.userpurchase-song-image {
+  width: 40%;
+  display: inline-block;
+}
+
 .userpurchase-song {
   background: #E6E5E1;
   border-radius: 2%;
@@ -84,21 +89,22 @@
 }
 
 .userpurchase-song-title {
-  width: 100%;
+  width: 40%;
   display: inline-block;
   font-size: 20px;
 }
 
 .userpurchase-song-quantity {
-  width: 30%;
+  width: 20%;
   display: inline-block;
+  margin-left: 150px;
 }
 
 .userpurchase-song-price {
-  width: 40%;
+  width: 25%;
   display: inline-block;
   font-size: 20px;
-  margin-bottom: 30px;
+  margin: 0 0 30px 200px;
 }
 
 

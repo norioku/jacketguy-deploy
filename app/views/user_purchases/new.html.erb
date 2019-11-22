@@ -55,7 +55,6 @@
 					</table>
 
   				<%= f.radio_button :address_id, address.id %>
-					<p><%= link_to "編集", user_addresses_edit_path(@user), class: "btn btn-success" %></p>
 				</div>
 			<% end %>
 
@@ -67,9 +66,12 @@
 		<div class="userpurchase-song">
 			<% total_price = 0 %>
 				<% @user.carts.each do |cart| %>
+				<div class = "">
+					<p class = "userpurchase-song-image"><%= attachment_image_tag cart.product, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></p>
 					<p class = "userpurchase-song-title"><%= cart.product.title %></p>
 					<p class = "userpurchase-song-quantity">数量：<%= cart.order_quantity %></p>
 					<p class = "userpurchase-song-price">小計：<%= cart.product.price * cart.order_quantity %></p>
+				</div>
 				<% total_price += cart.product.price * cart.order_quantity %>
 				<% end %>
 
@@ -91,12 +93,16 @@
 			<h2 class = "userpurchase-ordertitle">注文内容</h2>
 
 			<div class = "userpurchase-fee">
+				<% if @user.carts.exists? %>
 					<p>商品の小計：<%= total_price %></p>
 					<p>配送料：<%= @order_history.shipping_fee %></p>
 					<p>ご請求: <%= total_price + @order_history.shipping_fee %></p>
 					<%= f.hidden_field :product_total_price, :value => total_price %>
 
-				<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
+					<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
+				<% else %>
+					<p>カート内に商品がありません。</p>
+				<% end %>
 
 			<% end %>
 			</div>
