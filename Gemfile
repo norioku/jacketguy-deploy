@@ -88,3 +88,5 @@ gem 'enumerize'
 
 gem "paranoia", "~> 2.2"
 
+gem 'bootstrap-select-rails'
+
