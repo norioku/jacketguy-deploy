@@ -1,35 +1,53 @@
-<div>
+
 	<h1>買い物かご</h1>
+	<div class="col-xs-9" >
+		<section class = "purchase-products-box">
+			<div class = "purchase-products-box-inner">
+				<% current_end_user.carts.each do |cart| %>
+				<div class = "purchase-product">
+				  <%= image_tag 'wit.png', :size =>'100x100', class: "purchase-product-img" %>
+			      <ul class="purchase-product-name-list">
+			      	<strong><%= link_to cart.product.title,product_path(cart.product) %></strong>
+			      	<li><%= cart.product.artist.name %></li>
+			      	<li><%= cart.product.label.name %></li>
+			      	<li><%= cart.product.genre.name %></li>
+			      </ul>
+			      <h3 class="purchase-product-price">小計:<%= cart.product.price*cart.order_quantity %>円(税込)</h3>
+			      <div class = "purchase-product-option">
+						<div class= "order-quantity">
+						  <%= form_for(cart, url: user_carts_update_path(cart), method: :patch) do |f| %>
+						   <%= f.hidden_field :id, :value => cart.id %> <!-- attendancesテーブルのidを渡す -->
+						   <%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],
+						  selected:cart.order_quantity %>
+						   <%= f.submit "枚数変更" %>
+						   <% end %>
+						</div>
 
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">タイトル</th>
-		      <th scope="col">アーティスト</th>
-		      <th scope="col">レーベル</th>
-		      <th scope="col">ジャンル</th>
-		      <th scope="col">枚数</th>
-		    </tr>
-		  </thead>
+						<div class = "delete-button"> 
+						 <%= link_to '削除',user_carts_delete_path(cart.id), class: "btn-sm btn-danger ", method: :delete %>
+						</div>
+			      </div>
+			  	</div>
+			  	<% end %>
+		  	</div>
+		</section>
+	</div>
 
-			<% current_end_user.carts.each do |cart| %>
-		    <tr>
-		      <td><span><%= cart.product.title %></span></td>
-		      <td><span><%= cart.product.artist.name %></span></td>
-		      <td><span><%= cart.product.label.name %></span></td>
-		      <td><span><%= cart.product.genre.name %></span></td>
-		      <td><span><%= cart.order_quantity %></span></td>
 
-		      <%= form_for(cart, url: user_carts_update_path(cart), method: :patch) do |f| %>
-		      <%= f.hidden_field :id, :value => cart.id %> <!-- attendancesテーブルのidを渡す -->
-		      <td> <%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],
-				selected:cart.order_quantity %>
-			  <%= f.submit "購入枚数を変更する" %>
-			  <% end %>
-			  </td>
 
-		      <td class="option"><%= link_to 'Destroy',user_carts_delete_path(cart.id), class: "btn-sm btn-danger", method: :delete %></td>
-		    </td>
-		  	<% end %>
-        </table>
-</div>
+	<div class="col-xs-3">
+		<section class = "purchase-box">
+			<div class="purchase-box-inner">
+				<h3>合計:</h3>
+				<% total_price = current_end_user.carts.inject(0){|sum,cart| sum + cart.product.price*cart.order_quantity} %>
+				<h3><%= total_price %>円</h3>
+				<% if current_end_user.carts.exists? %>
+				<div class = "purchase-button">
+					<%= link_to '購入手続きへ',user_purchases_new_path(current_end_user), class: "btn-sm btn-warning " %>
+					<% end %>
+				</div>
+
+				<%= link_to '商品一覧ページへ',root_path %>
+			</div>
+		</section>
+	</div>
