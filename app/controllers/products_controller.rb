@@ -6,7 +6,10 @@ def index
 	 							.limit(6) .pluck(:product_id))
 
 
-	 @user = current_end_user
+     @ranks = Product.find(Favorite.group(:product_id).pluck(:product_id))
+
+   @user = current_end_user
+
    @new_products = Product.order(release_date: :desc)
    @genres = Genre.all
 
