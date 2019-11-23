@@ -24,6 +24,7 @@
 						<span class="rank">
 							<%= "No.#{i}" %>
 						</span>
+
 							<div class="jacket-image">
 								<%= attachment_image_tag rank, :product_image,fallback: "no_image.jpg", size: "100x100" %>
 							</div>
@@ -35,6 +36,7 @@
 								<h5>価格:<%= rank.price %>円(税込)<br></h5>
 								<h5><%= link_to "詳細を見る", product_path(rank.id) %></h5>
 							</div>
+
 					<% end %>
 				</li>
 			</ul>
