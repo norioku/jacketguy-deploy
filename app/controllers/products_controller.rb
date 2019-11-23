@@ -28,6 +28,9 @@ end
 
 def search
   @user = current_end_user
+  @genres = Genre.all
+  @search_params = product_search_params
+  @products = Product.search(@search_params)
 
 end
 
