@@ -33,6 +33,10 @@ class Product < ApplicationRecord
   end
 
    scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
+###いいね機能
+   def favorited_by?(end_user)
+     favorites.where(end_user_id: end_user.id).exists?
+   end
 end
 
 
