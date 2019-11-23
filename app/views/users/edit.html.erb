@@ -24,9 +24,12 @@
     <h4>メールアドレス</h4>
     <%= f.text_field :email, :size=>"80" %></br>
 
-
-    <%= f.submit '変更を適用する。' %></br>
-    <%= link_to "退会はこちら", user_close_path(@user) %>
-
+    <div class="actions">
+    <%= f.submit '変更を適用する。',class: "btn btn-info btn-lg" %></br>
+</div>
+<div class="actions">
+    <%= link_to "退会はこちら", user_close_path(@user) ,class: "btn btn-danger btn-lg"%>
+</div>
   <% end %>
+
 
