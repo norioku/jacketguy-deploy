@@ -9,26 +9,39 @@ def new
 end
 
 def create
-
+  binding.pry
   @user = EndUser.find(params[:id])
   @address = Address.find(params[:order_history][:address_id].to_i)
 
   @order_history = OrderHistory.new
 
-  @order_history.end_user_id = @address.end_user_id
-  @order_history.email = @address.email
-  @order_history.last_name = @address.last_name
-  @order_history.first_name = @address.first_name
-  @order_history.last_kana_name = @address.last_kana_name
-  @order_history.first_kana_name = @address.first_kana_name
-  @order_history.post_code = @address.post_code
-  @order_history.address = @address.address
-  @order_history.phone_number = @address.phone_number
+  if @address.exsists?
+    @order_history.end_user_id = @address.end_user_id
+    @order_history.email = @address.email
+    @order_history.last_name = @address.last_name
+    @order_history.first_name = @address.first_name
+    @order_history.last_kana_name = @address.last_kana_name
+    @order_history.first_kana_name = @address.first_kana_name
+    @order_history.post_code = @address.post_code
+    @order_history.address = @address.address
+    @order_history.phone_number = @address.phone_number
+  else
+    @order_history.end_user_id = @user.id
+    @order_history.email = @user.email
+    @order_history.last_name = @user.last_name
+    @order_history.first_name = @user.first_name
+    @order_history.last_kana_name = @user.last_kana_name
+    @order_history.first_kana_name = @user.first_kana_name
+    @order_history.post_code = @user.post_code
+    @order_history.address = @user.address
+    @order_history.phone_number = @user.phone_number
+  end
+
+
   @order_history.shipping_status = 0
   @order_history.product_total_price = params[:order_history][:product_total_price].to_i
 
   if @order_history.save
-    flash[:success] = "購入が完了しました。"
     @user.carts.each do |cart|
       @product_history = ProductHistory.new
       @product_history.product_id = cart.product_id
@@ -44,19 +57,6 @@ def create
     render :new
   end
 
-
-
-
-
-
-
-
-#   if .save
-#     @user.carts.destroy
-#     redirect_to users_purchase_complete_path
-#   else
-#     render :new
-#   end
 end
 
 def complete
@@ -66,25 +66,9 @@ end
 private
 
   def order_history_params
-    params.require(:order_history).permit(:address_id, :product_total_price)
+    params.require(:order_history).permit(:end_user_id, :address_id, :product_total_price)
   end
 
 
 
 end
-# <%= form_with(model: [@product_history, @order_history], local:true) do |f| %>
-
-#       <%= @user.addresses.each do |address| %>
-#         <%= f.hidden_field :end_user_id, value => @user.id %>
-#         <%= f.hidden_field :email, value => address.email %>
-#         <%= f.hidden_field :last_name, value => address.last_name %>
-#         <%= f.hidden_field :last_kana_name, value => address.last_kana_name %>
-#         <%= f.hidden_field :first_name, value => address.first_name %>
-#         <%= f.hidden_field :first_kana_name, value => address.first_kana_name %>
-#         <%= f.hidden_field :post_code, value => address.post_code %>
-#         <%= f.hidden_field :address, value => address.address %>
-#         <%= f.hidden_field :phone_number, value => address.phone_number %>
-
-#       # <% end %>
-# <%= f.submit "注文を確定する" %>
-#     <% end %>
