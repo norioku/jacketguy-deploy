@@ -12,8 +12,13 @@ def create
   @user = current_end_user
 	@user_address = Address.new(user_address_params)
   @user_address.end_user_id = current_end_user.id
-	@user_address.save
- 	redirect_to user_path(@user)
+	if @user_address.save
+    flash[:success] = "お届け先を追加しました。"
+ 	  redirect_to user_path(@user)
+  else
+    flash[:danger] = "お届け先を削除できませんでした。"
+    render :new
+  end
 end
 
  def edit
@@ -23,15 +28,25 @@ end
 
  def update
   @user = current_end_user
- 	 @user_address = Address.find(params[:id])
-      @user_address.update(user_address_params)
-      redirect_to user_path(@user.id)
+ 	@user_address = Address.find(params[:id])
+
+  if @user_address.update(user_address_params)
+    flash[:success] = "お届け先の更新に成功しました。"
+    redirect_to user_path(@user.id)
+  else
+    render :edit
+  end
  end
 
 def destroy
-	@user_addresses = User_addresses.find(params[:id])
-	if book.destroy
-	redirect_to user_path(@user.id)
+	@user_address = Address.find(params[:id])
+	if @user_address.destroy
+    flash[:success] = "お届け先住所を削除しました。"
+	 redirect_to user_path(current_end_user.id)
+  else
+    flash[:danger] = "お届け先住所を削除できませんでした。"
+    render :show
+  end
 end
 
 private

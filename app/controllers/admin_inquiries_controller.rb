@@ -11,6 +11,7 @@ class AdminInquiriesController < ApplicationController
 	def create
 		@inquiry = Inquiry.find(params[:id])
 		if @inquiry.update(inquiry_params)
+			flash[:success] = "返信が完了しました。"
 		   @inquiry.update(status: "返信済")
 			InquiryMailer.send_mail(@inquiry).deliver_now
 			redirect_to admins_inquiry_path(@inquiry)

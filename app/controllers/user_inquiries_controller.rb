@@ -16,7 +16,6 @@ def create
 	if @inquiry.save
 	redirect_to user_inquiries_complete_path(@user)
 else
-	flash[:notice] = "お問い合わせ内容をご記入ください。"
 	render action: :new
 end
 end

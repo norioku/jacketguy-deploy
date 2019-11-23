@@ -9,7 +9,6 @@ def new
 end
 
 def create
-  
   @user = EndUser.find(params[:id])
   @order_history = OrderHistory.new
 

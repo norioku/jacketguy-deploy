@@ -7,6 +7,7 @@
 </h2>
 <div class="f-n">
 	<%= form_for(@inquiry, url: user_inquiries_path) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
 		<%= f.label :subject, 'お問い合わせのカテゴリ' %><br>
   			<%= f.select :subject, [["発送について", "発送について"], ["交換・返品について", "交換・返品について"], ["商品について", "商品について"], ["身に覚えのない請求書", "身に覚えのない請求書"], ["その他", "その他"]], {},class:"form-control selectpicker" %>
         </div>

@@ -39,9 +39,10 @@
 </div>
 </div>
 
-	<%  if @inquiry.reply.nil? %>
+	<% if @inquiry.reply.blank? %>
 	<%= form_for(@inquiry, url: {controller:"admin_inquiries",action:"create"})  do |f| %>
-  <%= f.hidden_field :status, :value => "返信済み" %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <%= f.hidden_field :status, :value => "返信済" %>
               <%= f.text_area :reply, :placeholder => "返信内容を入力", :size=>"145x15" %>
 
   <button class="btn btn-primary btn-block">
