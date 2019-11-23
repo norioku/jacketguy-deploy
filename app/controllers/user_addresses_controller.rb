@@ -38,7 +38,7 @@ private
 
   def user_address_params
     params.require(:address).permit(:email, :last_name, :first_name, :last_kana_name, :first_kana_name, :post_code, :address, :phone_number)
-end
+  end
 
 # def user_params
 #     params.require(:end_user).permit(:email, :last_name, :first_name, :last_kana_name, :first_kana_name, :post_code, :address, :phone_number)

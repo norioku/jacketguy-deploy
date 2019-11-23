@@ -4,8 +4,8 @@
 		<ul>
 			<% @genres.each do |genre| %>
 			<li>
-			  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>	
-			</li>	
+			  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>
+			</li>
 			<% end %>
 		</ul>
 	</div>
