@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   	 							.order('count(product_id) desc')
   	 							.limit(6) .pluck(:product_id))
 
+     @ranks = Product.find(Favorite.group(:product_id).pluck(:product_id))
+
    @user = current_end_user
    @new_products = Product.order(release_date: :desc)
    @genres = Genre.all
