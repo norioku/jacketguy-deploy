@@ -2,11 +2,11 @@
 	<div class="sidenav" style="float: right;">
 		<p>ジャンル</p>
 		<ul>
-			<a href="#">J-pop</a>
-			<a href="#">J-rock</a>
-			<a href="#">J-metal</a>
-			<a href="#">classic</a>
-			<a href="#">国歌</a>
+			<% @genres.each do |genre| %>
+			<li>
+			  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>	
+			</li>	
+			<% end %>
 		</ul>
 	</div>
 	<div>
