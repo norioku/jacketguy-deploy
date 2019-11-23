@@ -14,9 +14,8 @@
 	</div>
 	<div class="ranking">
 		<div>
-			<h2>月間いいね！ランキング</h2>
-			<span><%=  %>集計</span>
-			<span><%=  %>件中　<=%  %>件表示</span>
+			<h2>いいね！ランキング</h2>
+			<span><%= @ranks.count %>件中 <%= @all_ranks.count %>件表示</span>
 		</div>
 		<div class="ranking-colu">
 			<ul style="">
@@ -25,18 +24,19 @@
 						<span class="rank">
 							<%= "No.#{i}" %>
 						</span>
-						<div class="jacket-image">
 
-							<%= attachment_image_tag rank, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+							<div class="jacket-image">
+								<%= attachment_image_tag rank, :product_image,fallback: "no_image.jpg", size: "100x100" %>
+							</div>
+							<div>
+								<h5>タイトル:<%= rank.title %><br></h5>
+								<h5>レーベル:<%= rank.label.name %><br></h5>
+								<h5>アーティスト:<%= rank.artist.name %><br></h5>
+								<h5>ジャンル:<%= link_to rank.genre.name,user_genre_path(rank.genre.id) %><br></h5>
+								<h5>価格:<%= rank.price %>円(税込)<br></h5>
+								<h5><%= link_to "詳細を見る", product_path(rank.id) %></h5>
+							</div>
 
-						</div>
-						<div>
-
-							<%= link_to "#{rank.title}",product_path(rank.id) %>
-							<%= rank.artist.name %>
-
-							<%= rank.price %>
-						</div>
 					<% end %>
 				</li>
 			</ul>
@@ -49,16 +49,17 @@
 			<ul>
 					<% @new_products.each do |product| %>
 						<li>
-							<h4><%= product.release_date %>発売</h4>
+							<h5><%= product.release_date %>発売</h5>
 							<div class="jacket-image">
 								<%= attachment_image_tag product, :product_image,fallback: "no_image.jpg", size: "100x100" %>
 							</div>
 							<div>
-								<h4>タイトル:<%= link_to product.title, product_path(product.id) %><br></h4>
-								<h4>レーベル:<%= product.label.name %><br></h4>
-								<h4>アーティスト:<%= product.artist.name %><br></h4>
-								<h4>ジャンル:<%= product.genre.name %><br></h4>
-								<h4>価格:<%= product.price %>円(税込)<br></h4>
+								<h5>タイトル:<%= product.title %><br></h5>
+								<h5>レーベル:<%= product.label.name %><br></h5>
+								<h5>アーティスト:<%= product.artist.name %><br></h5>
+								<h5>ジャンル:<%= link_to product.genre.name,user_genre_path(product.genre.id) %><br></h5>
+								<h5>価格:<%= product.price %>円(税込)<br></h5>
+								<h5><%= link_to "詳細を見る", product_path(product.id) %></h5>
 							</div>
 						</li>
 					<% end %>
