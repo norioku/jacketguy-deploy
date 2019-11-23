@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   @search_params = product_search_params
   @product = Product.search(@search_params)
 
-end
+  end
 
   private
 
