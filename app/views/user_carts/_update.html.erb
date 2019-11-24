@@ -1,0 +1,5 @@
+<%= form_for(cart, url: user_carts_update_path(cart), method: :patch) do |f| %>
+<%= f.hidden_field :id, :value => cart.id %> <!-- attendancesテーブルのidを渡す -->
+<%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],selected:cart.order_quantity %>
+<%= f.submit "枚数変更" %>
+<% end %>

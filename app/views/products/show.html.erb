@@ -6,11 +6,11 @@
         <%= attachment_image_tag @product, :product_image, size: "250x250", format: 'jpeg', fallback: "no_image.jpg" %>
       </div>
       <div class = "product-favorites">
-        <!-- ここから -->
+
         <div id="favorites_buttons_<%= @product.id %>">
              <%= render partial: 'user_favorites/favorite', locals: { product: @product} %>
           </div>
-<!-- ここまで -->
+
       </div>
       <div class = "product-reviews">
         <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
