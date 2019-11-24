@@ -17,3 +17,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require bootstrap-select
+$(function(){
+  $("#submit_select").change(function(){
+    $("#submit_form").submit();
+  });
+});
