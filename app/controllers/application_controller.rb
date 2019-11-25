@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session #jQueryの実行に必要
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :search
+  before_action :search_app
 
   def after_sign_in_path_for(resource)
     case resource
@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def search
+  def search_app
   @user = current_end_user
 
   @search_params = product_search_params
-  @product = Product.search(@search_params)
+  @products = Product.search(@search_params)
 
   end
 

@@ -9,23 +9,11 @@ def new
 end
 
 def create
-  binding.pry
   @user = EndUser.find(params[:id])
-  @address = Address.find(params[:order_history][:address_id].to_i)
-
   @order_history = OrderHistory.new
 
-  if @address.exsists?
-    @order_history.end_user_id = @address.end_user_id
-    @order_history.email = @address.email
-    @order_history.last_name = @address.last_name
-    @order_history.first_name = @address.first_name
-    @order_history.last_kana_name = @address.last_kana_name
-    @order_history.first_kana_name = @address.first_kana_name
-    @order_history.post_code = @address.post_code
-    @order_history.address = @address.address
-    @order_history.phone_number = @address.phone_number
-  else
+
+  if params[:order_history][:address_id].to_i == 0
     @order_history.end_user_id = @user.id
     @order_history.email = @user.email
     @order_history.last_name = @user.last_name
@@ -35,6 +23,17 @@ def create
     @order_history.post_code = @user.post_code
     @order_history.address = @user.address
     @order_history.phone_number = @user.phone_number
+  else
+    @address = Address.find(params[:order_history][:address_id].to_i)
+    @order_history.end_user_id = @address.end_user_id
+    @order_history.email = @address.email
+    @order_history.last_name = @address.last_name
+    @order_history.first_name = @address.first_name
+    @order_history.last_kana_name = @address.last_kana_name
+    @order_history.first_kana_name = @address.first_kana_name
+    @order_history.post_code = @address.post_code
+    @order_history.address = @address.address
+    @order_history.phone_number = @address.phone_number
   end
 
 
