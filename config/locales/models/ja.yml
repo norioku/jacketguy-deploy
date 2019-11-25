@@ -2,6 +2,9 @@ ja:
   activerecord:
     models:
       arrival_record: 入荷情報
+      end_user: ユーザ
+      inquiry: 問い合わせ
+      address: お届け先
     attributes:
       arrival_record:
         id: ID
@@ -11,12 +14,8 @@ ja:
         arrival_product_at: 入荷日時
         arrival_product: 入荷商品
 
-  activerecord:
-    models:
-      end_user: ユーザ
-    attributes:
       end_user:
-        email: Email
+        email: メールアドレス
         created_at: 登録日時
         updated_at: 更新日時
         password: パスワード
@@ -28,12 +27,8 @@ ja:
         address: 住所
         phone_number: 電話番号
 
-  activerecord:
-    models:
-      inquiry: 問い合わせ
-    attributes:
       inquiry:
-        email: Email
+        email: メールアドレス
         created_at: 登録日時
         updated_at: 更新日時
         end_user_name: ユーザ名
@@ -42,13 +37,9 @@ ja:
         reply: 返信内容
         status: 返信ステータス
 
-  activerecord:
-    models:
-      address: 問い合わせ
-    attributes:
       address:
         end_user_id: ユーザID
-        email: Email
+        email: メールアドレス
         created_at: 登録日時
         updated_at: 更新日時
         last_name: 姓
@@ -58,3 +49,7 @@ ja:
         post_code: 郵便番号
         address: 住所
         phone_number: 電話番号
+
+      admin:
+        email: メールアドレス
+        password: パスワード
