@@ -29,12 +29,7 @@ class ProductsController < ApplicationController
 def search
   @user = current_end_user
   @genres = Genre.all
-  
-
-  def search
-    @user = current_end_user
-    @genres = Genre.all
-  end
+end
 
 
 end
