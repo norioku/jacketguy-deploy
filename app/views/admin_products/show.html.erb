@@ -61,6 +61,7 @@
       <h2><%= @product.price %>円（税込）</h2>
       <%= link_to "入荷する", admins_arrival_records_new_path, class: "btn btn-success" %>
       <%= link_to "編集する", admins_products_edit_path(@product), class: "btn btn-success" %>
+      <%= link_to "商品一覧に戻る", admins_products_path %>
     </div>
   </section>
 </div>

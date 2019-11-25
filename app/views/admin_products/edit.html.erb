@@ -4,7 +4,7 @@
 	<%= f.text_field :title %>
 	<h4>アーティスト</h4>
 	  <%= fields_for @artist do |i| %>
-		<%= i.text_field :name, list: 'artist' %>
+		<%= i.text_field :name, list: 'artist' ,required: true %>
 		<datalist id="artist">
 			<% Artist.all.each do |artist| %>
 			<option value="<%= artist.name %>"></option>
@@ -45,5 +45,6 @@
 	  </div>
 	<h4>販売ステータス</h4>
 	<%= f.select :sale_status, Product.sale_statuses.keys.map {|k| [k, k]} %>
-	<%=  f.submit "編集内容を保存する" %>
+	<%=  f.submit "編集内容を保存する", class: "btn btn-success" %>
+	<%= link_to "商品を削除する", admins_products_update_path(@admin_product), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
 <% end %>	
