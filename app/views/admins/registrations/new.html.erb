@@ -3,7 +3,7 @@
 <h2 class="h2"></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render 'layouts/error_messages', model: f.object, class: "admin-error-message" %>
 
   <div class="field">
     <%= f.label :email %><br />

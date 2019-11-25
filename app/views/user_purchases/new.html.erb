@@ -20,7 +20,7 @@
 						</tr>
 						<tr>
 							<th>氏名</th>
-							<td><%= @user.first_name %>&ensp;<%= @user.last_name %></td>
+							<td><%= @user.first_name %>&ensp;<%= @user.last_name %>&ensp;様</td>
 						</tr>
 						<tr>
 							<th>Email</th>
@@ -46,7 +46,7 @@
 						</tr>
 						<tr>
 							<th>氏名</th>
-							<td><%= address.first_name %>&ensp;<%= address.last_name %></td>
+							<td><%= address.first_name %>&ensp;<%= address.last_name %>&ensp;様</td>
 						</tr>
 						<tr>
 							<th>Email</th>
@@ -70,7 +70,7 @@
 					<p class = "userpurchase-song-image"><%= attachment_image_tag cart.product, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></p>
 					<p class = "userpurchase-song-title"><%= cart.product.title %></p>
 					<p class = "userpurchase-song-quantity">数量：<%= cart.order_quantity %></p>
-					<p class = "userpurchase-song-price">小計：<%= cart.product.price * cart.order_quantity %></p>
+					<p class = "userpurchase-song-price">小計：<%= cart.product.price * cart.order_quantity %>円</p>
 				</div>
 				<% total_price += cart.product.price * cart.order_quantity %>
 				<% end %>
@@ -94,9 +94,9 @@
 
 			<div class = "userpurchase-fee">
 				<% if @user.carts.exists? %>
-					<p>商品の小計：<%= total_price %></p>
-					<p>配送料：<%= @order_history.shipping_fee %></p>
-					<p>ご請求: <%= total_price + @order_history.shipping_fee %></p>
+					<p>商品の小計：<%= total_price %>円</p>
+					<p>配送料：<%= @order_history.shipping_fee %>円</p>
+					<p>ご請求: <%= total_price + @order_history.shipping_fee %>円</p>
 					<%= f.hidden_field :product_total_price, :value => total_price %>
 
 					<%= f.submit "購入を確定", class: "btn btn-primary btn-block" %>
