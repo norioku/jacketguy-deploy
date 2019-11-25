@@ -89,5 +89,8 @@ gem 'enumerize'
 gem "paranoia", "~> 2.2"
 
 gem 'bootstrap-select-rails'
-gem 'rails-i18n', '~> 5.1'
+
+gem 'rails-i18n'
+gem 'jquery-turbolinks'
+
 
