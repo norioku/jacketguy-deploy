@@ -89,5 +89,5 @@ gem 'enumerize'
 gem "paranoia", "~> 2.2"
 
 gem 'bootstrap-select-rails'
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 5.1'
 
