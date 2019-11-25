@@ -7,11 +7,11 @@ class UserReviewsController < ApplicationController
   end
 
   def create
-  	product = Product.find(params[:id])
-  	review = Review.new(review_params)
-  	review.product_id = product.id
-  	review.end_user_id = current_end_user.id
-    if review.save
+    product = Product.find(params[:id])
+    unless Review.where(end_user_id: params[:end_user_id], product_id: params[:product_id]).empty?
+      review = Review.new(review_params)
+      review.product_id = product.id
+      review.save
       flash[:success] = "レビューを投稿しました"
       redirect_to product_path(product.id)
     else
@@ -20,7 +20,6 @@ class UserReviewsController < ApplicationController
     end
 
   end
-
 
 private
 
