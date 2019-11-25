@@ -1,5 +1,6 @@
 class UserAddressesController < ApplicationController
 
+
 def show
 end
 
@@ -57,3 +58,4 @@ private
   end
 
 end
+
