@@ -16,9 +16,9 @@
 
 <div class="col-xs-9 mypage-content-box">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#sampleContentA" data-toggle="tab">お届け先住所一覧</a></li>
-		<li><a href="#sampleContentB" data-toggle="tab">お気に入り一覧</a></li>
-		<li><a href="#sampleContentC" data-toggle="tab">購入履歴</a></li>
+		<li><a href="#sampleContentA" data-toggle="tab" onClick=”$(this).tab(’show’); >お届け先住所一覧</a></li>
+		<li class="active"><a href="#sampleContentB" data-toggle="tab" >お気に入り一覧</a></li>
+		<li><a href="#sampleContentC" data-toggle="tab" onClick=”$(this).tab(’show’);>購入履歴</a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane" id="sampleContentA">
@@ -30,7 +30,7 @@
 						    <td><%= address.id %></td>
 					        <td><%= address.address %></td>
 					        <td class="option">&ensp;<%= link_to '住所を編集',user_addresses_edit_path(address.id), class: "btn-sm  btn-primary " %>
-					        <%= link_to '住所を削除',user_address_destroy_path(address.id), class: "btn-sm btn-danger", method: :delete %>
+					        <%= link_to '住所を削除',user_address_destroy_path(address), class: "btn-sm btn-danger", method: :delete %>
 						    </td>
 						   </tr>
 					    <% end %>
@@ -44,7 +44,7 @@
 						  	<% @favorites.each do |favorite| %>
 						    <tr>
 						    <td><span><%= attachment_image_tag favorite.product, :product_image,fallback: "no_image.jpg", size: "50x50" %></span></td>
-						    <td><%= favorite.product.title %></td>
+						    <td><%= link_to favorite.product.title, product_path(favorite.product) %></td>
 						    <td><%= favorite.product.artist.name %></td>
 						    <td><%= favorite.product.price %>円</td>
 						    </tr>
@@ -85,9 +85,9 @@
 						<div class="product-status-box" >
 							送料:<%= order_history.shipping_fee %>円 <br> <!-- デフォルト値入れる前のデータは500円でない -->
 							<% total_price = order_history.product_histories.inject(0){|sum,product_history| sum + product_history.product.price*product_history.order_quantity} %>
-							合計金額:<%= total_price+order_history.shipping_fee %>円<br>
+							合計金額:<br><%= total_price+order_history.shipping_fee %>円<br>
 							<%= order_history.shipping_status %><br>
-							<%= link_to "詳細", user_order_history_path(order_history.id) %>
+							<%= link_to "詳細", user_order_history_path(order_history) %>
 						</div>
 					</section>
 				</div>

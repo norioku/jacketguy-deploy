@@ -3,7 +3,7 @@
 <h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
+<%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "xxx@xxx", class:"devise_form" %>

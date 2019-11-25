@@ -2,3 +2,4 @@
 <%= form_for(cart, url: user_carts_update_path(cart), method: :patch,remote: true) do |f| %>
 <%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],{},{selected:cart.order_quantity,onchange: "submit(this.form)"} %>
 <% end %>
+
