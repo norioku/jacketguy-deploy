@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  protect_from_forgery with: :null_session #jQueryの実行に必要
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :search_app
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   @search_params = product_search_params
   @products = Product.search(@search_params)
 
-end
+  end
 
   private
 
