@@ -26,17 +26,15 @@ class ProductsController < ApplicationController
      @carts = Cart.new
   end
 
-<<<<<<< HEAD
 def search
   @user = current_end_user
   @genres = Genre.all
 end
-=======
+
   def search
     @user = current_end_user
     @genres = Genre.all
   end
->>>>>>> 828f8e9412b348378dd14d03031a4ab26606c07b
 
 
 end

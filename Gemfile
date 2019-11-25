@@ -90,4 +90,5 @@ gem "paranoia", "~> 2.2"
 
 gem 'bootstrap-select-rails'
 gem 'rails-i18n'
+gem 'jquery-turbolinks'
 
