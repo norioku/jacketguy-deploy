@@ -25,7 +25,7 @@ class UserCartsController < ApplicationController
 	  carts.save
 	  redirect_to user_carts_path
     end
-  
+
 
 	  private
 
