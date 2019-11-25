@@ -1,6 +1,6 @@
 <div class ="nested-fields">
 <%= f.label :ディスク %>
-<%= f.number_field :disc_num %>
+<%= f.number_field :disc_num ,required: true %>
 <%= f.fields_for :songs do |song| %>
 	<%=render "song_fields", :f => song%>
  <% end %>

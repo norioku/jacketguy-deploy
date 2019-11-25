@@ -11,11 +11,6 @@ class ProductsController < ApplicationController
    @new_products = Product.page(params[:page]).order(release_date: :desc)
    @genres = Genre.all
 
-     @user = current_end_user
-
-     @new_products = Product.order(release_date: :desc)
-     @genres = Genre.all
-
   end
 
   def show
