@@ -11,13 +11,12 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
+//= require jquery.turbolinks
 //= require cocoon
 //= require bootstrap-sprockets
-//= require_tree .
 //= require bootstrap-select
-//= require jquery.turbolinks
+//= require_tree .
 
 
 $(document).on('turbolinks:load', function() {
