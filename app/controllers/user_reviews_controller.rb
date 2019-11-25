@@ -11,8 +11,14 @@ class UserReviewsController < ApplicationController
   	review = Review.new(review_params)
   	review.product_id = product.id
   	review.end_user_id = current_end_user.id
-  	review.save
-  	redirect_to product_path(product.id)
+    if review.save
+      flash[:success] = "レビューを投稿しました"
+      redirect_to product_path(product.id)
+    else
+      flash[:danger] = "レビューが投稿できません"
+      redirect_to product_path(product.id)
+    end
+
   end
 
 
