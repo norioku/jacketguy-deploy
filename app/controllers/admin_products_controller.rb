@@ -40,10 +40,13 @@ def create
 	admin_product.artist_id = Artist.find_by(name:artist.name).id
 	admin_product.label_id = Label.find_by(name:label.name).id
 	admin_product.genre_id =  Genre.find_by(name:genre.name).id
-
-	admin_product.save
-
-	redirect_to admins_arrival_records_new_path(admin_product.id)
+	  if admin_product.save
+	    redirect_to admins_arrival_records_new_path(admin_product.id)
+	  else
+	    flash[:danger] = "商品登録に失敗しました"
+	    render :new
+	  end
+	
 end
 
 def edit
@@ -68,6 +71,16 @@ def update
 end
 
 def destroy
+	admin_product = Product.find(params[:id])
+	 if admin_product.destroy
+	    flash[:success] = "商品を削除しました"
+	    redirect_to admins_products_path
+	 else
+	    flash[:danger] = "商品削除に失敗しました"
+	    render :edit
+	 end
+	
+	
 end
 
 private

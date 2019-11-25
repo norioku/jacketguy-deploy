@@ -1,3 +1,67 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.flex{
+  padding: 2.5% 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex > *{
+  background: #fff;
+  text-align: center;
+  border: 3px solid #aaa;
+  margin: 10px;
+}
+
+.rank-flex{
+  padding: 2.5% 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.rank-flex > *{
+  position: relative;
+  width: 180px;
+  background: #fff;
+  text-align: center;
+  border: 3px solid #aaa;
+  margin: 0 1.5%;
+  padding: 10px;
+}
+
+.rank{
+    width: 50px;
+    height: 25px;
+    display: inline-block;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    padding: 3px;
+	background-color: gray;
+	color: white;
+}
+
+.list{
+	width: 30%;
+	dispray: inline_flex;
+}
+
+ul {
+	list-style: none;
+}
+
+.sidenav-flex{
+  border: 3px solid #aaa;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.list-sarch{
+  border-bottom: 1px solid gray;
+}

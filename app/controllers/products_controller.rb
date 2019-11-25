@@ -1,15 +1,19 @@
 class ProductsController < ApplicationController
 
+
+
   def index
   	 @all_ranks = Product.find(Favorite.group(:product_id)
   	 							.order('count(product_id) desc')
-  	 							.limit(6) .pluck(:product_id))
+  	 							.limit(5) .pluck(:product_id))
 
      @ranks = Product.find(Favorite.group(:product_id).pluck(:product_id))
 
    @user = current_end_user
-   @new_products = Product.order(release_date: :desc)
+   @new_products = Product.page(params[:page]).order(release_date: :desc)
    @genres = Genre.all
+
+
 end
 
 def show

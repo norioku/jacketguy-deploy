@@ -87,4 +87,3 @@ gem 'rubocop', '~> 0.76.0', require: false
 gem 'enumerize'
 
 gem "paranoia", "~> 2.2"
-
