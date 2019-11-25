@@ -20,18 +20,6 @@
 
 
 
-$(function(){
-  $("#submit_select").change(function(){
-    $("#submit_form").submit();
-  });
 
-
-
-
-
-$(document).on('turbolinks:load', function() {
-   $(window).trigger('load.bs.select.data-api');
-
-});
 
 
