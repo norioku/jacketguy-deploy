@@ -6,9 +6,11 @@
         <%= attachment_image_tag @product, :product_image, size: "250x250", format: 'jpeg', fallback: "no_image.jpg" %>
       </div>
       <div class = "product-favorites">
-        <%= link_to user_favorites_create_path, method: :post do %>
-          <i class="far fa-heart"><%= @product.favorites.count %></i><span class = "favorite-text">いいね</span>
-        <% end %>
+
+        <div id="favorites_buttons_<%= @product.id %>">
+             <%= render partial: 'user_favorites/favorite', locals: { product: @product} %>
+          </div>
+
       </div>
       <div class = "product-reviews">
         <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>

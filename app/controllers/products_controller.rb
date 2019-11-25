@@ -7,37 +7,33 @@ class ProductsController < ApplicationController
   	 							.order('count(product_id) desc')
   	 							.limit(5) .pluck(:product_id))
 
-     @ranks = Product.find(Favorite.group(:product_id).pluck(:product_id))
-
    @user = current_end_user
    @new_products = Product.page(params[:page]).order(release_date: :desc)
    @genres = Genre.all
 
+     @user = current_end_user
 
-end
+     @new_products = Product.order(release_date: :desc)
+     @genres = Genre.all
 
-def show
-   @product = Product.find(params[:id])
-   @reviews = @product.reviews
-   @user = current_end_user
+  end
 
-   @review = Review.new
+  def show
+     @product = Product.find(params[:id])
+     @reviews = @product.reviews
+     @user = current_end_user
+     @review = Review.new
+     @arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
+     @history_stocks = @product.product_histories.all.sum(:order_quantity)
+     @stocks = @arrival_stocks - @history_stocks
+     @carts = Cart.new
+  end
 
-   @arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
-   @history_stocks = @product.product_histories.all.sum(:order_quantity)
-   @stocks = @arrival_stocks - @history_stocks
+  def search
+    @user = current_end_user
+    @genres = Genre.all
+  end
 
-   @carts = Cart.new
-   
-end
-
-def search
-  @user = current_end_user
-
-  @search_params = product_search_params
-  @products = Product.search(@search_params)
-  @genres = Genre.all
-end
 
 end
 

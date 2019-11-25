@@ -1,13 +1,14 @@
 <h2>送り先の追加</h2>
 
 <%= form_for(@user_address, url: user_address_create_path) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
 
     <h4>受取人の名前</h4>
      <%= f.text_field :first_name %>
 
     <%= f.text_field :last_name %>
 
-    <h4></h4>
+    <h4>受取人の名前かな</h4>
     <%= f.text_field :first_kana_name %>
 
     <%= f.text_field :last_kana_name %>
