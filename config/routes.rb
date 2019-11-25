@@ -100,7 +100,7 @@ Rails.application.routes.draw do
       get "users/:id/user_addresses/edit" => "user_addresses#edit", as: "user_addresses_edit"
       patch "users/:id/user_addresses" => "user_addresses#update", as: "user_addresses_update"
       put "users/:id/user_addresses" => "user_addresses#update"
-      delete "users/:id/user_addresses" => "user_addresses#destroy",as: "user_address_destroy"
+      delete "users/:id" => "user_addresses#destroy",as: "user_address_destroy" #userのshowページ
 
     # user_order_historiesコントローラ
       get "users/user_order_histories/:id" => "user_order_histories#show", as: "user_order_history"
