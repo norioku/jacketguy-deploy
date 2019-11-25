@@ -23,7 +23,7 @@
 
         <div class = "form-group adminarrival-form-box">
           <%= f.label :arrival_product, "入荷個数" %>
-          <%= f.number_field :arrival_product, class: "form-control adminarrival-form" %>
+          <%= f.number_field :arrival_product, min:1, class: "form-control adminarrival-form" %>
         </div>
 
         <div class = "form-group adminarrival-form-box">

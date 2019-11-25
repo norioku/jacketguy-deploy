@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <%= f.label :ナンバー %>
-	<%= f.number_field :song_num %>
+	<%= f.number_field :song_num , min:1%>
 	<%= f.label :曲名 %>
 	<%= f.text_field :name %>
   <%= link_to_remove_association "曲を削除", f %>
