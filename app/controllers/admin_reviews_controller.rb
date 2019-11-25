@@ -10,10 +10,10 @@ def update
   @review = Review.find(params[:id])
 
   if @review.update(admin_review_params)
-    flash[:notice] = "編集を確定しました"
+    flash[:success] = "編集を確定しました"
     redirect_to admins_product_url(@review.product)
   else
-    flash.now[:notice] = "編集に失敗しました"
+    flash.now[:danger] = "編集に失敗しました"
     render :edit
   end
 end

@@ -24,6 +24,11 @@ class ProductsController < ApplicationController
      @carts = Cart.new
   end
 
+def search
+  @user = current_end_user
+  @genres = Genre.all
+end
+
   def search
     @user = current_end_user
     @genres = Genre.all

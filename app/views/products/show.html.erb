@@ -60,7 +60,7 @@
         <h2>在庫あり</h2>
           <%= form_for @carts, url: user_carts_create_path do |f| %>
             <%= f.label "数量" %>
-            <%= f.number_field :order_quantity %>
+            <%= f.number_field :order_quantity , min:1 %>
             <%= f.submit "カートに追加する" %>
           <% end %>
       <% elsif end_user_signed_in? && @product.sale_status  == "販売停止中"%>
