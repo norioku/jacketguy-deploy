@@ -15,8 +15,14 @@ class UsersController < ApplicationController
 
   def update
     @user = EndUser.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+
+    if @user.update(user_params)
+      flash[:success] = "ユーザ情報を更新しました。"
+      redirect_to user_path(@user)
+    else
+      flash.now[:danger] = "ユーザ情報を更新できませんでした。"
+      render :edit
+  end
   end
 
   def destroy

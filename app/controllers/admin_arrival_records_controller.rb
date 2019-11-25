@@ -15,11 +15,11 @@ def create
 
 
   if @admin_arrival.save
-    flash[:notice] = "商品を登録しました"
+    flash[:success] = "商品を登録しました"
     redirect_to admins_arrival_records_path
   else
     puts @admin_arrival.errors.full_messages
-    flash[:notice] = "商品の登録に失敗しました"
+    flash.now[:danger] = "商品の登録に失敗しました"
     render :new
   end
 end
