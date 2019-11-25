@@ -13,7 +13,7 @@
 
       </div>
       <div class = "product-reviews">
-        <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
+        <i class="far fa-file-alt"><%= link_to @product.reviews.count, product_reviews_path %>件のレビュー</i>
       </div>
     </div>
 
