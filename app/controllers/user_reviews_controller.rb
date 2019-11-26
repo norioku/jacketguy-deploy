@@ -11,7 +11,7 @@ class UserReviewsController < ApplicationController
   def create
     product = Product.find(params[:id])
     if Review.exists?(end_user_id: current_end_user, product_id: product.id)
-       flash[:danger] = "レビューが投稿できません"
+       flash[:danger] = "この商品はすでにレビュー済みです"
        redirect_to product_path(product.id)
     else
       review = Review.new(review_params)
