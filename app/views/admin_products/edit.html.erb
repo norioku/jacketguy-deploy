@@ -47,4 +47,4 @@
 	<%= f.select :sale_status, Product.sale_statuses.keys.map {|k| [k, k]} %>
 	<%=  f.submit "編集内容を保存する", class: "btn btn-success" %>
 	<%= link_to "商品を削除する", admins_products_update_path(@admin_product), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-<% end %>	
+<% end %>

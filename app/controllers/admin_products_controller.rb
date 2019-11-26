@@ -25,6 +25,7 @@ class AdminProductsController < ApplicationController
 
 	end
 
+
 	def create
 		@artist = Artist.new(artist_params)
 		unless Artist.find_by(name:@artist.name)
