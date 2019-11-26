@@ -1,7 +1,7 @@
 class AdminArrivalRecordsController < ApplicationController
 
 def index
-	@arrival_records = ArrivalRecord.all
+	@arrival_records = ArrivalRecord.order(arrival_product_at: "DESC").page(params[:page]).per(10)
 
 end
 

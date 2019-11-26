@@ -1,12 +1,12 @@
 class AdminProductsController < ApplicationController
 
 def index
-	@products = Product.all
+	@products = Product.page(params[:page]).per(30)
 end
 
 def show
 	@product = Product.find(params[:id])
-	@reviews = Review.where(product_id: @product)
+	@reviews = Review.where(product_id:@product.id).page(params[:page]).per(5)
 	@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
 	@history_stocks = @product.product_histories.all.sum(:order_quantity)
 	@stocks = @arrival_stocks - @history_stocks
@@ -45,7 +45,7 @@ def create
 	  if @admin_product.save
 	    redirect_to admins_arrival_records_new_path(@admin_product.id)
 	  else
-	    flash[:danger] = "商品登録に失敗しました"
+	    flash.now[:danger] = "商品登録に失敗しました"
 	    render :new
 	  end
 	
@@ -77,11 +77,11 @@ def destroy
 	@artist = @admin_product.artist
     @label = @admin_product.label
     @genre = @admin_product.genre
-	 if admin_product.destroy
+	 if @admin_product.destroy
 	    flash[:success] = "商品を削除しました"
 	    redirect_to admins_products_path
 	 else
-	    flash[:danger] = "商品削除に失敗しました"
+	    flash.now[:danger] = "商品削除に失敗しました"
 	    render :edit
 	 end
 	

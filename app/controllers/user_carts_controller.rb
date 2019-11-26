@@ -27,7 +27,7 @@ class UserCartsController < ApplicationController
 				flash[:success] = "カートに追加しました"
 				redirect_to user_carts_path 
 			else
-				flash[:danger] = "カートに追加できませんでした"
+				flash.now[:danger] = "カートに追加できませんでした"
 				render template: 'products/show' 
 			end
     	else
