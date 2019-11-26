@@ -59,59 +59,54 @@
   width: 100%;
   height: auto;
   margin:10px 0 10px 0;
+  padding:10px 50px 10px 50px;
   border:groove 1px;
-  display:flex;
+  background: -moz-linear-gradient(315deg, red 50px, yellow 70px, skyblue 100px);
+  background: -webkit-linear-gradient(315deg, red 50px, yellow 70px, skyblue 100px);
+  background: -ms-linear-gradient(315deg, red 50px, yellow 70px, skyblue 100px);
 }
 
-.date_and_address-box{
-  padding-left:50px;
-  height:20px;
-}
-.date_and_address{
-   text-align: left;
-}
-
-.product-image{
-  padding-top:5px;
-  text-align:right;
-  width:100px;
-}
-
-.product-info-content{
-  width: 80%;
-}
-
-.product-info-box{
-  height:60px;
+.order-info-box{
   display:flex;
   justify-content:space-between;
-  border-top: dotted 1px;
-}
-
-.product-info-box-data{
-  line-height: 60px;
-  text-align:right;
-  padding-right:50PX;
-  width:400px;
-}
-
-.product-info-box-subtotal{
-  line-height: 60px;
-  text-align:right;
-  padding-right:50PX;
-  width:200px;
-}
-
-.product-status{
+  width:100%;
   height:auto;
-  width: 300px;
-  border:solid 5px green;
-  text-align:center;
-  display: flex; /* 子要素をflexboxで揃える */
-  flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+  padding:5px;
+  background: linear-gradient(to bottom, #FFC778, #FFF);
+}
+
+.order-date,.order-address, .shipping-fee,.total-price{
+  text-align:left;
+  height:auto;
+  margin-right:50px;
+}
+
+
+.product-info-box{
+  margin:10px;
+  padding:10px 10px 20px 10px;
+  height: 100px;
+  display:flex;
+  border: solid 5px;
+  background:pink;
+}
+
+.purchase-image,.purchase-product-title,
+.purchase-price,.purchase-product-quantity{
+  text-align:left;
+  height:auto;
+  margin-right:50px;
 }
 
 .product-status-box{
-  text-align:center;
+  width:100%;
+  height:50px;
+  padding:5px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.product-status{
+  margin-right:50px;
 }
 

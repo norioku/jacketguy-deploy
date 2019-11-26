@@ -27,6 +27,23 @@ body {
   font-family: 'Hiragino Kaku Gothic StdN','Impact',  sans-serif;
 }
 
+ @font-face{
+   font-family: "kssweetheavycalligraphy";
+   src: font-url('kssweetheavycalligraphy.ttf') format('truetype');
+   font-weight: 500;
+ }
+
+ @font-face{
+   font-family: "ZakkuriGothic-BLK";
+   src: font-url('ZakkuriGothic-BLK.ttf') format('truetype');
+   font-weight: 500;
+ }
+
+ @font-face{
+   font-family: "Zatsufude-M";
+   src: font-url('Zatsufude-M.ttf') format('truetype');
+   font-weight: 500;
+ }
 
 /*ヘッダー*/
 
@@ -82,7 +99,7 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   align-items: center;
-  font-family: 'Hiragino Kaku Gothic StdN','Impact',  sans-serif;
+  font-family: "kssweetheavycalligraphy";
 }
 
 .logo-link:hover {
