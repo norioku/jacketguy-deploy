@@ -1,23 +1,14 @@
 class UserAddressesController < ApplicationController
 
-  before_action :authenticate_end_user!, only:[:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_end_user!, except:[:index, :show]
 
+<<<<<<< HEAD
 
 def new
 	@user_address = Address.new
   @user = current_end_user
 end
 
-def create
-  @user = current_end_user
-	@user_address = Address.new(user_address_params)
-  @user_address.end_user_id = current_end_user.id
-	if @user_address.save
-    flash[:success] = "お届け先を追加しました。"
- 	  redirect_to user_purchases_new_path(@user)
-  else
-    flash[:danger] = "お届け先を削除できませんでした。"
-    render :new
 
   def create
     @user = current_end_user
@@ -27,7 +18,7 @@ def create
       flash[:success] = "お届け先を追加しました。"
    	  redirect_to user_path(@user)
     else
-      flash[:danger] = "お届け先を削除できませんでした。"
+      flash.now[:danger] = "お届け先を削除できませんでした。"
       render :new
     end
   end

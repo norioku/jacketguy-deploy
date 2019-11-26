@@ -94,12 +94,15 @@
         <% end %>
       </tbody>
     </table>
-    <div>
-      <h2>レビュー投稿</h2>
-      <%= form_for @review, :url => { :controller => :user_reviews, :action => :create } do |f| %>
-      <%= f.text_area :review_content %>
-      <%= f.submit "投稿する" %>
-      <% end %>
-    </div>
+    <% if end_user_signed_in? %>
+      <div>
+        <h2>レビュー投稿</h2>
+        <p>※一人一件まで</p>
+        <%= form_for @review, :url => { :controller => :user_reviews, :action => :create } do |f| %>
+        <%= f.text_area :review_content %>
+        <%= f.submit "投稿する" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

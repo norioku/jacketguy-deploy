@@ -5,7 +5,7 @@
 				<div class="col-lg-8">
 	  			<div>
 	  				<h2>検索結果</h2>
-	  				<span><%= @products.count %>件のタイトルがヒットしました</span>
+	  				<span><%= @product_count %>件のタイトルがヒットしました</span>
 	  			</div>
 	  			<div>
 	  				<div class="new-colu">
@@ -21,16 +21,19 @@
 										<h4>タイトル:<%= link_to product.title, product_path(product.id) %><br></h4>
 										<h4>レーベル:<%= product.label.name %><br></h4>
 										<h4>アーティスト:<%= product.artist.name %><br></h4>
-										<h4>ジャンル:<%= product.genre.name %><br></h4>
+										<h4>ジャンル:<%= link_to product.genre.name, user_genre_path(product.genre.id) %><br></h4>
 										<h4>価格:<%= product.price %>円(税込)<br></h4>
 										<h4><%= link_to "商品詳細へ",  product_path(product.id) %></h4>
 									</div>
 								</li>
 							</div>
 							<% end %>
+							<%= paginate @products %>
 						</ul>
+						<%= paginate @products %>
 				　  </div>	
-	　		　</div>			
+	　		　</div>	
+
 			</div>
 			<div class="col-lg-2">
 				<div class="sidenav-flex">
@@ -38,8 +41,8 @@
 					<ul>
 						<% @genres.each do |genre| %>
 						<li>
-						  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>	
-						</li>	
+						  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>
+						</li>
 						<% end %>
 					</ul>
 				</div>

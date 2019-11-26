@@ -10,8 +10,8 @@
 		      <th scope="col">レーベル</th>
 		      <th scope="col">ジャンル</th>
 		      <th scope="col">価格（税込）</th>
-		      <th scope="col">ステータス</th>
 		      <th scope="col">在庫数</th>
+		      <th scope="col">ステータス</th>
 		    </tr>
 		  </thead>
 
@@ -26,15 +26,19 @@
 		      <td><span><%= product.label.name %></span></td>
 		      <td><span><%= product.genre.name %></span></td>
 		      <td><span><%= product.price %></span></td>
-		      <td><span><%= product.sale_status %></span></td>
 		      <% arrival_stocks = product.arrival_records.all.sum(:arrival_product) %>
 		      <% history_stocks = product.product_histories.all.sum(:order_quantity) %>
 		      <td><span><%= stock = arrival_stocks - history_stocks %></span></td>
+		      <td>
+		      	<% if stock == 0 %>
+		      	  <span style="color: red;">在庫切れ </span>
+		      	<% else %>
+		      	  <span><%= product.sale_status %></span>
+		      	<% end %>	
+		      </td>
 		    </td>
 		  <% end %>
         </table>
-
-
-
+        <%= paginate @products %>
   </div>
 </div>

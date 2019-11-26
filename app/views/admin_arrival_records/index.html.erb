@@ -1,21 +1,22 @@
 
 <h1>入荷履歴一覧</h1>
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">入荷日時</th>
-		      <th scope="col">商品ID</th>
-		      <th scope="col">入荷商品</th>
-		      <th scope="col">入荷個数</th>
-		    </tr>
-		  </thead>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">入荷日時</th>
+        <th scope="col">商品ID</th>
+        <th scope="col">入荷商品</th>
+        <th scope="col">入荷個数</th>
+      </tr>
+    </thead>
 
-		<% @arrival_records.each do |arrival_record| %>
-		    <tr>
-		      <td><span><%= arrival_record.arrival_product_at %></span></td>
-		      <td><span><%= arrival_record.product_id %></span></td>
-		      <td><span><%= arrival_record.product.title %></span></td>
-		      <td><span><%= arrival_record.arrival_product %></span></td>
-		    </td>
-		  <% end %>
-        </table>
+  <% @arrival_records.each do |arrival_record| %>
+      <tr>
+        <td><span><%= arrival_record.arrival_product_at %></span></td>
+        <td><span><%= arrival_record.product_id %></span></td>
+        <td><span><%= arrival_record.product.title %></span></td>
+        <td><span><%= arrival_record.arrival_product %></span></td>
+      </td>
+    <% end %>
+ </table>
+ <%= paginate @arrival_records %>

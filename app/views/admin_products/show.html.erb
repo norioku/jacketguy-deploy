@@ -6,9 +6,7 @@
        <%= attachment_image_tag @product, :product_image, size: "300x300", format: 'jpeg', fallback: "no_image.jpg" %>
       </div>
       <div class = "product-favorites">
-        <%= link_to user_favorites_create_path, method: :post do %>
           <i class="far fa-heart"><%= @product.favorites.count %></i><span class = "favorite-text">いいね</span>
-        <% end %>
       </div>
       <div class = "product-reviews">
         <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
@@ -83,7 +81,7 @@
             <td class = "review-content"><%= link_to review.review_content, admins_review_edit_path %></td>
           </tr>
         <% end %>
-        <%= paginate @new_products %>
+        <%= paginate @reviews %>
       </tbody>
     </table>
   </div>
