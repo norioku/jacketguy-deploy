@@ -8,13 +8,14 @@
   flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
   justify-content: center; /* 子要素をflexboxにより中央に配置する */
   align-items: center;  /* 子要素をflexboxにより中央に配置する */
-  background-image: url(main-content.jpg);
+  background-image: url(CD1.jpeg);
   background-size:cover;
+  position:static;
 
 }
 
 .catch-copy{
-  font-family: "kssweetheavycalligraphy";
+  font-family: "komadori-mini";
   color:white;
   margin:0 auto;
   font-weight:900;

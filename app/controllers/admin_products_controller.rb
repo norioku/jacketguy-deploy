@@ -1,6 +1,7 @@
 class AdminProductsController < ApplicationController
 
-<<<<<<< HEAD
+before_action :authenticate_admin!, only:[:index, :show, :new, :create, :edit, :update, :destroy]
+  
 def index
 	@products = Product.page(params[:page]).per(30)
 end
@@ -13,22 +14,7 @@ def show
 	@stocks = @arrival_stocks - @history_stocks
 	@new_products = Product.page(params[:page])
 end
-=======
-	before_action :authenticate_admin!, only:[:index, :show, :new, :create, :edit, :update, :destroy]
 
-	def index
-		@products = Product.all
-	end
->>>>>>> origin/master
-
-	def show
-		@product = Product.find(params[:id])
-		@reviews = Review.where(product_id: @product)
-		@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
-		@history_stocks = @product.product_histories.all.sum(:order_quantity)
-		@stocks = @arrival_stocks - @history_stocks
-		@new_products = Product.page(params[:page])
-	end
 
 	def new
 		@admin_product = Product.new
@@ -40,20 +26,6 @@ end
 
 	end
 
-<<<<<<< HEAD
-	@admin_product = Product.new(product_params)
-	@admin_product.artist_id = Artist.find_by(name:artist.name).id
-	@admin_product.label_id = Label.find_by(name:label.name).id
-	@admin_product.genre_id =  Genre.find_by(name:genre.name).id
-	  if @admin_product.save
-	    redirect_to admins_arrival_records_new_path(@admin_product.id)
-	  else
-	    flash.now[:danger] = "商品登録に失敗しました"
-	    render :new
-	  end
-	
-end
-=======
 	def create
 		@artist = Artist.new(artist_params)
 		unless Artist.find_by(name:@artist.name)
@@ -81,7 +53,7 @@ end
 		    render :new
 		  end
 	end
->>>>>>> origin/master
+
 
 	def edit
 		@admin_product = Product.find(params[:id])
@@ -104,7 +76,7 @@ end
 		redirect_to admins_product_path(admin_product.id)
 	end
 
-<<<<<<< HEAD
+
 def destroy
 	@admin_product = Product.find(params[:id])
 	@artist = @admin_product.artist
@@ -120,21 +92,7 @@ def destroy
 	
 	
 end
-=======
-	def destroy
-		@admin_product = Product.find(params[:id])
-		@artist = @admin_product.artist
-	    @label = @admin_product.label
-	    @genre = @admin_product.genre
-		 if admin_product.destroy
-		    flash[:success] = "商品を削除しました"
-		    redirect_to admins_products_path
-		 else
-		    flash[:danger] = "商品削除に失敗しました"
-		    render :edit
-		 end
-	end
->>>>>>> origin/master
+
 
 	private
 		def product_params
