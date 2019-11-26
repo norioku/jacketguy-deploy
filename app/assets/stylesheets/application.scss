@@ -105,8 +105,9 @@ header {
 
 .nav-link:hover {
   opacity: 0.6;
-  color: purple;
-  transform: rotateZ(5deg);
+  color: #2C5379;
+  transform: rotateX(360deg);
+  animation-iteration-count: infinite;
 }
 
 
