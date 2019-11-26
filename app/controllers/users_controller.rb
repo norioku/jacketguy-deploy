@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_end_user!
+
   def show
     @user = current_end_user
     @addresses = current_end_user.addresses

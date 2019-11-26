@@ -7,6 +7,7 @@ ja:
       address: お届け先
       admin: 管理者
       product: 商品
+      review: レビュー
     attributes:
       arrival_record:
         id: ID
@@ -56,8 +57,22 @@ ja:
         email: メールアドレス
         password: パスワード
 
-     product:
+      product:
+        artist_id: アーティストID
+        label_id: レーベルID
+        genre_id: ジャンルID
         title: タイトル
         product_image_id: 商品画像
         price: 価格
         release_date: 発売日
+        created_at: 登録日時
+        updated_at: 更新日時
+        sale_status: 販売ステータス
+        favorites_count: お気に入り数
+
+    　review:
+        end_user_id: ユーザID
+        product_id: 商品ID
+        review_content: レビュー内容
+        created_at: 登録日時
+        updated_at: 更新日時
