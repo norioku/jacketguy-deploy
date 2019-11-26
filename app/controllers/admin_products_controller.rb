@@ -10,6 +10,7 @@ def show
 	@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
 	@history_stocks = @product.product_histories.all.sum(:order_quantity)
 	@stocks = @arrival_stocks - @history_stocks
+	@new_products = Product.page(params[:page])
 end
 
 def new
@@ -72,7 +73,10 @@ def update
 end
 
 def destroy
-	admin_product = Product.find(params[:id])
+	@admin_product = Product.find(params[:id])
+	@artist = @admin_product.artist
+    @label = @admin_product.label
+    @genre = @admin_product.genre
 	 if admin_product.destroy
 	    flash[:success] = "商品を削除しました"
 	    redirect_to admins_products_path
