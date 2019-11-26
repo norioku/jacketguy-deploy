@@ -15,7 +15,7 @@ def create
   @user_address.end_user_id = current_end_user.id
 	if @user_address.save
     flash[:success] = "お届け先を追加しました。"
- 	  redirect_to user_path(@user)
+ 	  redirect_to user_purchases_new_path(@user)
   else
     flash[:danger] = "お届け先を削除できませんでした。"
     render :new

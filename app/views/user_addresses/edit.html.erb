@@ -9,7 +9,7 @@
 
     <%= f.text_field :first_name %>
 
-    <h4>受取人の名前かな</h4>
+    <h4>受取人の名前(カナ)</h4>
     <%= f.text_field :last_kana_name %>
 
     <%= f.text_field :first_kana_name %>
@@ -24,8 +24,9 @@
     <%= f.text_field :phone_number %>
 
     <h4>メールアドレス</h4>
-    <%= f.text_field :email, :size=>"80" %></br>
+    <%= f.text_field :email, :size=>"80", :placeholder => "xxx@xxx"%>
 
-    <%= f.submit '編集を適用' %></br>
-
+    <div class="actions">
+    <%= f.submit '編集を適用' ,class: "btn btn-info btn-lg"%></br>
+    </div>
   <% end %>
