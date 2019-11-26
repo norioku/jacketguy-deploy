@@ -1,5 +1,7 @@
 class AdminEndusersController < ApplicationController
 
+  before_action :authenticate_admin!, only:[:index, :show, :edit, :update, :destroy]
+
 	def index
 		@users = EndUser.all
 	end

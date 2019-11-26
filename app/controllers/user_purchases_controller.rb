@@ -1,5 +1,6 @@
 class UserPurchasesController < ApplicationController
 
+  before_action :authenticate_end_user!, only:[:new, :create, :complete]
 
 
   def new
@@ -9,7 +10,6 @@ class UserPurchasesController < ApplicationController
   end
 
   def create
-
     carts = current_end_user.carts
 
     array = []
@@ -59,7 +59,7 @@ class UserPurchasesController < ApplicationController
 
     @order_history.shipping_status = 0
     @order_history.product_total_price = params[:order_history][:product_total_price].to_i
-    ##---- if記述
+
 
     if @order_history.save
         @user.carts.each do |cart|
@@ -77,6 +77,7 @@ class UserPurchasesController < ApplicationController
       render :new
     end
   end
+
 
   def complete
     @user = current_end_user

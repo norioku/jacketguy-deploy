@@ -1,5 +1,6 @@
 <h1>新規商品登録</h1>
-<%= form_for @admin_product, :url => { :controller => :admin_products, :action => :create } do |f| %>
+<%= form_for @admin_product, url: admins_product_create_path do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 	<h4>商品名</h4>
 	<%= f.text_field :title ,required: true %>
 	<h4>アーティスト</h4>
@@ -43,7 +44,7 @@
 		<%= link_to_add_association "ディスクを追加", f, :discs %>
 	  </div>
 	<%=  f.submit "次へ" %>
-<% end %>	
+<% end %>
 
 
 
