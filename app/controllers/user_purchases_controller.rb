@@ -11,19 +11,19 @@ class UserPurchasesController < ApplicationController
   def create
 
     carts = current_end_user.carts
-    
-    @array = []
+
+    array = []
     carts.each do |cart|
       arrival_stock = cart.product.arrival_records.all.sum(:arrival_product)
       history_stock = cart.product.product_histories.all.sum(:order_quantity)
       stock = arrival_stock - history_stock
       if stock - cart.order_quantity < 0
-        @array << cart.product.title
+        array << cart.product.title
       end
     end
 
-    if @array.present?
-        flash[:danger] = "#{@array}の注文個数が在庫数を上回っています"
+    if array.present?
+        flash[:danger] = "#{array}の注文個数が在庫数を上回っています"
         redirect_to user_purchases_new_path(current_end_user)
         return ##以降の処理をしない
     end
