@@ -19,6 +19,14 @@
 //= require jquery.turbolinks
 
 
-$(document).on('turbolinks:load', function() {
-   $(window).trigger('load.bs.select.data-api');
-});
+
+$(function(){
+  $("#submit_select").change(function(){
+    $("#submit_form").submit();
+  });
+
+
+
+
+
+
