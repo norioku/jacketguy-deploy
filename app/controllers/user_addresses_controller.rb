@@ -1,6 +1,6 @@
 class UserAddressesController < ApplicationController
 
-  before_action :authenticate_end_user!, only:[:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_end_user!, except:[:index, :show]
 
   def new
   	@user_address = Address.new

@@ -18,11 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def search_app
-  @user = current_end_user
+    @user = current_end_user
 
-  @search_params = product_search_params
-  @products = Product.search(@search_params)
-
+    @search_params = product_search_params
+    @products = Product.search(@search_params).page(params[:page])
+    @product_count = Product.search(@search_params).count
   end
 
   private
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_kana_name, :first_kana_name, :post_code, :address, :phone_number, :email])
-      devise_parameter_sanitizer.permit(:sign_in, keys: [ :email])
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
     end
 
 end
