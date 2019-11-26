@@ -31,9 +31,15 @@ body {
 }
 
  @font-face{
- font-family: "komadori-mini";
- src: font-url('komadori-mini.ttf') format('truetype');
- font-weight: 500;
+ font-family: "851MkPOP_002";
+ src: font-url('851MkPOP_002.ttf') format('truetype');
+ font-weight: 1000;
+ }
+
+@font-face{
+ font-family: "emoir-kaku";
+ src: font-url('emoir-kaku.ttf') format('truetype');
+ font-weight: 1000;
  }
 
  @font-face{
@@ -104,8 +110,7 @@ header {
 .logo-link {
   color: #FFD464;
   align-items: center;
-  font-family: "";
-  font-size: 50px;
+  font-family: "emoir-kaku";
 }
 
 .logo-link:hover {

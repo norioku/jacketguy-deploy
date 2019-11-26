@@ -90,8 +90,7 @@ def destroy
 	    flash.now[:danger] = "商品削除に失敗しました"
 	    render :edit
 	 end
-	
-	
+
 end
 
 
