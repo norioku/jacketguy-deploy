@@ -5,6 +5,8 @@ ja:
       end_user: ユーザ
       inquiry: 問い合わせ
       address: お届け先
+      admin: 管理者
+      product: 商品
     attributes:
       arrival_record:
         id: ID
@@ -53,3 +55,9 @@ ja:
       admin:
         email: メールアドレス
         password: パスワード
+
+     product:
+        title: タイトル
+        product_image_id: 商品画像
+        price: 価格
+        release_date: 発売日
