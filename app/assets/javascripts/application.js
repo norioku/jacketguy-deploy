@@ -19,7 +19,3 @@
 //= require_tree .
 
 
-
-
-
-

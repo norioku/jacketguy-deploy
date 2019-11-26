@@ -21,7 +21,7 @@
 										<h4>タイトル:<%= link_to product.title, product_path(product.id) %><br></h4>
 										<h4>レーベル:<%= product.label.name %><br></h4>
 										<h4>アーティスト:<%= product.artist.name %><br></h4>
-										<h4>ジャンル:<%= product.genre.name %><br></h4>
+										<h4>ジャンル:<%= link_to product.genre.name, user_genre_path(product.genre.id) %><br></h4>
 										<h4>価格:<%= product.price %>円(税込)<br></h4>
 										<h4><%= link_to "商品詳細へ",  product_path(product.id) %></h4>
 									</div>
@@ -30,9 +30,10 @@
 							<% end %>
 							<%= paginate @products %>
 						</ul>
-
-				　  </div>
+						<%= paginate @products %>
+				　  </div>	
 	　		　</div>	
+
 			</div>
 			<div class="col-lg-2">
 				<div class="sidenav-flex">

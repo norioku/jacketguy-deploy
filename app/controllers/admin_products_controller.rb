@@ -1,19 +1,21 @@
 class AdminProductsController < ApplicationController
 
-	before_action :authenticate_admin!
+before_action :authenticate_admin!, only:[:index, :show, :new, :create, :edit, :update, :destroy]
 
-	def index
-		@products = Product.all
-	end
+def index
+	@products = Product.page(params[:page]).per(30)
+end
 
-	def show
-		@product = Product.find(params[:id])
-		@reviews = Review.where(product_id: @product)
-		@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
-		@history_stocks = @product.product_histories.all.sum(:order_quantity)
-		@stocks = @arrival_stocks - @history_stocks
-		@new_products = Product.page(params[:page])
-	end
+
+def show
+	@product = Product.find(params[:id])
+	@reviews = Review.where(product_id:@product.id).page(params[:page]).per(5)
+	@arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
+	@history_stocks = @product.product_histories.all.sum(:order_quantity)
+	@stocks = @arrival_stocks - @history_stocks
+	@new_products = Product.page(params[:page])
+end
+
 
 	def new
 		@admin_product = Product.new
@@ -53,6 +55,7 @@ class AdminProductsController < ApplicationController
 		  end
 	end
 
+
 	def edit
 		@admin_product = Product.find(params[:id])
 		@artist = @admin_product.artist
@@ -74,19 +77,23 @@ class AdminProductsController < ApplicationController
 		redirect_to admins_product_path(admin_product.id)
 	end
 
-	def destroy
-		@admin_product = Product.find(params[:id])
-		@artist = @admin_product.artist
-	    @label = @admin_product.label
-	    @genre = @admin_product.genre
-		 if admin_product.destroy
-		    flash[:success] = "商品を削除しました"
-		    redirect_to admins_products_path
-		 else
-		    flash[:danger] = "商品削除に失敗しました"
-		    render :edit
-		 end
-	end
+
+def destroy
+	@admin_product = Product.find(params[:id])
+	@artist = @admin_product.artist
+    @label = @admin_product.label
+    @genre = @admin_product.genre
+	 if @admin_product.destroy
+	    flash[:success] = "商品を削除しました"
+	    redirect_to admins_products_path
+	 else
+	    flash.now[:danger] = "商品削除に失敗しました"
+	    render :edit
+	 end
+	
+	
+end
+
 
 	private
 		def product_params

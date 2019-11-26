@@ -27,13 +27,8 @@ class ProductsController < ApplicationController
 def search
   @user = current_end_user
   @genres = Genre.all
+  @products = Product.page(params[:page]).per(10)
 end
-
-  def search
-    @user = current_end_user
-    @genres = Genre.all
-  end
-
 
 end
 
