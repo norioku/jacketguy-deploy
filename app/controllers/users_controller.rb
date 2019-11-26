@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_end_user!
+  before_action :authenticate_end_user!, only:[:show, :edit, :update, :destroy, :close, :complete]
 
   def show
     @user = current_end_user
