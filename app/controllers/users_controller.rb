@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     else
       flash.now[:danger] = "ユーザ情報を更新できませんでした。"
       render :edit
-  end
+    end
   end
 
   def destroy
