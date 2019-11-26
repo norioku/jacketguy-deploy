@@ -13,7 +13,7 @@
 
       </div>
       <div class = "product-reviews">
-        <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
+        <i class="far fa-file-alt"><%= link_to @product.reviews.count, product_reviews_path %>件のレビュー</i>
       </div>
     </div>
 
@@ -58,9 +58,10 @@
         <h2>SOLD OUT !!!!</h2>
       <% elsif end_user_signed_in? && @product.sale_status  == "販売中"%>
         <h2>在庫あり</h2>
-          <%= form_for @carts, url: user_carts_create_path do |f| %>
+          <%= form_for @cart, url: user_carts_create_path do |f| %>
             <%= f.label "数量" %>
             <%= f.number_field :order_quantity , min:1 %>
+            <%= f.hidden_field :product_id, :value => @product.id %>
             <%= f.submit "カートに追加する" %>
           <% end %>
       <% elsif end_user_signed_in? && @product.sale_status  == "販売停止中"%>

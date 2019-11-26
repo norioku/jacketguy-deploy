@@ -18,13 +18,24 @@ class UserCartsController < ApplicationController
 	end
 
 	def create
-	  carts = Cart.new(cart_params)
-	  product = Product.find(params[:id])
-	  carts.product_id = product.id
-	  carts.end_user_id = current_end_user.id
-	  carts.save
-	  redirect_to user_carts_path
-    end
+		@product = Product.find(params[:id])
+	    if Cart.where(product_id: params[:id], end_user_id: current_end_user.id).empty?
+			@cart = Cart.new(cart_params)
+			@cart.product_id = @product.id
+			@cart.end_user_id = current_end_user.id
+			if @cart.save
+				flash[:success] = "カートに追加しました"
+				redirect_to user_carts_path 
+			else
+				flash[:danger] = "カートに追加できませんでした"
+				render template: 'products/show' 
+			end
+    	else
+	    	@cart = Cart.where(product_id: params[:id], end_user_id: current_end_user.id).first
+			@cart.update(order_quantity: params[:cart][:order_quantity].to_i + @cart.order_quantity)
+			redirect_to user_carts_path
+		end
+     end
 
 
 	  private
