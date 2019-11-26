@@ -30,9 +30,15 @@ body {
 }
 
  @font-face{
- font-family: "komadori-mini";
- src: font-url('komadori-mini.ttf') format('truetype');
- font-weight: 500;
+ font-family: "851MkPOP_002";
+ src: font-url('851MkPOP_002.ttf') format('truetype');
+ font-weight: 1000;
+ }
+
+@font-face{
+ font-family: "emoir-kaku";
+ src: font-url('emoir-kaku.ttf') format('truetype');
+ font-weight: 1000;
  }
 
  @font-face{
@@ -107,7 +113,7 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   align-items: center;
-  font-family: "kssweetheavycalligraphy";
+  font-family: "emoir-kaku";
 }
 
 .logo-link:hover {
@@ -124,7 +130,9 @@ header {
   cursor: pointer;
   transition: transform .8s ease-in-out;
   font-family: 'Hiragino Kaku Gothic StdN', 'Impact', sans-serif;
-}
+
+  }
+
 
 .nav-link:hover {
   opacity: 0.6;
@@ -291,7 +299,7 @@ footer {
 }
 
 .devise-submit {
-  
+
 }
 
 .devise_form {

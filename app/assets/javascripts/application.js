@@ -12,10 +12,10 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery.turbolinks
 //= require cocoon
 //= require bootstrap-sprockets
-//= require_tree .
 //= require bootstrap-select
-//= require jquery.turbolinks
+//= require_tree .
 
 
