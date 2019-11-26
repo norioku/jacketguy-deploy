@@ -1,10 +1,11 @@
 class AdminProductsController < ApplicationController
 
 before_action :authenticate_admin!, only:[:index, :show, :new, :create, :edit, :update, :destroy]
-  
+
 def index
 	@products = Product.page(params[:page]).per(30)
 end
+
 
 def show
 	@product = Product.find(params[:id])

@@ -5,7 +5,7 @@
 				<div class="col-lg-8">
 	  			<div>
 	  				<h2>検索結果</h2>
-	  				<span><%= @products.count %>件のタイトルがヒットしました</span>
+	  				<span><%= @product_count %>件のタイトルがヒットしました</span>
 	  			</div>
 	  			<div>
 	  				<div class="new-colu">
@@ -28,10 +28,12 @@
 								</li>
 							</div>
 							<% end %>
+							<%= paginate @products %>
 						</ul>
 						<%= paginate @products %>
 				　  </div>	
-	　		　</div>			
+	　		　</div>	
+
 			</div>
 			<div class="col-lg-2">
 				<div class="sidenav-flex">
@@ -39,8 +41,8 @@
 					<ul>
 						<% @genres.each do |genre| %>
 						<li>
-						  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>	
-						</li>	
+						  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>
+						</li>
 						<% end %>
 					</ul>
 				</div>
