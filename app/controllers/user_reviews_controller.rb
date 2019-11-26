@@ -1,5 +1,7 @@
 class UserReviewsController < ApplicationController
 
+  before_action :authenticate_end_user!, only:[:create]
+
   def index
     @user = current_end_user
     @product = Product.find(params[:id])
@@ -23,10 +25,10 @@ class UserReviewsController < ApplicationController
 
   end
 
-private
+  private
 
-def review_params
-	params.require(:review).permit(:review_content,:end_user_id,:product_id)
-end
+    def review_params
+    	params.require(:review).permit(:review_content,:end_user_id,:product_id)
+    end
 
 end

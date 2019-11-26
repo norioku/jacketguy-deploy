@@ -1,5 +1,7 @@
 class AdminInquiriesController < ApplicationController
 
+	before_action :authenticate_admin!, only:[:index, :show, :create]
+
 	def index
 		@inquiries = Inquiry.all
 	end
