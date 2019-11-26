@@ -1,6 +1,5 @@
-
-<h1>マイページ</h1>
 <div class = "row">
+<h1>マイページ</h1>
 <div class="col-xs-3">
 	<h3 class = "user-title">ユーザ情報</h3>
 	<h5 class = "user-information-title">ユーザ名</h5>
@@ -51,46 +50,53 @@
 						    <% end %>
 					  </tbody>
 				</table>
-			
 		</div>
 		<div class="tab-pane" id="sampleContentC">
 			<h1>購入履歴一覧💔</h1>
 			<div class="order-history-box">
 				<% @order_histories.each do |order_history| %>
 				<div class="order-history-box-inner">
-					<section class="product-info-content">
-						<div class="date_and_address-box">
-							<strong><%= order_history.created_at.strftime("%Y-%m-%d")%>に購入&ensp;<%= order_history.address %>にお届けします</strong>
-						</div>
-
-						<div class="product-info">
-							<% order_history.product_histories.each do |product_history| %>
-							<div class="product-info-box">
-								<div class= "product-image">
-									<%= attachment_image_tag product_history.product, :product_image,fallback: "no_image.jpg", size: "50x50" %>
-								</div>
-								<div class="product-info-box-data">
-										<%= product_history.product.title %>
-										<%= product_history.product.price %>円(税込)
-										<%= product_history.order_quantity %>枚
-								</div>
-								<div class="product-info-box-subtotal">
-									<%= product_history.product.price * product_history.order_quantity%>円
-								</div>
+					<div class="order-info-box">
+							<div class="order-date">
+								注文日<br><%= order_history.created_at.strftime("%Y-%m-%d")%>
 							</div>
-							<% end %>
+							<div class="order-address">
+								お届け先<br><%= order_history.address %>
+							</div>
+							<div class="shipping-fee">
+								送料<br>¥<%= order_history.shipping_fee %> 
+							</div>
+							<div class="total-price">
+								<% total_price = order_history.product_histories.inject(0){|sum,product_history| sum + product_history.product.price*product_history.order_quantity} %>
+								合計金額<br>¥<%= total_price+order_history.shipping_fee %>
+							</div>
+					</div>
+
+					<% order_history.product_histories.each do |product_history| %>
+					<div class="product-info-box">
+						<div class = "purchase-image">
+							<%= attachment_image_tag product_history.product, :product_image,fallback: "no_image.jpg", size: "70x70" %>
 						</div>
-					</section>
-					<section class="product-status">
-						<div class="product-status-box" >
-							送料:<%= order_history.shipping_fee %>円 <br> <!-- デフォルト値入れる前のデータは500円でない -->
-							<% total_price = order_history.product_histories.inject(0){|sum,product_history| sum + product_history.product.price*product_history.order_quantity} %>
-							合計金額:<br><%= total_price+order_history.shipping_fee %>円<br>
-							<%= order_history.shipping_status %><br>
-							<%= link_to "詳細", user_order_history_path(order_history) %>
+						<div class= "purchase-product-title">
+							タイトル<br> <%= product_history.product.title %>
 						</div>
-					</section>
-				</div>
+						<div class= "purchase-price">
+							価格<br>¥<%= product_history.product.price %>(税込)
+						</div>
+						<div class= "purchase-product-quantity">
+							購入枚数<br><%= product_history.order_quantity %>枚
+						</div>
+					</div>
+					<% end %>
+					<div class="product-status-box" >
+						<div class="product-status" >
+							<h3>発送状況: <<%= order_history.shipping_status %>></h3>
+						</div>
+						<div class="order-history-detail" >
+							<%= link_to "💀履歴詳細", user_order_history_path(order_history),class: "btn btn-danger btn-lg" %>
+						</div>
+					</div>
+			   	</div>
 				<% end %>
 			</div>
 		</div>
