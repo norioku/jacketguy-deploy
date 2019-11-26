@@ -7,25 +7,26 @@ class UserReviewsController < ApplicationController
   end
 
   def create
-  	product = Product.find(params[:id])
-  	review = Review.new(review_params)
-  	review.product_id = product.id
-  	review.end_user_id = current_end_user.id
-    if review.save
+    product = Product.find(params[:id])
+    if Review.exists?(end_user_id: current_end_user, product_id: product.id)
+       flash[:danger] = "レビューが投稿できません"
+       redirect_to product_path(product.id)
+    else
+      review = Review.new(review_params)
+      review.end_user_id = current_end_user.id
+      review.product_id = product.id
+      review.save
       flash[:success] = "レビューを投稿しました"
       redirect_to product_path(product.id)
-    else
-      flash[:danger] = "レビューが投稿できません"
-      redirect_to product_path(product.id)
+
     end
 
   end
 
-
 private
 
 def review_params
-	params.require(:review).permit(:review_content)
+	params.require(:review).permit(:review_content,:end_user_id,:product_id)
 end
 
 end
