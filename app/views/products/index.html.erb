@@ -10,7 +10,6 @@
 			  <%= link_to "#{genre.name}(#{genre.products.count})", user_genre_path(genre.id) %>
 			</li>
 			<% end %>
-			<%= paginate @genres %>
 		</ul>
 	</div>
 	<div class="ranking">

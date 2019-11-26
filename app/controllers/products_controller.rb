@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 
    @user = current_end_user
    @new_products = Product.page(params[:page]).order(release_date: :desc)
-   @genres = Genre.page(params[:page]).per(8)
+   @genres = Genre.all
 
   end
 
