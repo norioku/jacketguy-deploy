@@ -13,7 +13,9 @@
 
       </div>
       <div class = "product-reviews">
-        <i class="far fa-file-alt"><%= link_to @product.reviews.count, product_reviews_path %>件のレビュー</i>
+        <%= link_to product_reviews_path  do %>
+          <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
+        <% end %>
       </div>
     </div>
 
@@ -69,7 +71,9 @@
       <% elsif admin_signed_in? %>
         <h2><%= @product.sale_status %></h2>
       <% end %>
-      <h2>価格(税込) ¥<%= @product.price %></h2>
+
+      <h2>価格(税込)</h2>
+      <h2>&yen;<%= @product.price %></h2>
 
     </div>
   </section>

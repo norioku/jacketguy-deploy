@@ -8,11 +8,12 @@
   margin: 70px auto;
   padding: 40px;
   border-radius: 2%;
-  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)),
+  background: #E3DECC,
 }
 
 .thanks-text-en, .thanks-text-jp {
   text-align: center;
+  color: #F58E7E;
 }
 
 .root-link {
@@ -22,7 +23,26 @@
 }
 
 .btn:hover {
-  opacity: 0.5;
+  opacity: 0.8;
+}
+
+.root-path-button {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-left: solid 4px #668ad8;
+  border-right: solid 4px #668ad8;
+  color: #668ad8;
+  background: #e1f3ff;
+  transition: .4s;
+}
+
+.root-path-button {
+  background: #668ad8;
+  color: #FFF;
 }
 
 /*new*/

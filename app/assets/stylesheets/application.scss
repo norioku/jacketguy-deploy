@@ -24,7 +24,7 @@
 }
 
 body {
-  font-family: 'Hiragino Kaku Gothic StdN','Impact',  sans-serif;
+  font-family: "corp_round_v1";
   background-image: url(b.jpg);
   background-size: cover;
   color: #FDC44F;
@@ -39,6 +39,12 @@ body {
 @font-face{
  font-family: "emoir-kaku";
  src: font-url('emoir-kaku.ttf') format('truetype');
+ font-weight: 1000;
+ }
+
+@font-face{
+ font-family: "corp_round_v1";
+ src: font-url('corp_round_v1.ttf') format('truetype');
  font-weight: 1000;
  }
 
@@ -111,6 +117,7 @@ header {
   color: #FFD464;
   align-items: center;
   font-family: "emoir-kaku";
+  font-size: 50px;
 }
 
 .logo-link:hover {
@@ -121,12 +128,12 @@ header {
   display: inline-block;
   color: #FFD464;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
   margin-right: 30px;
   margin-bottom: 0px;
   cursor: pointer;
   transition: transform .8s cubic-bezier(1,-0.32, 0.26, 1.46);
-  font-family: 'Hiragino Kaku Gothic StdN', 'Impact', sans-serif;
+  font-family: "emoir-kaku";
 
   }
 
@@ -206,7 +213,7 @@ footer {
   align-items: center;
   font-size: 30px;
   color: #FFD464;
-  font-family: 'Hiragino Kaku Gothic StdN', sans-serif;
+  font-family: "emoir-kaku";
 
 }
 
@@ -293,7 +300,8 @@ footer {
 }
 
 .devise_form {
-  width:300px;
+  width:355px;
+  height:30px;
   margin-bottom:10px;
 }
 
@@ -303,12 +311,12 @@ footer {
 
 .kakikukeko {
   padding:30px 0 100px 0;
-  font-family: 'Hiragino Kaku Gothic StdN', sans-serif;
-
 }
 
+
 .sinki {
-  margin-bottom:10px;
+  margin-bottom:15px;
+  margin-top:40px;
 }
 
 .alert-success {
@@ -331,6 +339,16 @@ footer {
   font-size: 16px;
 }
 
+.alert-notice {
+  width: 100%;
+  background: #2FCDB4;
+  color: #F8F8F8;
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
 .error-messages {
   width: 50%;
   background: #FFD464;
@@ -342,5 +360,18 @@ footer {
   font-size: 16px;
 }
 
+.alert-alert {
+  width: 100%;
+  background: #FFD464;
+  color: #DE4830;
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
 
+.edit {
+  margin-top :10px;
+  margin-bottom :10px;
+}
 

@@ -2,11 +2,10 @@ class UserAddressesController < ApplicationController
 
   before_action :authenticate_end_user!, except:[:index, :show]
 
-def new
-	@user_address = Address.new
-  @user = current_end_user
-end
-
+  def new
+    @user_address = Address.new
+    @user = current_end_user
+  end
 
   def create
     @user = current_end_user
