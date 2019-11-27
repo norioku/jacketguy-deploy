@@ -2,7 +2,6 @@ class UserAddressesController < ApplicationController
 
   before_action :authenticate_end_user!, except:[:index, :show]
 
-<<<<<<< HEAD
 
 def new
 	@user_address = Address.new

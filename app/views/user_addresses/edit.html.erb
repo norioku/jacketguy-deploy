@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
 <h2>送り先の編集</h2>
 
 <%= form_for(@user_address, url: user_addresses_update_path) do |f| %>
@@ -18,15 +20,17 @@
     <%= f.text_field :post_code %>
 
     <h4>住所</h4>
-    <%= f.text_field :address, :size=>"80" %>
+    <%= f.text_field :address, :size=>"42" %>
 
     <h4>電話番号</h4>
     <%= f.text_field :phone_number %>
 
     <h4>メールアドレス</h4>
-    <%= f.text_field :email, :size=>"80", :placeholder => "xxx@xxx"%>
+    <%= f.text_field :email, :size=>"42", :placeholder => "xxx@xxx"%>
 
-    <div class="actions">
-    <%= f.submit '編集を適用' ,class: "btn btn-info btn-lg"%></br>
+    <div>
+    <%= f.submit '編集を適用' ,class: "edit btn btn-info  btn-lg btn-block"%></br>
     </div>
   <% end %>
+</div>
+</div>
