@@ -1,5 +1,6 @@
 class AdminArrivalRecordsController < ApplicationController
 
+
   before_action :authenticate_admin!, only:[:index, :new, :create]
 
   def index
