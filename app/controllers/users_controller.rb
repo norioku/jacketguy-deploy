@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_end_user!, except:[:index, :new, :create]
+  before_action :authenticate_end_user!, except:[:index, :new, :create, :complete]
 
   def show
     @user = current_end_user
@@ -28,10 +28,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = current_end_user
-    @address = Address.find(params[:id])
-    @address.destroy
-    redirect_to user_path(@user.id)
+    @user = EndUser.find(params[:id])
+    @user.destroy
+    redirect_to users_close_path
   end
 
   def close

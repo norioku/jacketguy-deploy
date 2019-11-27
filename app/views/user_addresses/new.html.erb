@@ -3,8 +3,10 @@
 <%= form_for(@user_address, url: user_address_create_path) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
 
-    <h4>受取人の名前</h4>
-     <%= f.text_field :first_name %>
+    <div class = "form-group">
+        <h4>受取人の名前</h4>
+         <%= f.text_field :first_name, class: "form-control" %>
+    </div>
 
     <%= f.text_field :last_name %>
 

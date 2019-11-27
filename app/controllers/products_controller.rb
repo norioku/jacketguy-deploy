@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
      @product = Product.find(params[:id])
      @reviews = @product.reviews.limit(5)
      @user = current_end_user
-     @review = Review.new
      @arrival_stocks = @product.arrival_records.all.sum(:arrival_product)
      @history_stocks = @product.product_histories.all.sum(:order_quantity)
      @stocks = @arrival_stocks - @history_stocks
@@ -27,7 +26,6 @@ class ProductsController < ApplicationController
 def search
   @user = current_end_user
   @genres = Genre.all
-  @products = Product.page(params[:page]).per(10)
 end
 
 end

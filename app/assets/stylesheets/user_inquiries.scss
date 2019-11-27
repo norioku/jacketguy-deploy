@@ -7,6 +7,12 @@ inquiry.text {
 	height:500px;
 }
 
+.center-block {
+
+	margin: 0 auto;
+	width: 70%;
+}
+
 .aiueo {
 	font-weight: bold;
 }
@@ -14,6 +20,7 @@ inquiry.text {
 .i-n {
 	padding:20px;
 	color:#3366FF;
+	text-align: left;
 }
 
 .f-n {
@@ -31,4 +38,8 @@ inquiry.text {
 
 .w {
 	padding: 30px 0 150px 0;
+}
+
+.user-inquiries-form {
+	margin-bottom: 30px;
 }

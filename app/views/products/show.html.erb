@@ -13,7 +13,9 @@
 
       </div>
       <div class = "product-reviews">
-        <i class="far fa-file-alt"><%= link_to @product.reviews.count, product_reviews_path %>件のレビュー</i>
+        <%= link_to product_reviews_path  do %>
+          <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
+        <% end %>
       </div>
     </div>
 
@@ -69,40 +71,10 @@
       <% elsif admin_signed_in? %>
         <h2><%= @product.sale_status %></h2>
       <% end %>
-      <h2><%= @product.price %>円(税込)</h2>
+      <h2>価格(税込)</h2>
+      <h2>&yen;<%= @product.price %></h2>
 
     </div>
   </section>
 </div>
 
-<div class = "row row-bg">
-  <div class = "review-box">
-    <h2 class = "review-title">レビュー一覧</h2>
-    <table class = "table table-bordered table-striped review-table">
-      <thead>
-        <tr>
-          <td style = "font-weight: bold">ユーザ名</td>
-          <td style = "font-weight: bold">レビュー</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @reviews.each do |review| %>
-          <tr>
-            <td class = "review-content"><%= review.end_user.first_name %></td>
-            <td class = "review-content"><%= review.review_content %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% if end_user_signed_in? %>
-      <div>
-        <h2>レビュー投稿</h2>
-        <p>※一人一件まで</p>
-        <%= form_for @review, :url => { :controller => :user_reviews, :action => :create } do |f| %>
-        <%= f.text_area :review_content %>
-        <%= f.submit "投稿する" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
