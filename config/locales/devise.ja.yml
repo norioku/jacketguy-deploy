@@ -5,14 +5,14 @@ ja:
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: "すでにログインしています。"
       inactive: "Your account is not activated yet."
-      invalid: "%{authentication_keys} または パスワードが間違っています。"
-      locked: "Your account is locked."
+      invalid: "メールアドレスまたはパスワードが間違っています。"
+      locked: "あなたのアカウントはロックされています。"
       last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or password."
+      not_found_in_database: "メールアドレスまたはパスワードが間違っています。"
       timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
+      unauthenticated: "ログインしてください。"
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
@@ -46,7 +46,7 @@ ja:
     sessions:
       signed_in: "ログインに成功しました！"
       signed_out: "ログアウトしました！"
-      already_signed_out: "Signed out successfully."
+      already_signed_out: "すでにログアウトしています。"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

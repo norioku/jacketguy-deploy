@@ -76,14 +76,17 @@
 			</table>
 		</section>
 
-		<section class = "adminorder-submit">
-			<%= form_with(model: @order_history, url: admins_order_history_update_path, local: true) do |f| %>
 
-				<%= f.hidden_field :shipping_status, :value => "発送済" %>
+		<% if @order_history.shipping_status == "未発送" %>
+			<section class = "adminorder-submit">
+				<%= form_with(model: @order_history, url: admins_order_history_update_path, local: true) do |f| %>
 
-				<%= f.submit "発送する", class: "btn btn-primary btn-block adminorder-button", data: {confirm: "本当に発送しましたか?"} %>
+					<%= f.hidden_field :shipping_status, :value => "発送済" %>
 
-			<% end %>
-		</section>
+					<%= f.submit "発送する", class: "btn btn-primary btn-block adminorder-button", data: {confirm: "本当に発送しましたか?"} %>
+
+				<% end %>
+			</section>
+		<% end %>
 	</section>
 </div>

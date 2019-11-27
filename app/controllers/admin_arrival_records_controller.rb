@@ -1,10 +1,11 @@
 class AdminArrivalRecordsController < ApplicationController
 
-before_action :authenticate_admin!, only:[:index, :new, :create]
 
-def index
-	@arrival_records = ArrivalRecord.order(arrival_product_at: "DESC").page(params[:page]).per(10)
-end
+  before_action :authenticate_admin!, only:[:index, :new, :create]
+
+  def index
+	   @arrival_records = ArrivalRecord.order(arrival_product_at: "DESC").page(params[:page]).per(10)
+  end
 
   def new
     @product = Product.find(params[:id])

@@ -6,9 +6,9 @@
         <%= attachment_image_tag @product, :product_image, size: "250x250", format: 'jpeg', fallback: "no_image.jpg" %>
       </div>
       <div class = "product-favorites">
-        <%= link_to user_favorites_create_path, method: :post do %>
-          <i class="far fa-heart"><%= @product.favorites.count %></i><span class = "favorite-text">いいね</span>
-        <% end %>
+        <div id="favorites_buttons_<%= @product.id %>">
+             <%= render partial: 'user_favorites/favorite', locals: { product: @product} %>
+          </div>
       </div>
       <div class = "product-reviews">
         <i class="far fa-file-alt"><%= @product.reviews.count %>件のレビュー</i>
@@ -51,7 +51,8 @@
     </div>
 
     <div class = "purchase-area">
-      <h2>1100円!!!(税込)</h2>
+      <h2>価格(税込)</h2>
+      <h2>&yen;<%= @product.price %></h2>
       <%= link_to "商品詳細に戻る", product_path(@product), class: "btn btn-success" %>
     </div>
   </section>
@@ -74,8 +75,21 @@
             <td class = "review-content"><%= review.review_content %></td>
           </tr>
         <% end %>
-        <%= paginate @reviews %>
       </tbody>
     </table>
+    <%= paginate @reviews %>
+    <% if end_user_signed_in? %>
+      <div>
+        <h2>レビュー投稿</h2>
+        <p>※1人1件まで</p>
+        <%= form_for @review, :url => { :controller => :user_reviews, :action => :create } do |f| %>
+
+        <div class = "form-group">
+          <%= f.text_area :review_content, size: "5x10", class: "form-control" %>
+        </div>
+        <%= f.submit "投稿する", class: "btn btn-info btn-lg review-button" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

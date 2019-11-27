@@ -78,7 +78,7 @@
         <% @reviews.each do |review| %>
           <tr>
             <td class = "review-content"><%= link_to review.end_user.first_name, admins_user_path(review.end_user.id) %></td>
-            <td class = "review-content"><%= link_to review.review_content, admins_review_edit_path %></td>
+            <td class = "review-content"><%= link_to review.review_content, admins_review_edit_path(review) %></td>
           </tr>
         <% end %>
         <%= paginate @reviews %>

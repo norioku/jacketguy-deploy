@@ -8,9 +8,6 @@
   box-sizing: border-box;
 }
 
-.row-bg {
-  background: #60C4B0;
-}
 
 /*左ボックス*/
 
@@ -18,8 +15,9 @@
   margin: 100px auto;
   border: 2px solid slategray;
   border-radius: 2%;
-  background: #eceef1;
+  background: ivory;
   width: 99%;
+  color: #27313D;
 }
 
 .product-menu {
@@ -46,14 +44,6 @@
   margin-bottom: 20px;
 }
 
-.fa-heart:hover {
-  color: red;
-}
-
-.favorite-text:hover {
-  text-decoration: none;
-}
-
 
 .product-favorites, .product-reviews {
   text-decoration: none;
@@ -65,6 +55,7 @@
   width: 40%;
   margin: 50px 0 0 0;
   display: inline-block;
+  color: #27313D;
 }
 
 /*右ボックス*/
@@ -73,6 +64,7 @@
   display: inline-block;
   width: 20%;
   margin-left: 50px;
+  color: #27313D;
 }
 
 .product-title {
@@ -90,7 +82,8 @@
   border: 2px solid slategray;
   border-radius: 2%;
   padding: 30px;
-  background: #CCD0D5;
+  background: ivory;
+  color: #27313D;
 }
 
 .review-title {
@@ -99,10 +92,18 @@
   background: linear-gradient(transparent 70%, #a7d6ff 70%);
   width: 23%;
   margin: 0 0 20px 0;
+  color: #27313D;
 }
 
 .review-content {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: bold;
   font-size: 18px;
+  color: #27313D;
+}
+
+.review-button {
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }

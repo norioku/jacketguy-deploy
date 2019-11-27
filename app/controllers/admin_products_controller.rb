@@ -59,23 +59,38 @@ end
 	def edit
 		@admin_product = Product.find(params[:id])
 		@artist = @admin_product.artist
-	    @label = @admin_product.label
-	    @genre = @admin_product.genre
+    @label = @admin_product.label
+    @genre = @admin_product.genre
 	end
 
 	def update
 		admin_product = Product.find(params[:id])
-		artist = admin_product.artist
-	    label = admin_product.label
-	    genre = admin_product.genre
+		artist = Artist.find_or_create_by(name:params[:artist][:name])
 
-	    artist.update(artist_params)
-	    label.update(label_params)
-	    genre.update(genre_params)
+		unless admin_product.artist.name == artist.name
+	     artist = Artist.new(artist_params)
+			 artist.save
+			 admin_product.artist_id = artist.id
+		end
+
+		label = Label.find_or_create_by(name:params[:label][:name])
+		unless admin_product.label.name == label.name
+		  label = Label.new(label_params)
+		  label.save
+		  admin_product.label_id = label.id
+		end
+
+	  genre = Genre.find_or_create_by(name:params[:genre][:name])
+		unless admin_product.genre.name == genre.name
+		  genre = Genre.new(genre_params)
+		  genre.save
+		  admin_product.genre_id = genre.id
+		end
+
 		admin_product.update(product_params)
-
 		redirect_to admins_product_path(admin_product.id)
 	end
+
 
 
 def destroy
