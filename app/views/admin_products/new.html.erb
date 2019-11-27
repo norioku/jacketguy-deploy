@@ -1,52 +1,57 @@
-<h1>新規商品登録</h1>
-<%= form_for @admin_product, url: admins_product_create_path do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
-	<h4>商品名</h4>
-	<%= f.text_field :title ,required: true %>
-	<h4>アーティスト</h4>
-	  <%= fields_for @artist do |i| %>
-		<%= i.text_field :name, list: 'artist' ,required: true %>
-		<datalist id="artist">
-			<% Artist.all.each do |artist| %>
-			<option value="<%= artist.name %>"></option>
-			<% end %>
-		</datalist>
-	  <% end %>
-	<h4>レーベル</h4>
-	  <%= fields_for @label do |i| %>
-		<%= i.text_field :name, list: 'label' ,required: true %>
-		<datalist id="label">
-			<% Label.all.each do |label| %>
-			<option value="<%= label.name %>"></option>
-			<% end %>
-		</datalist>
-	  <% end %>
-	<h4>ジャンル</h4>
-	  <%= fields_for @genre do |i| %>
-		<%= i.text_field :name, list: 'genre' ,required: true %>
-		<datalist id="genre">
-			<% Genre.all.each do |genre| %>
-			<option value="<%= genre.name %>"></option>
-			<% end %>
-		</datalist>
-	  <% end %>
-	<h4>ジャケット画像</h4>
-	<%= f.attachment_field :product_image %>
-	<h4>価格(税込)</h4>
-	<%= f.text_field :price ,required: true %>
-	<h4>発売日</h4>
-	<%= f.date_field :release_date ,required: true %>
-	<h4>収録曲</h4>
-	  <%= f.fields_for :discs do |disc| %>
-	    <%=render "disc_fields",:f => disc%>
-	  <% end %>
-	  <div class="links">
-		<%= link_to_add_association "ディスクを追加", f, :discs %>
-	  </div>
-	<%=  f.submit "次へ" %>
-<% end %>
-
-
+<div class="container">
+  <div class="row">
+  	<div class="col-md-4"></div>
+  	<div class="col-md-4">	
+		<h1>新規商品登録</h1>
+		<%= form_for @admin_product, url: admins_product_create_path do |f| %>
+		<%= render 'layouts/error_messages', model: f.object %>
+			<h4>商品名</h4>
+			<%= f.text_field :title ,required: true, :size => "50*24" %>
+			<h4>アーティスト</h4>
+			  <%= fields_for @artist do |i| %>
+				<%= i.text_field :name, list: 'artist' ,required: true, :size => "50*24" %>
+				<datalist id="artist">
+					<% Artist.all.each do |artist| %>
+					<option value="<%= artist.name %>"></option>
+					<% end %>
+				</datalist>
+			  <% end %>
+			<h4>レーベル</h4>
+			  <%= fields_for @label do |i| %>
+				<%= i.text_field :name, list: 'label' ,required: true, :size => "50*24" %>
+				<datalist id="label">
+					<% Label.all.each do |label| %>
+					<option value="<%= label.name %>"></option>
+					<% end %>
+				</datalist>
+			  <% end %>
+			<h4>ジャンル</h4>
+			  <%= fields_for @genre do |i| %>
+				<%= i.text_field :name, list: 'genre' ,required: true, :size => "50*24" %>
+				<datalist id="genre">
+					<% Genre.all.each do |genre| %>
+					<option value="<%= genre.name %>"></option>
+					<% end %>
+				</datalist>
+			  <% end %>
+			<h4>ジャケット画像</h4>
+			<%= f.attachment_field :product_image %>
+			<h4>価格(税込)</h4>
+			<%= f.text_field :price ,required: true, :size => "50*24" %>
+			<h4>発売日</h4>
+			<%= f.date_field :release_date ,required: true, :size => "50*24" %>
+			<h4>収録曲</h4>
+			  <%= f.fields_for :discs do |disc| %>
+			    <%=render "disc_fields",:f => disc%>
+			  <% end %>
+			  <div class="links">
+				<%= link_to_add_association "ディスクを追加", f, :discs %>
+			  </div>
+			<%=  f.submit "次へ", class: "btn btn-success btn-block" %>
+		<% end %>
+  	</div>
+  </div>	
+</div>
 
 
 
