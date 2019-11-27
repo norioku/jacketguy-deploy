@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   	 							.limit(5) .pluck(:product_id))
 
    @user = current_end_user
-   @new_products = Product.page(params[:page]).order(release_date: :desc)
+   @new_products = Product.page(params[:page]).order(release_date: :desc).per(9)
    @genres = Genre.all
 
   end
@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
 def search
   @user = current_end_user
   @genres = Genre.all
-  @products = Product.page(params[:page]).per(10)
 end
 
 end

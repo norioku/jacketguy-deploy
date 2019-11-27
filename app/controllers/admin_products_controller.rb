@@ -65,13 +65,35 @@ end
 
 	def update
 		admin_product = Product.find(params[:id])
-		artist = admin_product.artist
-	    label = admin_product.label
-	    genre = admin_product.genre
+		
+		artist = Artist.find_by(name:params[:artist][:name])
+		if artist == nil
+		  artist = Artist.new(artist_params)
+		  artist.save
+          admin_product.artist_id = artist.id
+		else
+		  admin_product.artist_id = artist.id
+		end
 
-	    artist.update(artist_params)
-	    label.update(label_params)
-	    genre.update(genre_params)
+		label = Label.find_by(name:params[:label][:name])
+		if label == nil
+		  label = Label.new(label_params)
+		  label.save
+          admin_product.label_id = label.id
+		else
+		  admin_product.label_id = label.id
+		end
+
+	    genre = Genre.find_by(name:params[:genre][:name])
+		if genre == nil
+		  genre = Genre.new(genre_params)
+		  genre.save
+          admin_product.genre_id = genre.id
+		else
+		  admin_product.genre_id = genre.id
+		end
+
+	    
 		admin_product.update(product_params)
 
 		redirect_to admins_product_path(admin_product.id)

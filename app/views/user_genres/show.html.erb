@@ -22,7 +22,7 @@
 										<h4>レーベル:<%= product.label.name %><br></h4>
 										<h4>アーティスト:<%= product.artist.name %><br></h4>
 										<h4>ジャンル:<%= link_to product.genre.name, user_genre_path(product.genre.id) %><br></h4>
-										<h4>価格:<%= product.price %>円(税込)<br></h4>
+										<h4>価格(税込):&yen;<%= product.price %><br></h4>
 										<h4><%= link_to "商品詳細へ",  product_path(product.id) %></h4>
 									</div>
 								</li>
