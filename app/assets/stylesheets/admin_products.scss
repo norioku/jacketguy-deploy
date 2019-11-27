@@ -1,3 +1,20 @@
 // Place all the styles related to the admin_products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-head-title{
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  width: 35%;
+  text-align: center;
+  margin: 0 0 70px 70px;
+}
+
+.products-box {
+  margin: 80px 0 100px 0;
+  background: #F5F1E9;
+  border-radius: 2%;
+  padding: 50px;
+  color: #E9872E;
+}
+
+

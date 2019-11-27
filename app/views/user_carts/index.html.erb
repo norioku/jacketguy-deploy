@@ -20,14 +20,14 @@
 			        </ul>
 				      <p class="purchase-product-price">小計:&yen;<%= cart.product.price*cart.order_quantity %>(税込)</p>
 				    <div class = "purchase-product-option">
-						<%= form_with  model: cart, url: user_carts_update_path(cart), method: :patch do |f| %>
-						<%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],{},{selected:cart.order_quantity,onchange: "submit(this.form)"} %>
+				    	<%= form_for cart, url: user_carts_update_path(cart) do |f| %>
+						<%= f.number_field :order_quantity ,min:1 %>
+						<p><%= f.submit "個数を変更する" %></p>
 						<% end %>
 						<div class="purchase-product-option-delete">
 							<%= link_to '削除',user_carts_delete_path(cart.id), class: "btn-sm btn-danger ", method: :delete %>
 						</div>
-						
-					 </div>
+					</div>
 			  	</div>
 			  	<% end %>
 		  	</div>
@@ -54,3 +54,8 @@
 		</section>
 	</div>
 </div>
+
+
+
+
+
