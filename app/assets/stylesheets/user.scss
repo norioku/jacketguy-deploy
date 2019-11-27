@@ -37,11 +37,66 @@
 }
 
 
+
 .mypage-content-box{
   min-height:600px;
 }
 
+//tab
+.nav-tabs > li > a {
+  color: #FDC44F;
+}
 
+
+//address
+
+
+.address{
+  height:50px;
+  width:100%;
+  margin-bottom:10px;
+  background-color: ivory;
+  color:#000;
+  border: 3px solid darkkhaki;
+  border-radius: 10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.address-info,.address-edit{
+  line-height:50px;
+  padding:0 10px 0 10px;
+}
+
+
+
+
+.btn-primary{
+  box-shadow:none;
+}
+
+//favorite
+.favorite-product{
+  width:100%;
+  background-color: ivory;
+  color:black;
+  margin-bottom:10px;
+  display:flex;
+  justify-content:start;
+  height:70px;
+  padding:10px;
+  border: 3px solid darkkhaki;
+  border-radius: 10px;
+}
+
+
+.favorite-product-title,.favorite-product-artist,.favorite-product-price{
+  line-height:50px;
+  padding-left:20px;
+  width:250px;
+}
+
+//order-history
 #sampleContentC{
   displpay:flex;
   height: auto;
@@ -53,6 +108,7 @@
   height: auto;
   width:100%;
   margin-bottom:5px;
+
 }
 
 .order-history-box-inner{
@@ -60,11 +116,14 @@
   height: auto;
   margin:10px 0 10px 0;
   padding:10px 50px 10px 50px;
-  border:groove 1px;
-  background: -moz-linear-gradient(315deg, red 50px, yellow 70px, skyblue 100px);
-  background: -webkit-linear-gradient(315deg, red 50px, yellow 70px, skyblue 100px);
-  background: -ms-linear-gradient(315deg, red 50px, yellow 70px, skyblue 100px);
+  background-color: ivory;
+  border: 3px solid darkkhaki;
+  border-radius: 10px;
 }
+
+.order-history-box-inner > *{
+}
+
 
 .order-info-box{
   display:flex;
@@ -72,7 +131,7 @@
   width:100%;
   height:auto;
   padding:5px;
-  background: linear-gradient(to bottom, #FFC778, #FFF);
+  color: #000;
 }
 
 .order-date,.order-address, .shipping-fee,.total-price{
@@ -88,7 +147,6 @@
   height: 100px;
   display:flex;
   border: solid 5px;
-  background:pink;
 }
 
 .purchase-image,.purchase-product-title,
@@ -96,6 +154,7 @@
   text-align:left;
   height:auto;
   margin-right:50px;
+  color: #000;
 }
 
 .product-status-box{
@@ -108,5 +167,6 @@
 
 .product-status{
   margin-right:50px;
+  color: #000;
 }
 

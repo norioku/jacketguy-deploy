@@ -1,0 +1,36 @@
+<div class = "favorite-box">
+	<div class="favorite-product">
+		<% @favorites.each do |favorite| %>
+		<%= attachment_image_tag favorite.product, :product_image,fallback: "no_image.jpg", size: "50x50" %></span>
+		<%= link_to favorite.product.title, product_path(favorite.product) %>
+		<%= favorite.product.artist.name %>
+		&yen;<%= favorite.product.price %>
+
+		<% end %>
+	</div>
+</div>
+					  <tbody>
+						  	
+						    <tr class="favorite-product">
+						    <td><span></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    </tr>
+						    
+					  </tbody>
+				</table>
+
+
+				<table class="table favorite-table">
+					  <tbody>
+						  	<% @favorites.each do |favorite| %>
+						    <tr class="favorite-product">
+						    <td><span><%= attachment_image_tag favorite.product, :product_image,fallback: "no_image.jpg", size: "50x50" %></span></td>
+						    <td><%= link_to favorite.product.title, product_path(favorite.product) %></td>
+						    <td><%= favorite.product.artist.name %></td>
+						    <td>&yen;<%= favorite.product.price %></td>
+						    </tr>
+						    <% end %>
+					  </tbody>
+				</table>
