@@ -9,20 +9,25 @@
 				<% end %>
 				<% current_end_user.carts.each do |cart| %>
 				<div class = "purchase-product">
-	        			<%= attachment_image_tag cart.product, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg", class: "purchase-product-img"  %>
-				      <ul class="purchase-product-name-list">
+					<div class = "purchase-product-image">
+						<%= attachment_image_tag cart.product, :product_image, size: "70x70", format: 'jpeg', fallback: "no_image.jpg", class: "purchase-product-img"  %>
+					</div>
+				        <ul class="purchase-product-name-list">
 				      	<strong><%= link_to cart.product.title,product_path(cart.product) %></strong>
 				      	<li><%= cart.product.artist.name %></li>
 				      	<li><%= cart.product.label.name %></li>
 				      	<li><%= cart.product.genre.name %></li>
-				      </ul>
-				      <h3 class="purchase-product-price">小計:<%= cart.product.price*cart.order_quantity %>円(税込)</h3>
-				      <div class = "purchase-product-option">
+			        </ul>
+				      <p class="purchase-product-price">小計:&yen;<%= cart.product.price*cart.order_quantity %>(税込)</p>
+				    <div class = "purchase-product-option">
 						<%= form_with  model: cart, url: user_carts_update_path(cart), method: :patch do |f| %>
 						<%= f.select :order_quantity, [cart.order_quantity,"1","2","3","4","5"],{},{selected:cart.order_quantity,onchange: "submit(this.form)"} %>
 						<% end %>
-						<%= link_to '削除',user_carts_delete_path(cart.id), class: "btn-sm btn-danger ", method: :delete %>
-				  	</div>
+						<div class="purchase-product-option-delete">
+							<%= link_to '削除',user_carts_delete_path(cart.id), class: "btn-sm btn-danger ", method: :delete %>
+						</div>
+						
+					 </div>
 			  	</div>
 			  	<% end %>
 		  	</div>
@@ -36,14 +41,15 @@
 			<div class="purchase-box-inner">
 				<h3>合計:</h3>
 				<% total_price = current_end_user.carts.inject(0){|sum,cart| sum + cart.product.price*cart.order_quantity} %>
-				<h3><%= total_price %>円</h3>
+				<h3>&yen;<%= total_price %></h3>
 				<% if current_end_user.carts.exists? %>
 				<div class = "purchase-button">
 					<%= link_to '購入手続きへ',user_purchases_new_path(current_end_user), class: "btn-sm btn-warning " %>
 					<% end %>
 				</div>
-
-				<%= link_to '商品一覧ページへ',root_path %>
+				<div class = "product-show-link">
+					<%= link_to '商品一覧ページへ',root_path %>
+				</div>
 			</div>
 		</section>
 	</div>
