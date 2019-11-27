@@ -65,6 +65,7 @@ end
 
 	def update
 		admin_product = Product.find(params[:id])
+
 		artist = Artist.find_or_create_by(name:params[:artist][:name])
 
 		unless admin_product.artist.name == artist.name

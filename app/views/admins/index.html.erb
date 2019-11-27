@@ -1,26 +1,33 @@
-<h1>お仕事お疲れ様です。<br>
-どこに飛びますか？</h1>
-<div class="links">
-	<ul>
-		<li>
-			<%= link_to "登録会員一覧",admins_users_path %>
-		</li>
-		<li>
-			<%= link_to "商品一覧",admins_products_path %>
-		</li>
-		<li>
-			<%= link_to "入荷履歴一覧",admins_arrival_records_path %>
-		</li>
-		<li>
-			<%= link_to "受注履歴一覧",admins_order_histories_path %>
-		</li>
-		<li>
-			<%= link_to "お問合わせ一覧",admins_inquiries_path %>
-		</li>
-		<li>
-			<%= link_to "新規商品登録",admins_products_new_path %>
-		</li>
-	</ul>
+<div class="container">
+  <div class="row">
+  	<div class="col-lg-3"></div>
+  	<div class="col-lg-6">
+      <h1 style="text-align: center;">お仕事お疲れ様です。<br>どこに飛びますか？</h1>
+      <div class="links">
+	    <ul>
+		  <li>
+			<%= link_to "登録会員一覧",admins_users_path,class: "btn btn-default btn-lg active btn-block" %>
+		  </li>
+		  <li>
+			<%= link_to "商品一覧",admins_products_path,class: "btn btn-default btn-lg active btn-block" %>
+		  </li>
+		  <li>
+			<%= link_to "入荷履歴一覧",admins_arrival_records_path,class: "btn btn-default btn-lg active btn-block" %>
+		  </li>
+		  <li>
+			<%= link_to "受注履歴一覧",admins_order_histories_path,class: "btn btn-default btn-lg active btn-block" %>
+		  </li>
+		  <li>
+			<%= link_to "お問合わせ一覧",admins_inquiries_path,class: "btn btn-default btn-lg active btn-block" %>
+		  </li>
+		  <li>
+			<%= link_to "新規商品登録",admins_products_new_path,class: "btn btn-default btn-lg active btn-block" %>
+	      </li>
+	    </ul>
+     </div>
+  	</div>
+  </div>
 </div>
+
 
 
