@@ -5,7 +5,7 @@
 		<section class = "purchase-products-box">
 			<div class = "purchase-products-box-inner">
 				<% if current_end_user.carts.empty? %>
-					<h1 class = "notification">草。カートに商品が入っていませーんwww</h1>
+					<h1 class = "notification">カートに商品が入っていません</h1>
 				<% end %>
 				<% current_end_user.carts.each do |cart| %>
 				<div class = "purchase-product">
@@ -39,12 +39,11 @@
 	<div class="col-xs-3">
 		<section class = "purchase-box">
 			<div class="purchase-box-inner">
-				<h3>合計:</h3>
 				<% total_price = current_end_user.carts.inject(0){|sum,cart| sum + cart.product.price*cart.order_quantity} %>
-				<h3>&yen;<%= total_price %></h3>
+				<h3 class="total-price">合計:&yen;<%= total_price %></h3>
 				<% if current_end_user.carts.exists? %>
 				<div class = "purchase-button">
-					<%= link_to '購入手続きへ',user_purchases_new_path(current_end_user), class: "btn-sm btn-warning " %>
+					<%= link_to '購入手続きへ',user_purchases_new_path(current_end_user), class: "btn-lg btn-warning " %>
 					<% end %>
 				</div>
 				<div class = "product-show-link">
