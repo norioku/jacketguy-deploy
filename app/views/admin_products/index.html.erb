@@ -1,5 +1,7 @@
-<h1>登録商品一覧</h1>
-		<table class="table">
+<div class="col-sm-12">
+  <div class = "products-box">
+  	<h1 class = "product-head-title">登録商品一覧</h1>
+		<table class="table table table-bordered table-striped orderhistroy-table">
 		  <thead>
 		    <tr>
 		      <th scope="col">登録日時</th>
@@ -34,11 +36,14 @@
 		      	  <span style="color: red;">在庫切れ </span>
 		      	<% else %>
 		      	  <span><%= product.sale_status %></span>
-		      	<% end %>	
+		      	<% end %>
 		      </td>
 		    </td>
 		  <% end %>
         </table>
         <%= paginate @products %>
   </div>
+</div>
+
+ </div>
 </div>
