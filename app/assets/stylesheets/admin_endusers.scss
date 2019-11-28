@@ -21,12 +21,14 @@
   border-bottom: solid 2px #00BCD4;
   box-shadow: none;
   text-shadow: -1px -1px rgba(255, 255, 255, 0.3), 1px 1px rgba(0, 0, 0, 0.3);
-}
+  }
+
 .enduser-title{
   background: linear-gradient(transparent 70%, #a7d6ff 70%);
   width: 35%;
   text-align: center;
   margin: 0 0 70px 70px;
+  color: black;
 }
 
 .endusers-box{
@@ -34,7 +36,7 @@
   background: #F5F1E9;
   border-radius: 2%;
   padding: 50px;
-  color: #E9872E;
+  color: black;
 }
 
 
@@ -47,5 +49,5 @@
 }
 
 .admin-user-edit{
-  text-align:right;
+  text-align: right;
 }
