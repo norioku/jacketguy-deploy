@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     @user = current_end_user
     @addresses = current_end_user.addresses
     @favorites = current_end_user.favorites
-    @order_histories = current_end_user.order_histories.page(params[:page]).per(4)
- 
+    @order_histories = current_end_user.order_histories.order(id: "DESC").page(params[:page]).per(4)
+
   	# @user = current_end_user
   end
 
