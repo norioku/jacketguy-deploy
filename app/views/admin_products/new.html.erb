@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-  	<div class="col-md-4"></div>
-  	<div class="col-md-4">	
+  	<div class="col-md-3"></div>
+  	<div class="col-md-5">	
 		<h1>新規商品登録</h1>
 		<%= form_for @admin_product, url: admins_product_create_path do |f| %>
 		<%= render 'layouts/error_messages', model: f.object %>
@@ -45,9 +45,11 @@
 			    <%=render "disc_fields",:f => disc%>
 			  <% end %>
 			  <div class="links">
-				<%= link_to_add_association "ディスクを追加", f, :discs %>
+				<%= link_to_add_association "ディスクを追加", f, :discs, class: "btn btn-info btn-xs" %>
 			  </div>
-			<%=  f.submit "次へ", class: "btn btn-success btn-block" %>
+			<div class="next-btn">
+			<%=  f.submit "次へ", class: "btn btn-success btn-lg btn-block", :size => "50*24" %>
+			</div>
 		<% end %>
   	</div>
   </div>	
