@@ -13,9 +13,11 @@
 		</ul>
 	</div>
 	<div class="ranking">
+	  <% if Favorite.exists? %>
 		<div>
 			<h2>いいね！ランキングTOP5</h2>
 		</div>
+	  <%end%>
 		<div class="ranking-colu">
 			<ul>
 				<div class="rank-flex">
@@ -65,7 +67,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class = "pagination-div">
-	<%= paginate @new_products %>
 </div>
