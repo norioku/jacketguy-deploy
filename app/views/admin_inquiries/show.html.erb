@@ -43,7 +43,7 @@
 	<%= form_for(@inquiry, url: {controller:"admin_inquiries",action:"create"})  do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <%= f.hidden_field :status, :value => "返信済" %>
-              <%= f.text_area :reply, :placeholder => "返信内容を入力", :size=>"145x15" %>
+              <%= f.text_area :reply, :placeholder => "返信内容を入力", :size=>"70x15" %>
 
 
    <%= f.submit '入力内容を送信', class: "botan btn btn-primary btn-block btn-lg" %>
