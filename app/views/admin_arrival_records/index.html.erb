@@ -1,6 +1,8 @@
 
-<h1>入荷履歴一覧</h1>
-  <table class="table">
+<div class="col-sm-12">
+  <div class = "arrivalrecords-box">
+    <h1 class="arrival-head-title">入荷履歴一覧</h1>
+  <table class="table table-bordered table-striped orderhistroy-table">
     <thead>
       <tr>
         <th scope="col">入荷日時</th>
@@ -19,4 +21,9 @@
       </td>
     <% end %>
  </table>
- <%= paginate @arrival_records %>
+ <div class="page-item">
+   <%= paginate @arrival_records %>
+ </div>
+</div>
+</div>
+

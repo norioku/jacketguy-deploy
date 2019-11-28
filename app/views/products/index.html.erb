@@ -30,7 +30,7 @@
 							<div>
 								<h5><%= rank.title %><br></h5>
 								<h5><%= rank.artist.name %><br></h5>
-								<h5>価格(税込):&yen;<%= rank.price %><br></h5>
+								<h5>価格：<%= rank.price %>円(税込)<br></h5>
 								<h5><%= link_to "詳細を見る", product_path(rank.id) %></h5>
 							</div>
 					</li>
@@ -53,13 +53,16 @@
 							<div>
 								<h5><%= product.title %><br></h5>
 								<h5><%= product.artist.name %><br></h5>
-								<h5>価格(税込):&yen;<%= product.price %><br></h5>
+								<h5>価格：<%= product.price %>円(税込)<br></h5>
 								<h5><%= link_to "詳細を見る", product_path(product.id) %></h5>
 							</div>
 						</li>
 					<% end %>
 				</div>
 			</ul>
+			<div class="page-item">
+			<%= paginate @new_products %>
+			</div>
 		</div>
 	</div>
 </div>
