@@ -3,10 +3,12 @@
 
 <%= f.number_field :disc_num ,required: true , min:1, :size => "50*24"%>
 
+<div class="links">
+  <%= link_to_add_association "曲を追加", f, :songs, class: "btn btn-info btn-xs" %>
+</div>
+
 <%= f.fields_for :songs do |song| %>
 	<%=render "song_fields", :f => song%>
  <% end %>
- <div class="links">
-<%= link_to_add_association "曲を追加", f, :songs %>
-</div>
+
 </div>
