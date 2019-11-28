@@ -37,7 +37,12 @@
 		  </tbody>
 		</table>
 
+		<%= link_to "ユーザ情報の編集する", admins_users_edit_path, class: "spacial-button" %>
+
+	
+
 		<h1 class="admin-user-history-title"><%=@user.first_name %>&ensp;<%= @user.last_name%>の購入履歴</h1>
+
 		<table class="table">
 		  <thead>
 		    <tr>

@@ -89,9 +89,10 @@
 }
 
 .userpurchase-fee {
-  background: #B7B7B7;
+  background: #F5F1E9;
   padding: 30px;
   border-radius: 2%;
+  color: #0C555D;
 }
 
 .userpurchase-song-image {
@@ -100,18 +101,25 @@
 }
 
 .userpurchase-song {
-  background: #E6E5E1;
+  background: #F5F1E9;
   border-radius: 2%;
   margin-bottom: 100px;
   padding: 40px;
   width: 100%;
   font-family: 'Kosugi Maru', sans-serif;
+  color: #0C555D;
+}
+
+.userpurchase-table {
+  background: #FDC44F;
+  color: #0C555D;
 }
 
 .userpurchase-song-title {
   width: 40%;
   display: inline-block;
-  font-size: 20px;
+  font-size: 32px;
+  font-weight: bold;
   font-family: 'Kosugi Maru', sans-serif;
 }
 
@@ -124,11 +132,19 @@
 .userpurchase-song-price {
   width: 25%;
   display: inline-block;
-  font-size: 20px;
+  font-size: 25px;
   margin: 0 0 30px 200px;
 }
 
 
 .userpurchase-addbutton {
   margin-left: 60px;
+}
+
+.userpurchase-sub {
+  border: 2px ridge slategray;
+  padding: 10px;
+  border-radius: 2%;
+  background: #FDC44F;
+  margin-bottom: 15px;
 }

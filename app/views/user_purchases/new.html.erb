@@ -5,7 +5,7 @@
 		<%= form_with(model: OrderHistory, url: user_purchases_create_path, local: true) do |f| %>
   	<div class = "userpurchase-select">
   		<div class = "userpurchase-selectbox">
-  				<table class = "table table-bordered table-striped">
+  				<table class = "table table-bordered table-striped userpurchase-table">
   					<tr>
 							<th>住所</th>
 							<td><%= @user.address %></td>
@@ -62,16 +62,19 @@
 				<%= link_to "他のお届け先を追加", user_addresses_new_path(@user), class: "btn btn-info" %>
 			</div>
 		</div>
+
 		<h2 class = "userpurchase-title">購入する商品</h2>
 
 		<div class="userpurchase-song">
 			<% total_price = 0 %>
 				<% @user.carts.each do |cart| %>
+				<div class = "userpurchase-sub">
 					<p class = "userpurchase-song-image"><%= attachment_image_tag cart.product, :product_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></p>
 					<p class = "userpurchase-song-title"><%= cart.product.title %></p>
 					<p class = "userpurchase-song-quantity">数量：<%= cart.order_quantity %></p>
 					<p class = "userpurchase-song-price">小計：¥<%= cart.product.price * cart.order_quantity %></p>
 				<% total_price += cart.product.price * cart.order_quantity %>
+				</div>
 				<% end %>
 		</div>
 	</div>
