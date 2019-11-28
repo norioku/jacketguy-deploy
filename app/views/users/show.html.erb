@@ -30,7 +30,7 @@
 					   			</div>
 					   			<div class = "address-edit">
 					   				 <%= link_to '住所を編集',user_addresses_edit_path(address.id), class: "btn-sm  btn-primary " %>
-					        <%= link_to '住所を削除',user_address_destroy_path(address), class: "btn-sm btn-danger", method: :delete %>
+					        <%= link_to '住所を削除',user_address_destroy_path(address.id), class: "btn-sm btn-danger", method: :delete %>
 					   			</address>
 					   			</div>
 					       

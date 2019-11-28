@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 .notification{
-	font-family: "ZakkuriGothic-BLK";;
+	text-align:center;
 }
 
 
@@ -77,4 +77,19 @@
     margin-top:10px;
 	text-align:center;
 }
+
+.purchase-box-inner{
+	border: 3px solid darkkhaki;
+    border-radius: 10px;
+	background-color: ivory;
+	width:auto;
+}
+.total-price{
+	height:auto;
+	width:auto;
+	text-align: center;
+	margin:10px auto;
+	color:#000;
+}
+
 
